@@ -5,9 +5,9 @@
     <uri>/WEB-INF/geli_functions</uri>
 
     <!-- TAG -->
-    <!-- <tag>
+   <!--  <tag>
         <name>cache</name>
-        <tag-class>cn.com.fawtoyota.resource.tag.MemcachedTag</tag-class>
+        <tag-class>cn.com.kuaidian.resource.tag.MemcachedTag</tag-class>
 
         <attribute>
             <name>time</name>
