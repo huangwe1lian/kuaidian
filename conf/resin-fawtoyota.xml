@@ -1,0 +1,28 @@
+<resin xmlns="http://caucho.com/ns/resin" xmlns:resin="http://caucho.com/ns/resin/core">
+  <log name="" level="info" path="stdout:"/>
+  <cluster id="">
+    <server id="">
+		 <http port="8080"/> 
+	</server>
+    <resin:import path="${resin.home}/conf/app-default.xml"/>
+    <host id="" root-directory=".">
+          		
+	<database jndi-name="jdbc/fawtoyota">
+		<driver user="fawtoyota" password="fawtoyota"
+			url="jdbc:postgresql://192.168.75.100:5432/fawtoyota?useUnicode=true&amp;characterEncoding=UTF-8"
+			type="org.postgresql.Driver">
+ 		</driver>
+	</database>
+    
+	<env-entry>
+		<description>application properties</description>
+		<env-entry-name>props</env-entry-name>
+		<env-entry-type>java.lang.String</env-entry-type>
+		<env-entry-value>${resin.home}/conf/fawtoyota.properties</env-entry-value>
+	</env-entry>	  
+    
+	<web-app id="/" document-directory="D:\workspace\toyota\src\main\webapp" lazy-init="false" />
+
+    </host>
+  </cluster>
+</resin>
