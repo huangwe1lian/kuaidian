@@ -5,7 +5,7 @@
     <uri>/WEB-INF/geli_functions</uri>
 
     <!-- TAG -->
-    <tag>
+    <!-- <tag>
         <name>cache</name>
         <tag-class>cn.com.fawtoyota.resource.tag.MemcachedTag</tag-class>
 
@@ -26,7 +26,7 @@
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
         </attribute>
-    </tag>
+    </tag> -->
 
     <!-- FUNCTION -->
     <function>

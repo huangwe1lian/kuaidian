@@ -3,11 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>cn.pconline</groupId>
-    <artifactId>fawtoyota</artifactId>
+    <artifactId>kuaidian</artifactId>
     <packaging>war</packaging>
     <version>1.0</version>
 
-    <name>fawtoyota</name>
+    <name>kuaidian</name>
     <url>http://maven.apache.org</url>
 
     <dependencies>
@@ -78,12 +78,12 @@
 			<version>4.11</version>
 			<scope>test</scope>
 		</dependency>
-		<dependency>
+		<!-- <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
             <version>3.2.1.RELEASE</version>
             <scope>test</scope>
-        </dependency>
+        </dependency> -->
         <dependency>
 			<groupId>com.alibaba</groupId>
 			<artifactId>fastjson</artifactId>
