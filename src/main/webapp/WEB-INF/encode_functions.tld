@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taglib version="2.1" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd">
+    <tlib-version>1.0</tlib-version>
+    <short-name>encode</short-name>
+    <uri>/WEB-INF/encode_functions</uri>
+
+    <function>
+        <name>encodeForHTML</name>
+        <function-class>org.gelivable.web.EncodeUtils</function-class>
+        <function-signature>java.lang.String encodeForHTML(java.lang.String input)</function-signature>
+    </function>
+
+    <function>
+        <name>encodeForJavascript</name>
+        <function-class>org.gelivable.web.EncodeUtils</function-class>
+        <function-signature>java.lang.String encodeForJavascript(java.lang.String input)</function-signature>
+    </function>
+
+    <function>
+        <name>encodeForCSS</name>
+        <function-class>org.gelivable.web.EncodeUtils</function-class>
+        <function-signature>java.lang.String encodeForCSS(java.lang.String input)</function-signature>
+    </function>
+
+    <function>
+        <name>encodeURIComponent</name>
+        <function-class>org.gelivable.web.EncodeUtils</function-class>
+        <function-signature>java.lang.String encodeURIComponent(java.lang.String input)</function-signature>
+    </function>
+
+    <function>
+        <name>encodeURIComponent2</name>
+        <function-class>org.gelivable.web.EncodeUtils</function-class>
+        <function-signature>java.lang.String encodeURIComponent(java.lang.String input, java.lang.String encoding)</function-signature>
+    </function>
+
+    
+    <function>
+        <name>isValidURL</name>
+        <function-class>org.gelivable.web.EncodeUtils</function-class>
+        <function-signature>java.lang.Boolean isValidURL(java.lang.String input)</function-signature>
+    </function>
+
+
+</taglib>

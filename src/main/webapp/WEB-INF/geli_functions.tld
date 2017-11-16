@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taglib version="2.1" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd">
+    <tlib-version>1.0</tlib-version>
+    <short-name>geli</short-name>
+    <uri>/WEB-INF/geli_functions</uri>
+
+    <!-- TAG -->
+    <tag>
+        <name>cache</name>
+        <tag-class>cn.com.fawtoyota.resource.tag.MemcachedTag</tag-class>
+
+        <attribute>
+            <name>time</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <attribute>
+            <name>key</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <attribute>
+            <name>refresh</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+
+    <!-- FUNCTION -->
+    <function>
+        <name>display</name>
+        <function-class>org.gelivable.web.GeliFunctions</function-class>
+        <function-signature>java.lang.String display(java.lang.Object obj, java.lang.String fieldName)</function-signature>
+    </function>
+
+    <function>
+        <name>oid</name>
+        <function-class>org.gelivable.web.GeliFunctions</function-class>
+        <function-signature>java.lang.String oid(java.lang.Object entity)</function-signature>
+    </function>
+
+    <function>
+        <name>select_options</name>
+        <function-class>org.gelivable.web.GeliFunctions</function-class>
+        <function-signature>java.lang.String selectOptions(java.lang.Object fieldValue, java.lang.String fieldName)</function-signature>
+    </function>
+
+    <function>
+        <name>not_oper</name>
+        <function-class>org.gelivable.web.GeliFunctions</function-class>
+        <function-signature>java.lang.Boolean notOper(java.lang.String fieldName)</function-signature>
+    </function>
+
+    <function>
+        <description>获取对象 指定 字段中的refer注解类对象</description>
+        <name>refer</name>
+        <function-class>cn.com.fawtoyota.util.Functions</function-class>
+        <function-signature>java.lang.Object refer(java.lang.Object, java.lang.String)</function-signature>
+    </function>
+</taglib>

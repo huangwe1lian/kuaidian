@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:jee="http://www.springframework.org/schema/jee"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+          http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+          http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd
+          http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+          http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
+
+    <aop:aspectj-autoproxy proxy-target-class="true"/>
+    <bean class="org.gelivable.web.AopSqlMonitor"/>
+
+    <jee:jndi-lookup id="props" jndi-name="java:comp/env/props"/>
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+            	<value>file:#{props}</value>
+                <value>classpath:properties/*.properties</value>
+            </list>
+        </property>
+        <property name="ignoreResourceNotFound"  value="true"/>
+        <property name="ignoreUnresolvablePlaceholders" value="true"/>
+        <property name="valueSeparator"  value=":=" />
+    </bean>
+
+    <!-- 加载属性文件 -->
+    <bean id="propertiesUtils" class="cn.com.fawtoyota.util.PropertiesUtils">
+        <property name="locations">
+            <list>
+                <value>root.properties</value>
+                <value>http.properties</value>
+                <value>upc.properties</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="mccSocketIOPool" class="com.danga.MemCached.SockIOPool"
+        factory-method="getInstance"
+        init-method="initialize"
+        destroy-method="shutDown"
+        p:servers="${memcached.servers:=127.0.0.1:11211}"
+        p:maxConn="${memcached.maxConn:=50}"
+        p:initConn="${memcached.initConn:=10}"
+        p:socketConnectTO="${memcached.socketConnectTO:=800}"
+        p:socketTO="${memcached.socketTO:=500}"
+        p:maintSleep="${memcached.maintSleep:=3000}"
+        p:failover="${memcached.failover:=false}"
+        p:failback="${memcached.failback:=false}"
+        p:nagle="${memcached.nagle:=false}" >
+        <constructor-arg value="fawtoyota"/>
+    </bean>
+
+    <bean id="mcc" class="com.danga.MemCached.MemCachedClient" p:sanitizeKeys="false" >
+        <constructor-arg value="fawtoyota"/>
+    </bean>
+        
+    <jee:jndi-lookup id="dataSource" jndi-name="jdbc/fawtoyota"/>
+    <jee:jndi-lookup id="idGenDataSource" jndi-name="jdbc/fawtoyota"/>
+
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate" p:dataSource-ref="dataSource"/>
+    <bean id="idGenerator" class="org.gelivable.dao.IdGeneratorByTable" p:idDataSource-ref="idGenDataSource"/>
+
+    <bean id="geliOrm" class="org.gelivable.dao.GeliOrm">
+        <property name="entityPackageList">
+            <list>
+                <value>cn.com.fawtoyota.entity</value>
+                <value>org.gelivable.auth.entity</value>
+                <value>org.gelivable.log.entity</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="sqlPageBuilder4PG" class="org.gelivable.dao.SqlPageBuilder4PG"/>
+    <bean id="cacheProvider" class="org.gelivable.web.EnvCacheProvider"/>
+    <bean id="memCachedProvider" class="org.gelivable.web.MemCachedProvider"
+        p:memCachedClient-ref="mcc"/>
+
+    <bean id="geliDao" class="org.gelivable.dao.GeliDao"
+        p:sqlPageBuilder-ref="sqlPageBuilder4PG"
+        p:jdbcTemplate-ref="jdbcTemplate"
+        p:idGenerator-ref="idGenerator"
+        p:cacheFirstLevel-ref="cacheProvider"
+        p:cacheListener-ref="cacheProvider"
+        p:cacheSecondLevel-ref="memCachedProvider"
+        p:orm-ref="geliOrm"/>
+
+    <bean class="org.gelivable.dao.GeliUtils"
+        p:orm-ref="geliOrm"
+        p:dao-ref="geliDao"/>
+
+    <bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" />
+
+    <!-- 非本系统权限控制的bean,这个bean的存在是为了给geli.jar包的GeliAuthController类提供自动注入的bean,防止页面报错 -->
+    <bean id="authFacade" class="org.gelivable.auth.GeliAuthFacade"/>
+
+    <bean class="org.gelivable.auth.GeliDefaultResourceProvider"/>
+
+    <bean id="springUtils" name="springUtils" class="cn.com.fawtoyota.util.SpringUtils" lazy-init="false" />
+
+    <!-- 配置事物管理器 -->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
+          p:dataSource="#{dataSource}"/>
+
+    <!-- 启用事物注解 -->
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+    
+	<context:component-scan base-package="cn.com.fawtoyota.web"/>
+    <context:component-scan base-package="cn.com.fawtoyota.service"/>
+    <context:component-scan base-package="cn.com.fawtoyota.resource">
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
+    
+    <bean class="org.gelivable.dao.Select">
+        <property name="data">
+            <map>
+                <entry key="mediaNewsKind">
+                    <map> 
+                        <entry key="1" value="评测"/> 
+                        <entry key="2"   value="导购"/> 
+                        <entry key="3"  value="新闻"/> 
+                        <entry key="4"   value="技术"/> 
+                        <entry key="5"   value="论坛"/> 
+                    </map>
+                </entry>
+                <entry key="yesOrNo">
+                    <map> 
+                        <entry key="0" value="否"/> 
+                        <entry key="1"   value="是"/> 
+                    </map>
+                </entry>
+                <entry key="status">
+                    <map> 
+                        <entry key="0" value="正常"/> 
+                        <entry key="1"   value="禁用"/> 
+                    </map>
+                </entry>
+                <entry key="mediaNewsStatus">
+                    <map> 
+                        <entry key="0" value="隐藏"/> 
+                        <entry key="1"   value="不隐藏"/> 
+                    </map>
+                </entry>
+                <entry key="position">
+                    <map> 
+                        <entry key="1" value="WEB-首页轮播图"/> 
+                        <entry key="2"   value="WEB-车系页轮播图"/> 
+                        <entry key="3"   value="WEB-车系页本地活动"/> 
+                    </map>
+                </entry>
+                <entry key="origin">
+                    <map> 
+                        <entry key="1" value="WEB"/> 
+                        <entry key="2"   value="WAP"/> 
+                        <entry key="3"   value="APP"/> 
+                    </map>
+                </entry>
+                <entry key="auditStatus">
+                    <map> 
+                        <entry key="0" value="待审"/> 
+                        <entry key="1" value="审核通过"/> 
+                        <entry key="-1" value="审核不通过"/> 
+                    </map>
+                </entry>
+                <entry key="adStatus">
+                    <map> 
+                        <entry key="0" value="审核中"/> 
+                        <entry key="1" value="待上架"/> 
+                        <entry key="2" value="上架"/> 
+                        <entry key="3" value="下架"/> 
+                        <entry key="4" value="结束"/> 
+                    </map>
+                </entry>
+                <entry key="adType">
+                    <map> 
+                        <entry key="1" value="展示"/> 
+                        <entry key="2" value="专题"/> 
+                    </map>
+                </entry>
+                <entry key="dealerNewsPosition">
+                    <map> 
+                        <entry key="0" value="无"/> 
+                        <entry key="1" value="首页本地活动"/> 
+                        <entry key="2" value="车系页本地活动"/> 
+                    </map>
+                </entry>
+                <entry key="dealerNewsActivityLevel">
+                    <map> 
+                        <entry key="0" value="无"/> 
+                        <entry key="1" value="厂商活动"/> 
+                        <entry key="2" value="自主活动"/> 
+                    </map>
+                </entry>
+                <entry key="dealerNewsStatus">
+                    <map> 
+                        <entry key="-2" value="草稿"/> 
+                        <entry key="-1" value="审核不通过"/> 
+                        <entry key="0" value="待审"/> 
+                        <entry key="1" value="通过"/> 
+                        <entry key="2" value="已结束"/> 
+                    </map>
+                </entry>
+                <entry key="dealerNewsType">
+                    <map> 
+                        <entry key="1" value="商家行情"/> 
+                        <entry key="2" value="店铺活动"/> 
+                        <entry key="3" value="品牌新闻"/> 
+                    </map>
+                </entry>
+                <entry key="dealerNewsSmallType4Type2">
+                    <map> 
+                        <entry key="1" value="促销活动"/> 
+                        <entry key="2" value="试驾会"/> 
+                        <entry key="3" value="自驾游"/> 
+                        <entry key="4" value="车友聚会"/> 
+                        <entry key="5" value="车展"/> 
+                        <entry key="6" value="其它活动"/> 
+                    </map>
+                </entry>
+            </map>
+        </property>
+    </bean>
+</beans>
