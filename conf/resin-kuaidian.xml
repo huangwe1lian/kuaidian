@@ -7,9 +7,9 @@
     <resin:import path="${resin.home}/conf/app-default.xml"/>
     <host id="" root-directory=".">
           		
-	<database jndi-name="jdbc/fawtoyota">
-		<driver user="fawtoyota" password="fawtoyota"
-			url="jdbc:postgresql://192.168.75.100:5432/fawtoyota?useUnicode=true&amp;characterEncoding=UTF-8"
+	<database jndi-name="jdbc/kuaidian">
+		<driver user="kuaidian" password="kuaidian"
+			url="jdbc:postgresql://192.168.75.100:5432/kuaidian?useUnicode=true&amp;characterEncoding=UTF-8"
 			type="org.postgresql.Driver">
  		</driver>
 	</database>
@@ -18,10 +18,10 @@
 		<description>application properties</description>
 		<env-entry-name>props</env-entry-name>
 		<env-entry-type>java.lang.String</env-entry-type>
-		<env-entry-value>${resin.home}/conf/fawtoyota.properties</env-entry-value>
+		<env-entry-value>${resin.home}/conf/kuaidian.properties</env-entry-value>
 	</env-entry>	  
     
-	<web-app id="/" document-directory="D:\workspace\toyota\src\main\webapp" lazy-init="false" />
+	<web-app id="/" document-directory="D:\workspace\kuaidian\src\main\webapp" lazy-init="false" />
 
     </host>
   </cluster>
