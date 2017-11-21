@@ -27,14 +27,14 @@
     <mvc:interceptors>
         <bean class="cn.com.kuaidian.resource.interceptor.SystemConfigInterceptor"/>
 
-        <mvc:interceptor>
+        <!-- <mvc:interceptor>
             <mvc:mapping path="/admin/**"/>
             <mvc:exclude-mapping path="/admin/ckeditor/**"/>
             <mvc:exclude-mapping path="/admin/swfupload/**"/>
             <mvc:exclude-mapping path="/admin/**/themes/**"/>
             <mvc:exclude-mapping path="/admin/loginCheck.do"/>
             <bean class="cn.com.kuaidian.resource.interceptor.AdminSecurityInterceptor"/>
-        </mvc:interceptor>
+        </mvc:interceptor> -->
         <mvc:interceptor>
             <mvc:mapping path="/user/**"/>
             <bean class="cn.com.kuaidian.resource.interceptor.UserSecurityInterceptor"/>
