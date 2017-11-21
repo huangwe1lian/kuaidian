@@ -2,16 +2,20 @@
   <log name="" level="info" path="stdout:"/>
   <cluster id="">
     <server id="">
-		 <http port="8080"/> 
+		 <http port="8090"/> 
 	</server>
     <resin:import path="${resin.home}/conf/app-default.xml"/>
     <host id="" root-directory=".">
           		
 	<database jndi-name="jdbc/kuaidian">
-		<driver user="kuaidian" password="kuaidian"
-			url="jdbc:postgresql://192.168.75.100:5432/kuaidian?useUnicode=true&amp;characterEncoding=UTF-8"
-			type="org.postgresql.Driver">
- 		</driver>
+		<driver type="com.mysql.jdbc.jdbc2.optional.MysqlConnectionPoolDataSource">
+	    		<url>jdbc:mysql://192.168.33.95:3306/kuaidian?useUnicode=true&amp;characterEncoding=UTF8&amp;zeroDateTimeBehavior=convertToNull</url>
+	    		<user>root</user>
+	    		<password>root</password>
+	  		</driver>
+			<prepared-statement-cache-size>8</prepared-statement-cache-size>
+			<max-connections>60</max-connections>
+			<max-idle-time>30s</max-idle-time>
 	</database>
     
 	<env-entry>
@@ -21,7 +25,7 @@
 		<env-entry-value>${resin.home}/conf/kuaidian.properties</env-entry-value>
 	</env-entry>	  
     
-	<web-app id="/" document-directory="D:\workspace\kuaidian\src\main\webapp" lazy-init="false" />
+	<web-app id="/" document-directory="D:\workspace3\kuaidian.git\trunk\src\main\webapp" lazy-init="false" />
 
     </host>
   </cluster>
