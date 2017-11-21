@@ -29,7 +29,7 @@
     </bean>
 
     <!-- 加载属性文件 -->
-    <bean id="propertiesUtils" class="cn.com.fawtoyota.util.PropertiesUtils">
+    <bean id="propertiesUtils" class="cn.com.kuaidian.util.PropertiesUtils">
         <property name="locations">
             <list>
                 <value>root.properties</value>
@@ -52,15 +52,15 @@
         p:failover="${memcached.failover:=false}"
         p:failback="${memcached.failback:=false}"
         p:nagle="${memcached.nagle:=false}" >
-        <constructor-arg value="fawtoyota"/>
+        <constructor-arg value="kuaidian"/>
     </bean>
 
     <bean id="mcc" class="com.danga.MemCached.MemCachedClient" p:sanitizeKeys="false" >
-        <constructor-arg value="fawtoyota"/>
+        <constructor-arg value="kuaidian"/>
     </bean>
         
-    <jee:jndi-lookup id="dataSource" jndi-name="jdbc/fawtoyota"/>
-    <jee:jndi-lookup id="idGenDataSource" jndi-name="jdbc/fawtoyota"/>
+    <jee:jndi-lookup id="dataSource" jndi-name="jdbc/kuaidian"/>
+    <jee:jndi-lookup id="idGenDataSource" jndi-name="jdbc/kuaidian"/>
 
     <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate" p:dataSource-ref="dataSource"/>
     <bean id="idGenerator" class="org.gelivable.dao.IdGeneratorByTable" p:idDataSource-ref="idGenDataSource"/>
@@ -68,7 +68,7 @@
     <bean id="geliOrm" class="org.gelivable.dao.GeliOrm">
         <property name="entityPackageList">
             <list>
-                <value>cn.com.fawtoyota.entity</value>
+                <value>cn.com.kuaidian.entity</value>
                 <value>org.gelivable.auth.entity</value>
                 <value>org.gelivable.log.entity</value>
             </list>
@@ -100,7 +100,7 @@
 
     <bean class="org.gelivable.auth.GeliDefaultResourceProvider"/>
 
-    <bean id="springUtils" name="springUtils" class="cn.com.fawtoyota.util.SpringUtils" lazy-init="false" />
+    <bean id="springUtils" name="springUtils" class="cn.com.kuaidian.util.SpringUtils" lazy-init="false" />
 
     <!-- 配置事物管理器 -->
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
@@ -109,9 +109,9 @@
     <!-- 启用事物注解 -->
     <tx:annotation-driven transaction-manager="transactionManager"/>
     
-	<context:component-scan base-package="cn.com.fawtoyota.web"/>
-    <context:component-scan base-package="cn.com.fawtoyota.service"/>
-    <context:component-scan base-package="cn.com.fawtoyota.resource">
+	<context:component-scan base-package="cn.com.kuaidian.web"/>
+    <context:component-scan base-package="cn.com.kuaidian.service"/>
+    <context:component-scan base-package="cn.com.kuaidian.resource">
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
     
