@@ -9,7 +9,7 @@
           		
 	<database jndi-name="jdbc/kuaidian">
 		<driver type="com.mysql.jdbc.jdbc2.optional.MysqlConnectionPoolDataSource">
-	    		<url>jdbc:mysql://192.168.33.95:3306/kuaidian?useUnicode=true&amp;characterEncoding=UTF8&amp;zeroDateTimeBehavior=convertToNull</url>
+	    		<url>jdbc:mysql://localhost:3306/kuaidian?useUnicode=true&amp;characterEncoding=UTF8&amp;zeroDateTimeBehavior=convertToNull</url>
 	    		<user>root</user>
 	    		<password>root</password>
 	  		</driver>
