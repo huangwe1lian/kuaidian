@@ -1,12 +1,8 @@
 package cn.com.kuaidian.web.user;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import org.gelivable.dao.GeliDao;
 import org.gelivable.web.Env;
 import org.gelivable.web.EnvUtils;
-import org.gelivable.web.HttpMethod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

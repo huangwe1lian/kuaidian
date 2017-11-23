@@ -9,7 +9,7 @@
 <body>
 <form action="/user/doLogin.do" method="post">
 用户名：<input name="username" type="text"/>
-密码：<input name="password" type="text"/>
+密码：<input name="password" type="password"/>
 <input type="submit" value="登录"/>
 </form>
 </body>
