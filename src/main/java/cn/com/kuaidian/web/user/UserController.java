@@ -27,13 +27,13 @@ public class UserController {
 	}
 	
 	
-	@RequestMapping(value="/doLogin.do",method=RequestMethod.POST )
+	@RequestMapping(value="/doLogin.do",method=RequestMethod.POST)
 	public String doLongin(){
 		Env env = EnvUtils.getEnv();
+		User user = (User) env.getRequest().getAttribute("user");
 		String username = env.param("username");
 		String password = env.param("password");
-		User user = userService.getUserByUserName(username);
-		if(user != null){
+		if(user != null && password.equals(user.getPassword())){
 			return "/user/loginSuccess";
 		}else{
 			return "/user/loginError";
