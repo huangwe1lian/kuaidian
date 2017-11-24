@@ -3,11 +3,11 @@ package cn.com.kuaidian.service.user;
 import org.gelivable.dao.GeliDao;
 import org.gelivable.dao.SqlBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import cn.com.kuaidian.entity.user.User;
 
-@Repository
+@Service
 public class UserService {
 	@Autowired
 	private GeliDao geliDao;

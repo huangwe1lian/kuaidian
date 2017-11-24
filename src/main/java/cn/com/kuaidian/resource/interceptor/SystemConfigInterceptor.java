@@ -12,7 +12,6 @@ import java.util.Properties;
 
 /**
  * 读取系统配置拦截器
- * Created by ilinfei on 16/5/29.
  */
 public class SystemConfigInterceptor implements HandlerInterceptor {
 

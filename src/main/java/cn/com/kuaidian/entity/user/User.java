@@ -7,8 +7,10 @@ import org.gelivable.dao.Label;
 
 @Entity(tableName="kd_user")
 public class User {
+	
 	@Id
 	@Label("用户表ID")
+	@Column(name="id")
 	private long id;
 	
 	@Label("用户名")

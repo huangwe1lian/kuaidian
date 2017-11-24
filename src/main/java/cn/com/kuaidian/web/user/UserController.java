@@ -31,7 +31,6 @@ public class UserController {
 	public String doLongin(){
 		Env env = EnvUtils.getEnv();
 		User user = (User) env.getRequest().getAttribute("user");
-		String username = env.param("username");
 		String password = env.param("password");
 		if(user != null && password.equals(user.getPassword())){
 			return "/user/loginSuccess";
