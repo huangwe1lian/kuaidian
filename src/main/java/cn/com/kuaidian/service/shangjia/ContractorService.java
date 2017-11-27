@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import cn.com.kuaidian.entity.shangjia.Contractor;
-import cn.com.kuaidian.entity.user.User;
 
 @Service
 public class ContractorService {
