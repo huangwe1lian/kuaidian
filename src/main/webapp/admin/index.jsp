@@ -1,5 +1,5 @@
-<%@page import="cn.com.fawtoyota.resource.auth.AdminAuthFacade"%>
-<%@page import="cn.com.fawtoyota.resource.auth.AdminSecurity"%>
+<%@page import="cn.com.kuaidian.resource.auth.AdminAuthFacade"%>
+<%@page import="cn.com.kuaidian.resource.auth.AdminSecurity"%>
 <%@page import="cn.com.fawtoyota.entity.User"%>
 <%@page contentType="text/html" pageEncoding="utf-8" session="false"
 %><%@include file="/WEB-INF/jspf/import.jspf"

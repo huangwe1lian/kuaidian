@@ -25,8 +25,8 @@
     </context:component-scan>
 
     <mvc:interceptors>
-        <!-- <mvc:interceptor>
-	        <bean class="cn.com.kuaidian.resource.interceptor.SystemConfigInterceptor"/>
+         <bean class="cn.com.kuaidian.resource.interceptor.SystemConfigInterceptor"/>
+         <!-- <mvc:interceptor>
             <mvc:mapping path="/admin/**"/>
             <mvc:exclude-mapping path="/admin/ckeditor/**"/>
             <mvc:exclude-mapping path="/admin/swfupload/**"/>
@@ -34,6 +34,7 @@
             <mvc:exclude-mapping path="/admin/loginCheck.do"/>
             <bean class="cn.com.kuaidian.resource.interceptor.AdminSecurityInterceptor"/>
         </mvc:interceptor> -->
+        
         <mvc:interceptor>
             <mvc:mapping path="/user/**"/>
             <mvc:exclude-mapping path="/user/login.do"/>
@@ -45,7 +46,6 @@
             <mvc:exclude-mapping path="/shangjia/login.do"/>
             <bean class="cn.com.kuaidian.resource.interceptor.ContractorSecurityInterceptor"/>
         </mvc:interceptor>
-        
         
          <mvc:interceptor>
             <mvc:mapping path="/staff/**"/>
