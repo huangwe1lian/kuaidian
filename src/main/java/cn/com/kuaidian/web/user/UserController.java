@@ -1,5 +1,9 @@
 package cn.com.kuaidian.web.user;
 
+import java.io.IOException;
+
+import javax.servlet.http.HttpServletResponse;
+
 import org.gelivable.dao.GeliDao;
 import org.gelivable.web.Env;
 import org.gelivable.web.EnvUtils;
@@ -28,14 +32,20 @@ public class UserController {
 	
 	
 	@RequestMapping(value="/doLogin.do",method=RequestMethod.POST)
-	public String doLongin(){
+	public void doLongin(HttpServletResponse response) throws IOException {
 		Env env = EnvUtils.getEnv();
 		User user = (User) env.getRequest().getAttribute("user");
 		String password = env.param("password");
-		if(user != null && password.equals(user.getPassword())){
-			return "/user/loginSuccess";
-		}else{
-			return "/user/loginError";
+		try {
+			if(user != null && password.equals(user.getPassword())){
+				response.sendRedirect("/admin/index.jsp");
+			}else{
+				response.sendRedirect("/admin/login.jsp");
+			}
+		} catch (IOException e) {
+			response.sendRedirect("/admin/msg.jsp?code=login_fail");
+			e.printStackTrace();
 		}
+		
 	}
 }

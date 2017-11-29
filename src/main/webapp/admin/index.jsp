@@ -1,25 +1,22 @@
-<%@page import="cn.com.kuaidian.resource.auth.AdminAuthFacade"%>
-<%@page import="cn.com.kuaidian.resource.auth.AdminSecurity"%>
-<%@page import="cn.com.fawtoyota.entity.User"%>
 <%@page contentType="text/html" pageEncoding="utf-8" session="false"
 %><%@include file="/WEB-INF/jspf/import.jspf"
 %><%
-User user = AdminSecurity.getCurrentUser(request);
+/* User user = AdminSecurity.getCurrentUser(request);
 AdminAuthFacade authFacade = EnvUtils.getEnv().getBean(AdminAuthFacade.class);
 if (user == null) {
     response.sendRedirect("login.jsp");
     return;
-} 
+}  */
 
-pageContext.setAttribute("isAdmin", authFacade.isAdmin());
-pageContext.setAttribute("_USER_", user);
+/* pageContext.setAttribute("isAdmin", authFacade.isAdmin());
+pageContext.setAttribute("_USER_", user); */
 
 %><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=7" />
-<title>首页 - 一丰优品后台管理系统</title>
+<title>首页 - 快点点餐系统</title>
 
 <link href="themes/default/style.css" rel="stylesheet" type="text/css" media="screen"/>
 <link href="themes/css/core.css" rel="stylesheet" type="text/css" media="screen"/>
@@ -101,7 +98,7 @@ $(function(){
 		<div id="header">
 			<div class="headerNav">
                 <a class="logo" href="${ctx}/admin/index.jsp" style="width: 100px;">logo</a>
-                <div style="float: left; color: white; font-size: 24px; padding-top: 15px;">一丰优品运营后台</div>
+                <div style="float: left; color: white; font-size: 24px; padding-top: 15px;">快点点餐系统</div>
 				<ul class="nav">
 					<li><a href="javascript:;">welcome, ${_USER_.name}!</a></li>
 					<li><a href="${ctx}/admin/updatePwd.do" target="navTab" rel="updatePwd">修改密码</a></li>
@@ -128,14 +125,14 @@ $(function(){
 
 				<div class="accordion" fillSpace="sidebar">
 				    <div class="accordionHeader">
-						<h2><span>Folder</span>车系管理</h2>
+						<h2><span>Folder</span>菜单1</h2>
 					</div>
                     <div class="accordionContent">
 						<ul class="tree treeFolder">
-							<li><a href="${ctx}/admin/serialgroup/list.do" target="navTab" rel="list-serialgroup">车系列表</a></li>
+							<li><a href="${ctx}/admin/serialgroup/list.do" target="navTab" rel="list-serialgroup">菜单列表</a></li>
 						</ul>
 					</div>
-                    <div class="accordionHeader">
+                    <%--<div class="accordionHeader">
 						<h2><span>Folder</span>媒体资讯管理</h2>
 					</div>
                     <div class="accordionContent">
@@ -171,27 +168,25 @@ $(function(){
 							<li><a href="${ctx}/admin/datastat/dayOrderStat" target="navTab" rel="stat-order">线索量统计</a></li>
 							<li><a href="${ctx}/admin/datastat/dealerActive" target="navTab" rel="dealer-active" title="经销商活跃度">经销商活跃度统计</a></li>
 						</ul>
+					</div> --%>
+					<div class="accordionHeader">
+						<h2><span>Folder</span>权限设置</h2>
 					</div>
-					<c:if test="${isAdmin }">
-						<div class="accordionHeader">
-							<h2><span>Folder</span>权限设置</h2>
-						</div>
-	                    <div class="accordionContent">
-							<ul class="tree treeFolder">
-								<li><a href="${ctx}/admin/function/list.do" target="navTab" rel="list-function">功能列表</a></li>
-								<li><a href="${ctx}/admin/role/list.do" target="navTab" rel="list-role">角色列表</a></li>
-								<li><a href="${ctx}/admin/rolefunction/list.do" target="navTab" rel="list-rolefunction">角色功能</a></li>
-								<li><a href="${ctx}/admin/userrole/list.do" target="navTab" rel="list-userrole">访问控制</a></li>
-								<li><a href="${ctx}/admin/user/list.do" target="navTab" rel="list-user">用户列表</a></li>
-								<li><a href="${ctx}/admin/rolecity/list.do" target="navTab" rel="list-rolecity">角色城市列表</a></li>
-								<li><a href="${ctx}/admin/userlog/list.do?orderField=id&orderDirection=desc" 
-	                                   target="navTab" rel="list-userlog">操作日志</a></li>
-								<li><a href="${ctx}/admin/userlogdetail/list.do?orderField=id&orderDirection=desc" 
-	                                   target="navTab" rel="list-userlogdetail">日志数据</a></li>
-								<li><a href="${ctx}/admin/gelitool/list.do" target="navTab" rel="list-gelitool">代码定制</a></li>
-							</ul>
-						</div>
-					</c:if>
+                    <div class="accordionContent">
+						<ul class="tree treeFolder">
+							<li><a href="${ctx}/admin/function/list.do" target="navTab" rel="list-function">功能列表</a></li>
+							<li><a href="${ctx}/admin/role/list.do" target="navTab" rel="list-role">角色列表</a></li>
+							<li><a href="${ctx}/admin/rolefunction/list.do" target="navTab" rel="list-rolefunction">角色功能</a></li>
+							<%-- <li><a href="${ctx}/admin/userrole/list.do" target="navTab" rel="list-userrole">访问控制</a></li>
+							<li><a href="${ctx}/admin/user/list.do" target="navTab" rel="list-user">用户列表</a></li>
+							<li><a href="${ctx}/admin/rolecity/list.do" target="navTab" rel="list-rolecity">角色城市列表</a></li>
+							<li><a href="${ctx}/admin/userlog/list.do?orderField=id&orderDirection=desc" 
+                                   target="navTab" rel="list-userlog">操作日志</a></li>
+							<li><a href="${ctx}/admin/userlogdetail/list.do?orderField=id&orderDirection=desc" 
+                                   target="navTab" rel="list-userlogdetail">日志数据</a></li>
+							<li><a href="${ctx}/admin/gelitool/list.do" target="navTab" rel="list-gelitool">代码定制</a></li> --%>
+						</ul>
+					</div>
                     
 					<!-- <div class="accordionHeader">
 						<h2><span>Folder</span>基础数据</h2>

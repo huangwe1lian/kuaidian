@@ -1,9 +1,9 @@
 <%@
 taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %><%@
 taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %><%@
-taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %><%@
-taglib prefix="geli" uri="/WEB-INF/geli_functions.tld" %><%@
-taglib prefix="e" uri="/WEB-INF/encode_functions.tld" %>
+taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%-- <%@taglib prefix="geli" uri="/WEB-INF/geli_functions.tld" %> --%>
+<%-- <%@taglib prefix="e" uri="/WEB-INF/encode_functions.tld" %> --%>
 <%@ page import="java.util.*"%>
 <%@ page import="org.gelivable.auth.*"%>
 <%@ page import="org.gelivable.auth.entity.*"%>

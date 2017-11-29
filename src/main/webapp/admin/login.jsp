@@ -1,6 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" session="false"
 %>
-<%-- <%@include file="/WEB-INF/jspf/import.jspf"%> --%>
+<%@include file="/WEB-INF/jspf/import.jspf"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -267,10 +267,10 @@ fieldset
 		<script src="http://static.geetest.com/static/tools/gt.js"></script>
     </head>
     <body onload='document.getElementById("return").value = location.href.replace(/http:\/\/(.*)\/(.*)/, "http://$1/login.jsp");'>
-        <form id="login" action="/admin/loginCheck.do" method="post"> 
+        <form id="login" action="/user/doLogin.do" method="post"> 
             <div>
             <!-- <img src="themes/default/images/ftlogo.jpg"/> -->
-            <span style="font-size: 22px; padding: 10px; color: #666;">快点</span>
+            <span style="font-size: 22px; padding: 10px; color: #666;">快点点餐系统</span>
             </div>
             <fieldset id="inputs"> 
                 <input id="username" name="username" type="text" placeholder="员工帐号" autofocus required> 
