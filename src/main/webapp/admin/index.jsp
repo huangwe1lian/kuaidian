@@ -25,7 +25,7 @@ pageContext.setAttribute("_USER_", user); */
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="format-detection" content="telephone=no">
   
-  <link rel="stylesheet" href="/layui/css/layui.css"  media="all">
+  <link rel="stylesheet" href="/admin/css/layui.css"  media="all">
 </head>
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
@@ -114,7 +114,7 @@ pageContext.setAttribute("_USER_", user); */
     © layui.com - 底部固定区域
   </div>
 </div>
-<script src="/layui/layui.js" charset="utf-8"></script>
+<script src="/admin/layui.js" charset="utf-8"></script>
 <script>
 //JavaScript代码区域
 layui.use('element', function(){
