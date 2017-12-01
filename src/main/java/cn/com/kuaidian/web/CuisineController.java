@@ -28,7 +28,7 @@ public class CuisineController {
 	@RequestMapping(value="/list.do")
     public String list(HttpServletRequest req, HttpServletResponse resp) throws Exception {
 		
-        Env env = EnvUtils.getEnv();
+        /*Env env = EnvUtils.getEnv();
         Class<Cuisine> type= Cuisine.class;
         String orderField = geliOrm.ensureField(type, env.param("orderField","id"));
         String orderDirection = GeliFunctions.orderDirection(env.param("orderDirection","desc"));
@@ -68,7 +68,7 @@ public class CuisineController {
     		}catch( Exception e){
         		return "/cuisine/list";
     		}
-    	}
+    	}*/
         return "/cuisine/list";
     }
 }
