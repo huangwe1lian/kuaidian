@@ -16,6 +16,18 @@ public class ContractorService {
 		return geliDao.find(Contractor.class, contractorId);
 	}
 	
+	public long getContractorId(String username, String password){
+		try {
+			SqlBuilder _sql = new SqlBuilder();
+			_sql.appendSql("select id from kd_contractor where username = ? and password = ? ");
+			long contractorId = geliDao.getJdbcTemplate().queryForObject(_sql.getSql() ,new Object[]{username,password},Long.class);
+			return contractorId;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return -1l;
+	}
+	
 	public Contractor getContractorByContractorName(String ContractorName){
 		SqlBuilder sql = new SqlBuilder();
 		sql.appendSql("select * from kd_contractor where username = ").appendValue(ContractorName);
