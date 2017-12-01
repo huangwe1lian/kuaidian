@@ -44,6 +44,7 @@
          <mvc:interceptor>
             <mvc:mapping path="/shangjia/**"/>
             <mvc:exclude-mapping path="/shangjia/login.do"/>
+            <mvc:exclude-mapping path="/shangjia/doLogin.do"/>
             <bean class="cn.com.kuaidian.resource.interceptor.ContractorSecurityInterceptor"/>
         </mvc:interceptor>
         
