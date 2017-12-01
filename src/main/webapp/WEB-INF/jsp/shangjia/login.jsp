@@ -1,5 +1,4 @@
-<%@page contentType="text/html" pageEncoding="UTF-8" session="false"
-%>
+<%@page contentType="text/html" pageEncoding="UTF-8" session="false"%>
 <%@include file="/WEB-INF/jspf/import.jspf"%>
 <!DOCTYPE html>
 <html>
