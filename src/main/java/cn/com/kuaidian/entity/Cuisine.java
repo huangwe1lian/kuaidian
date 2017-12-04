@@ -15,7 +15,11 @@ public class Cuisine {
 	@Label("菜式名称")
 	@Column(name="name")
 	private String name;
-
+	
+	@Label("商家ID")
+	@Column(name="contractor_id")
+	private long contractorId;
+	
 	public long getId() {
 		return id;
 	}
@@ -31,5 +35,12 @@ public class Cuisine {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
+	public long getContractorId() {
+		return contractorId;
+	}
+
+	public void setContractorId(long contractorId) {
+		this.contractorId = contractorId;
+	}
 }

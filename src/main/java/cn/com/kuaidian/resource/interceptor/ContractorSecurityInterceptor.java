@@ -14,10 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
-import cn.com.kuaidian.entity.Function;
-import cn.com.kuaidian.entity.user.User;
-import cn.com.kuaidian.resource.auth.AdminAuthFacade;
-import cn.com.kuaidian.resource.auth.AdminSecurity;
+import cn.com.kuaidian.entity.shangjia.Contractor;
+import cn.com.kuaidian.resource.auth.ContractorSecurity;
 import cn.com.kuaidian.service.shangjia.ContractorService;
 
 /**
@@ -43,16 +41,6 @@ public class ContractorSecurityInterceptor implements HandlerInterceptor {
 	
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-    	/*Env env = EnvUtils.getEnv();
-		String username = env.param("username","");
-		Contractor contractor = contractorService.getContractorByContractorName(username);
-		if(contractor != null){
-			request.setAttribute("contractor", contractor);
-			return true;
-		}else{
-			response.sendRedirect("/shangjia/login.do");
-			return false;
-		}*/
     	Env env = EnvUtils.getEnv();
         //AdminAuthFacade authFacade = env.getBean(AdminAuthFacade.class);
         String uri = request.getRequestURI();
@@ -60,9 +48,9 @@ public class ContractorSecurityInterceptor implements HandlerInterceptor {
         String adminPrefix = env.getServletContext().getContextPath() + "/shangjia";
         
         if (uri.startsWith(adminPrefix)) {
- 			User user = AdminSecurity.getCurrentUser(request);
- 			if (user == null) {
- 				response.sendRedirect("/shangjia/login.jsp");
+ 			Contractor contractor = ContractorSecurity.getCurrentContractor(request);
+ 			if (contractor == null) {
+ 				response.sendRedirect("/shangjia/login.do");
  				return HAS_NOT_RIGHT;
  			}
  		}

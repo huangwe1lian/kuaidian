@@ -5,18 +5,15 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.lang.StringUtils;
 import org.gelivable.dao.GeliOrm;
-import org.gelivable.dao.SqlBuilder;
-import org.gelivable.dao.ValueSetter;
 import org.gelivable.web.Env;
 import org.gelivable.web.EnvUtils;
-import org.gelivable.web.GeliFunctions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import cn.com.kuaidian.entity.Cuisine;
+import cn.com.kuaidian.service.CuisineService;
 
 @Controller
 @RequestMapping("/cuisine")
@@ -25,8 +22,18 @@ public class CuisineController {
 	@Autowired
 	private GeliOrm geliOrm;
 	
+	@Autowired
+	private CuisineService cuisineService;
+	
 	@RequestMapping(value="/list.do")
     public String list(HttpServletRequest req, HttpServletResponse resp) throws Exception {
+		Env env = EnvUtils.getEnv();
+		req.getAttribute("");
+		long contractorId = env.paramLong("contractorId",0L);
+		
+		List<Cuisine> cuisines = cuisineService.getCuisineByContractorId(contractorId);
+		
+		req.setAttribute("cuisines", cuisines);
 		
         /*Env env = EnvUtils.getEnv();
         Class<Cuisine> type= Cuisine.class;
