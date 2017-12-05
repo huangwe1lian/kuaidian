@@ -22,10 +22,10 @@
         <form id="login" action="/shangjia/doLogin.do" method="post"> 
             <div>
             <!-- <img src="themes/default/images/ftlogo.jpg"/> -->
-            <span style="font-size: 22px; padding: 10px; color: #666;">快点点餐系统</span>
+            <span style="font-size: 22px; padding: 10px; color: #666;">快点点餐系统(商家端)</span>
             </div>
             <fieldset id="inputs"> 
-                <input id="username" name="username" type="text" placeholder="员工帐号" autofocus required> 
+                <input id="username" name="username" type="text" placeholder="登录帐号" autofocus required> 
                 <input id="password" name="password" type="password" placeholder="密码" required> 
             	<!-- <div id="embed-captcha"></div>
 			    <p id="wait" class="show">正在加载验证码......</p>

@@ -45,9 +45,9 @@ public class ContractorSecurityInterceptor implements HandlerInterceptor {
         //AdminAuthFacade authFacade = env.getBean(AdminAuthFacade.class);
         String uri = request.getRequestURI();
 
-        String adminPrefix = env.getServletContext().getContextPath() + "/shangjia";
+        String shangjiaPrefix = env.getServletContext().getContextPath() + "/shangjia";
         
-        if (uri.startsWith(adminPrefix)) {
+        if (uri.startsWith(shangjiaPrefix)) {
  			Contractor contractor = ContractorSecurity.getCurrentContractor(request);
  			if (contractor == null) {
  				response.sendRedirect("/shangjia/login.do");

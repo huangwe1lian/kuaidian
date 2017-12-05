@@ -25,6 +25,18 @@ public class UserService {
 		sql.appendSql("select * from kd_user where username = ").appendValue(username);
 		return geliDao.findFirst(User.class,sql.getSql(),sql.getValues());
 	}
+	
+	public long getUserId(String username, String password){
+		try {
+			SqlBuilder _sql = new SqlBuilder();
+			_sql.appendSql("select id from kd_user where username = ? and password = ? ");
+			long contractorId = geliDao.getJdbcTemplate().queryForObject(_sql.getSql() ,new Object[]{username,password},Long.class);
+			return contractorId;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return -1l;
+	}
 
 
 	public List<Map<String, Object>> listAdmin() {
