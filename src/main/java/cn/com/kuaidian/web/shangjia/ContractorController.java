@@ -12,12 +12,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import cn.com.kuaidian.entity.shangjia.Contractor;
-import cn.com.kuaidian.resource.auth.AdminSecurity;
-import cn.com.kuaidian.resource.auth.ContractorAuthFacade;
 import cn.com.kuaidian.resource.auth.ContractorSecurity;
 import cn.com.kuaidian.service.shangjia.ContractorService;
-import cn.com.kuaidian.util.Cryptor;
 
 @Controller
 @RequestMapping("/shangjia")

@@ -15,7 +15,7 @@ import org.gelivable.web.EnvUtils;
 import cn.com.kuaidian.entity.ContractorSession;
 import cn.com.kuaidian.entity.Session;
 import cn.com.kuaidian.entity.shangjia.Contractor;
-import cn.com.kuaidian.service.SessionService;
+import cn.com.kuaidian.service.shangjia.ContractorSessionService;
 import cn.com.kuaidian.util.CookieUtils;
 import cn.com.kuaidian.util.IPUtils;
 import cn.com.kuaidian.util.StringUtils;
@@ -62,12 +62,12 @@ public class ContractorSecurity {
      * @param request
      * @return
      */
-    public static Session recognize(HttpServletRequest request) {
+    public static ContractorSession recognize(HttpServletRequest request) {
         String sessionId = CookieUtils.getCookie(request, tookenCookieName);
         if (sessionId == null) {
             return null;
         }
-        Session session = EnvUtils.getEnv().getBean(SessionService.class).findBySessionId(sessionId);
+        ContractorSession session = EnvUtils.getEnv().getBean(ContractorSessionService.class).findBySessionId(sessionId);
         if (session == null) {
             return null;
         }
@@ -92,7 +92,7 @@ public class ContractorSecurity {
 
         if (sessionId != null) {
             try {
-            	EnvUtils.getEnv().getBean(SessionService.class).removeSession(sessionId);
+            	EnvUtils.getEnv().getBean(ContractorSessionService.class).removeSession(sessionId);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -117,14 +117,14 @@ public class ContractorSecurity {
      * @return
      */
     public static Contractor getCurrentContractor(HttpServletRequest request) {
-        Session session = recognize(request);
+    	ContractorSession session = recognize(request);
         if (session == null) {
             return null;
         }
-        long userId = session.getUserId();
+        long contractorId = session.getContractorId();
         Contractor contractor = null;
         try {
-        	contractor = GeliUtils.getDao().find(Contractor.class, userId);
+        	contractor = GeliUtils.getDao().find(Contractor.class, contractorId);
 		} catch (Exception e) {
 			contractor = null;
 		}
