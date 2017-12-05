@@ -20,6 +20,10 @@ public class Cuisine {
 	@Column(name="contractor_id")
 	private long contractorId;
 	
+	@Label("价格")
+	@Column(name="price")
+	private double price;
+	
 	public long getId() {
 		return id;
 	}
@@ -42,5 +46,13 @@ public class Cuisine {
 
 	public void setContractorId(long contractorId) {
 		this.contractorId = contractorId;
+	}
+
+	public double getPrice() {
+		return price;
+	}
+
+	public void setPrice(double price) {
+		this.price = price;
 	}
 }

@@ -25,4 +25,11 @@ public class CuisineService {
 		sql.appendSql("and c1.id = c.contractor_id and c1.id = ").appendValue(contractorId);
 		return geliDao.list(Cuisine.class, sql.getSql(), sql.getValues());
 	}
+	
+	public List<Cuisine> getCuisineAllByPage(int pageNum,int pageSize){
+		SqlBuilder sql = new SqlBuilder();
+		sql.appendSql("select * from kd_cuisine c, kd_contractor c1 where 1=1 ");
+		sql.appendSql("and c1.id = c.contractor_id");
+		return geliDao.page(Cuisine.class, sql.getSql(),pageNum , pageSize, sql.getValues());
+	}
 }
