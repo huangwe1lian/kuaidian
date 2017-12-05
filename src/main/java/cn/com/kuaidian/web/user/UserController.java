@@ -2,6 +2,7 @@ package cn.com.kuaidian.web.user;
 
 import java.io.IOException;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.gelivable.dao.GeliDao;
@@ -13,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import cn.com.kuaidian.entity.user.User;
+import cn.com.kuaidian.resource.auth.AdminSecurity;
+import cn.com.kuaidian.resource.auth.ContractorSecurity;
 import cn.com.kuaidian.service.user.UserService;
 
 @Controller
@@ -31,21 +34,28 @@ public class UserController {
 	}
 	
 	
+	@RequestMapping(value="/index.do",method=RequestMethod.GET)
+	public String Index() throws IOException{
+		return "/user/index";
+	}
+	
 	@RequestMapping(value="/doLogin.do",method=RequestMethod.POST)
-	public void doLongin(HttpServletResponse response) throws IOException {
+	public void doLongin(HttpServletRequest request,HttpServletResponse response) throws IOException {
 		Env env = EnvUtils.getEnv();
-		User user = (User) env.getRequest().getAttribute("user");
-		String password = env.param("password");
-		try {
-			if(user != null && password.equals(user.getPassword())){
-				response.sendRedirect("/admin/index.jsp");
-			}else{
-				response.sendRedirect("/admin/login.jsp");
+		String username = env.param("username","");
+		String password = env.param("password","");
+		try{
+			long userId = userService.getUserId(username,password);
+			//long userid = contractorService.getContractorId(username, Cryptor.encode(password, AdminSecurity.passwordKey, Cryptor.DES));
+			if(userId > 0){
+				AdminSecurity.saveSession(userId,request,response);
+		      	response.sendRedirect("/user/index.do");
+			} else {
+				response.sendRedirect("/user/login.do");
 			}
-		} catch (IOException e) {
-			response.sendRedirect("/admin/msg.jsp?code=login_fail");
+		}catch(Exception e){
 			e.printStackTrace();
+			//response.sendRedirect("msg.jsp?code=login_fail");
 		}
-		
 	}
 }
