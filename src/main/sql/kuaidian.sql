@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50614
 File Encoding         : 65001
 
-Date: 2017-12-04 22:58:56
+Date: 2017-12-05 22:29:38
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -60,6 +60,8 @@ INSERT INTO `gl_contractor_session` VALUES ('28', '3fcb6c23-2987-4be3-84ca-77cd6
 INSERT INTO `gl_contractor_session` VALUES ('31', '501b8c9e-8e69-46d7-982a-fd737d61aa2d', '1', '2017-12-04 22:02:51', '169.254.150.38');
 INSERT INTO `gl_contractor_session` VALUES ('32', '03f0413e-0869-4e4a-a5fd-fe70c5c8db67', '1', '2017-12-04 22:54:56', '169.254.150.38');
 INSERT INTO `gl_contractor_session` VALUES ('33', '174edbe0-14c0-4ff5-a0ae-b798d4c99a25', '1', '2017-12-04 22:56:24', '169.254.150.38');
+INSERT INTO `gl_contractor_session` VALUES ('42', '06cf4b28-0560-43d0-bef1-9f844a8fd619', '1', '2017-12-05 21:09:14', '169.254.150.38');
+INSERT INTO `gl_contractor_session` VALUES ('52', '36aba1da-afbc-4d95-acb8-01ea04fe5fa3', '1', '2017-12-05 21:22:29', '169.254.150.38');
 
 -- ----------------------------
 -- Table structure for gl_function
@@ -88,8 +90,8 @@ CREATE TABLE `gl_keygen` (
 -- ----------------------------
 -- Records of gl_keygen
 -- ----------------------------
-INSERT INTO `gl_keygen` VALUES ('gl_contractor_session', '31');
-INSERT INTO `gl_keygen` VALUES ('gl_session', '30');
+INSERT INTO `gl_keygen` VALUES ('gl_contractor_session', '51');
+INSERT INTO `gl_keygen` VALUES ('gl_session', '60');
 
 -- ----------------------------
 -- Table structure for gl_log
@@ -171,17 +173,9 @@ CREATE TABLE `gl_session` (
 -- ----------------------------
 -- Records of gl_session
 -- ----------------------------
-INSERT INTO `gl_session` VALUES ('2', '150b24b3-664b-46d7-af54-2d0f3196a019', '1', '2017-11-30 18:13:59', '192.168.33.95');
-INSERT INTO `gl_session` VALUES ('11', '3f00efe3-86f4-4136-b9d6-088b8e2430ce', '1', '2017-11-30 18:19:33', '192.168.33.95');
-INSERT INTO `gl_session` VALUES ('21', '4cb60f1d-7a64-4056-ab9b-a2170b61fb02', '1', '2017-11-30 18:23:22', '192.168.33.95');
-INSERT INTO `gl_session` VALUES ('22', '3412c3a5-c14f-4cc0-8c1b-bd429aaec2ef', '1', '2017-11-30 18:23:37', '192.168.33.95');
-INSERT INTO `gl_session` VALUES ('23', '42c86b64-cea4-4bfc-a99d-9519d68494df', '1', '2017-11-30 18:24:23', '192.168.22.78');
-INSERT INTO `gl_session` VALUES ('24', '4aa62de4-f968-4136-aadc-8f5c042f7110', '1', '2017-11-30 18:25:25', '192.168.33.95');
-INSERT INTO `gl_session` VALUES ('25', '4d9309f5-01a2-4c76-9d6c-771a1f23ed66', '1', '2017-12-01 09:10:16', '192.168.33.95');
-INSERT INTO `gl_session` VALUES ('26', '37f5a9ce-c4bb-44a1-9a48-237008da3bf0', '1', '2017-12-01 09:26:02', '192.168.33.95');
-INSERT INTO `gl_session` VALUES ('27', 'e389a62e-0d9b-4c1e-a1d0-20398b75f068', '1', '2017-12-01 16:10:43', '192.168.33.95');
-INSERT INTO `gl_session` VALUES ('28', '3fcb6c23-2987-4be3-84ca-77cd66b53e21', '1', '2017-12-01 17:03:11', '192.168.33.95');
-INSERT INTO `gl_session` VALUES ('31', '501b8c9e-8e69-46d7-982a-fd737d61aa2d', '1', '2017-12-04 22:02:51', '169.254.150.38');
+INSERT INTO `gl_session` VALUES ('41', 'af3e0e51-8934-4c46-808b-6865e87cd888', '1', '2017-12-05 21:23:34', '169.254.150.38');
+INSERT INTO `gl_session` VALUES ('51', 'e7cfb375-20b0-428d-9c19-91c704c1ec1e', '1', '2017-12-05 21:25:03', '169.254.150.38');
+INSERT INTO `gl_session` VALUES ('61', '02f832cd-0390-4ef1-b373-85beb536472d', '1', '2017-12-05 21:54:52', '169.254.150.38');
 
 -- ----------------------------
 -- Table structure for gl_user
@@ -224,14 +218,16 @@ CREATE TABLE `kd_cuisine` (
   `id` bigint(20) NOT NULL,
   `name` varchar(50) DEFAULT NULL,
   `contractor_id` bigint(20) DEFAULT NULL,
+  `price` double(10,1) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of kd_cuisine
 -- ----------------------------
-INSERT INTO `kd_cuisine` VALUES ('1', '菜式1', '1');
-INSERT INTO `kd_cuisine` VALUES ('2', '菜式2', '1');
+INSERT INTO `kd_cuisine` VALUES ('1', '菜式1', '1', '13.0');
+INSERT INTO `kd_cuisine` VALUES ('2', '菜式2', '1', '15.0');
+INSERT INTO `kd_cuisine` VALUES ('3', '菜式3', '1', '13.0');
 
 -- ----------------------------
 -- Table structure for kd_order
