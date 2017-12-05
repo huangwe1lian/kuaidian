@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import cn.com.kuaidian.entity.user.User;
-import cn.com.kuaidian.resource.auth.AdminSecurity;
+import cn.com.kuaidian.resource.auth.UserSecurity;
 import cn.com.kuaidian.resource.auth.ContractorSecurity;
 import cn.com.kuaidian.service.user.UserService;
 
@@ -48,7 +48,7 @@ public class UserController {
 			long userId = userService.getUserId(username,password);
 			//long userid = contractorService.getContractorId(username, Cryptor.encode(password, AdminSecurity.passwordKey, Cryptor.DES));
 			if(userId > 0){
-				AdminSecurity.saveSession(userId,request,response);
+				UserSecurity.saveSession(userId,request,response);
 		      	response.sendRedirect("/user/index.do");
 			} else {
 				response.sendRedirect("/user/login.do");

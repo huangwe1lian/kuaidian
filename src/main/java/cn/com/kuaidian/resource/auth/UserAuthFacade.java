@@ -19,7 +19,7 @@ import cn.com.kuaidian.service.user.UserService;
 
 
 @Component
-public class ContractorAuthFacade {
+public class UserAuthFacade {
     String application = "kuaidian";
     String authServer;
     String authUri;

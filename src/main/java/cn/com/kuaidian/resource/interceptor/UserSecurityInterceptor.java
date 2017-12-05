@@ -14,7 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import cn.com.kuaidian.entity.shangjia.Contractor;
 import cn.com.kuaidian.entity.user.User;
-import cn.com.kuaidian.resource.auth.AdminSecurity;
+import cn.com.kuaidian.resource.auth.UserSecurity;
 import cn.com.kuaidian.service.user.UserService;
 
 /**
@@ -44,7 +44,7 @@ public class UserSecurityInterceptor implements HandlerInterceptor {
         String userPrefix = env.getServletContext().getContextPath() + "/user";
         
         if (uri.startsWith(userPrefix)) {
- 			User user = AdminSecurity.getCurrentUser(request);
+ 			User user = UserSecurity.getCurrentUser(request);
  			if (user == null) {
  				response.sendRedirect("/user/login.do");
  				return HAS_NOT_RIGHT;
