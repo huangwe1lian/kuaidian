@@ -40,13 +40,6 @@ public class UserController {
 	
 	@RequestMapping(value="/index.do",method=RequestMethod.GET)
 	public String Index(HttpServletRequest req, HttpServletResponse resp) throws IOException{
-		Env env = EnvUtils.getEnv();
-		int pageNum = env.paramInt("pageNum", 1);
-        int pageSize = env.paramInt("pageSize", 20);
-        
-		List<Cuisine> cuisines = cuisineService.getCuisineAllByPage(pageNum,pageSize);
-		
-		req.setAttribute("cuisines", cuisines);
 		return "/user/index";
 	}
 	
@@ -71,15 +64,19 @@ public class UserController {
 	}
 	
 	
-	/*@RequestMapping(value="/cuisine/list.do")
+	@RequestMapping(value="/cuisine/list.do")
     public String list(HttpServletRequest req, HttpServletResponse resp) throws Exception {
 		Env env = EnvUtils.getEnv();
-		req.getAttribute("");
-		
-		List<Cuisine> cuisines = cuisineService.getCuisineAll();
-		
+		int pageNum = env.paramInt("pageNum", 1);
+        int pageSize = env.paramInt("pageSize", 5);
+        
+		List<Cuisine> cuisines = cuisineService.getCuisineAllByPage(pageNum,pageSize);
+		int total = cuisineService.getCuisineCount();
+		int totalPage =total%pageSize == 0? total/pageSize : (total/pageSize)+1;
 		req.setAttribute("cuisines", cuisines);
+		req.setAttribute("total", total);
+		req.setAttribute("totalPage", totalPage);
 		
-        return "/cuisine/list";
-    }*/
+        return "/user/cuisine/list";
+    }
 }
