@@ -15,7 +15,15 @@ public class Order {
 	@Label("订单号")
 	@Column(name = "number")
 	private String number;
+	
+	@Label("商家ID")
+	@Column(name = "contractor_id")
+	private long contractorId;
 
+	@Label("用户ID")
+	@Column(name = "user_id")
+	private long userId;
+	
 	public long getId() {
 		return id;
 	}
@@ -31,5 +39,20 @@ public class Order {
 	public void setNumber(String number) {
 		this.number = number;
 	}
-	
+
+	public long getContractorId() {
+		return contractorId;
+	}
+
+	public void setContractorId(long contractorId) {
+		this.contractorId = contractorId;
+	}
+
+	public long getUserId() {
+		return userId;
+	}
+
+	public void setUserId(long userId) {
+		this.userId = userId;
+	}
 }

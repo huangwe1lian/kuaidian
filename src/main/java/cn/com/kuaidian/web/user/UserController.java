@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import cn.com.kuaidian.entity.Cuisine;
+import cn.com.kuaidian.entity.Order;
 import cn.com.kuaidian.resource.auth.UserSecurity;
 import cn.com.kuaidian.service.CuisineService;
 import cn.com.kuaidian.service.user.UserService;
@@ -65,7 +66,7 @@ public class UserController {
 	
 	
 	@RequestMapping(value="/cuisine/list.do")
-    public String list(HttpServletRequest req, HttpServletResponse resp) throws Exception {
+    public String cuisineList(HttpServletRequest req, HttpServletResponse resp) throws Exception {
 		Env env = EnvUtils.getEnv();
 		int pageNum = env.paramInt("pageNum", 1);
         int pageSize = env.paramInt("pageSize", 5);
@@ -76,6 +77,17 @@ public class UserController {
 		req.setAttribute("cuisines", cuisines);
 		req.setAttribute("total", total);
 		req.setAttribute("totalPage", totalPage);
+		
+        return "/user/cuisine/list";
+    }
+	
+	@RequestMapping(value="/order/create.do")
+    public String orderCreate(HttpServletRequest req, HttpServletResponse resp) throws Exception {
+		Env env = EnvUtils.getEnv();
+        Order order = new Order();
+        order.setNumber("1");
+		
+		geliDao.create(order);
 		
         return "/user/cuisine/list";
     }
