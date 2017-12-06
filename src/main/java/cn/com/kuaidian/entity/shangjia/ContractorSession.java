@@ -1,4 +1,4 @@
-package cn.com.kuaidian.entity;
+package cn.com.kuaidian.entity.shangjia;
 
 import java.util.Date;
 

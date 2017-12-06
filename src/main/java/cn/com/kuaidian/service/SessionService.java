@@ -6,7 +6,7 @@ import org.gelivable.dao.GeliDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import cn.com.kuaidian.entity.Session;
+import cn.com.kuaidian.entity.user.Session;
 
 /** 
  * sec_session服务类

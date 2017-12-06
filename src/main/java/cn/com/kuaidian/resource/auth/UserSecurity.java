@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 import org.gelivable.dao.GeliUtils;
 import org.gelivable.web.EnvUtils;
 
-import cn.com.kuaidian.entity.Session;
+import cn.com.kuaidian.entity.user.Session;
 import cn.com.kuaidian.entity.user.User;
 import cn.com.kuaidian.service.SessionService;
 import cn.com.kuaidian.util.CookieUtils;

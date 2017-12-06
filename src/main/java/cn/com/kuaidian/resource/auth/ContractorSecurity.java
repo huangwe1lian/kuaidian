@@ -12,9 +12,9 @@ import javax.servlet.http.HttpSession;
 import org.gelivable.dao.GeliUtils;
 import org.gelivable.web.EnvUtils;
 
-import cn.com.kuaidian.entity.ContractorSession;
-import cn.com.kuaidian.entity.Session;
 import cn.com.kuaidian.entity.shangjia.Contractor;
+import cn.com.kuaidian.entity.shangjia.ContractorSession;
+import cn.com.kuaidian.entity.user.Session;
 import cn.com.kuaidian.service.shangjia.ContractorSessionService;
 import cn.com.kuaidian.util.CookieUtils;
 import cn.com.kuaidian.util.IPUtils;
