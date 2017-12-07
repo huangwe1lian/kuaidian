@@ -38,6 +38,7 @@ public class ContractorController {
 		Env env = EnvUtils.getEnv();
 		String username = env.param("username","");
 		String password = env.param("password","");
+		System.out.println(username);
 		try{
 			long contractorId = contractorService.getContractorId(username,password);
 			//long userid = contractorService.getContractorId(username, Cryptor.encode(password, AdminSecurity.passwordKey, Cryptor.DES));
@@ -52,4 +53,7 @@ public class ContractorController {
 			//response.sendRedirect("msg.jsp?code=login_fail");
 		}
 	}
+	
+	
+	
 }

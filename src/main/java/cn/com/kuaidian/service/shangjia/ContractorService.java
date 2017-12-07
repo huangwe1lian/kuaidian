@@ -23,7 +23,6 @@ public class ContractorService {
 			long contractorId = geliDao.getJdbcTemplate().queryForObject(_sql.getSql() ,new Object[]{username,password},Long.class);
 			return contractorId;
 		} catch (Exception e) {
-			e.printStackTrace();
 		}
 		return -1l;
 	}
