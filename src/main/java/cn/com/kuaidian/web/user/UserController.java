@@ -86,7 +86,7 @@ public class UserController {
 		Env env = EnvUtils.getEnv();
         Order order = new Order();
         order.setNumber("1");
-		
+		  
 		geliDao.create(order);
 		
         return "/user/cuisine/list";
