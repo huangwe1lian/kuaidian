@@ -2,6 +2,7 @@ package cn.com.kuaidian.web.user;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -9,16 +10,23 @@ import javax.servlet.http.HttpServletResponse;
 import org.gelivable.dao.GeliDao;
 import org.gelivable.web.Env;
 import org.gelivable.web.EnvUtils;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import cn.com.kuaidian.entity.Cuisine;
 import cn.com.kuaidian.entity.Order;
+import cn.com.kuaidian.entity.shangjia.Contractor;
+import cn.com.kuaidian.entity.user.User;
 import cn.com.kuaidian.resource.auth.UserSecurity;
 import cn.com.kuaidian.service.CuisineService;
+import cn.com.kuaidian.service.shangjia.ContractorService;
 import cn.com.kuaidian.service.user.UserService;
+import cn.com.kuaidian.util.DateUtils;
+import cn.com.kuaidian.util.dwz.DwzUtils;
 
 @Controller
 @RequestMapping("/user")
@@ -29,6 +37,9 @@ public class UserController {
 	
 	@Autowired
 	private CuisineService cuisineService;
+	
+	@Autowired
+	private ContractorService contractorService;
 	
 	@Autowired
 	private GeliDao geliDao;
@@ -82,13 +93,30 @@ public class UserController {
     }
 	
 	@RequestMapping(value="/order/create.do")
+	@ResponseBody
     public String orderCreate(HttpServletRequest req, HttpServletResponse resp) throws Exception {
 		Env env = EnvUtils.getEnv();
+		long contractorId = env.paramLong("contractorId",0);
+		long cuisineId = env.paramLong("cuisineId", 0);
         Order order = new Order();
-        order.setNumber("1");
-		  
-		geliDao.create(order);
+        User user = UserSecurity.getCurrentUser(req);
+        Random random = new Random();
+        int randomNum = random.nextInt(100);
+        String num = System.currentTimeMillis() + "" + user.getId() + "" + randomNum;
+        order.setNumber(num);
+		order.setUserId(user.getId());
 		
-        return "/user/cuisine/list";
+		if(cuisineId > 0){
+			Cuisine cuisine = cuisineService.getCuisine(cuisineId);
+			order.setPrice(cuisine.getPrice());
+		}
+		
+		if(contractorId > 0){
+			Contractor contractor = contractorService.getContractor(contractorId);
+			order.setContractorId(contractor.getId());
+		}
+		
+		geliDao.create(order);
+        return DwzUtils.successAndForward("success", "/user/order/confirm.do");
     }
 }
