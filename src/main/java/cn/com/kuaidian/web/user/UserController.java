@@ -119,4 +119,32 @@ public class UserController {
 		geliDao.create(order);
         return DwzUtils.successAndForward("success", "/user/order/confirm.do");
     }
+	
+	@RequestMapping(value="/order/confirm.do")
+    public String orderConfirm(HttpServletRequest req, HttpServletResponse resp) throws Exception {
+		Env env = EnvUtils.getEnv();
+		/*long contractorId = env.paramLong("contractorId",0);
+		long cuisineId = env.paramLong("cuisineId", 0);
+        Order order = new Order();
+        User user = UserSecurity.getCurrentUser(req);
+        Random random = new Random();
+        int randomNum = random.nextInt(100);
+        String num = System.currentTimeMillis() + "" + user.getId() + "" + randomNum;
+        order.setNumber(num);
+		order.setUserId(user.getId());
+		
+		if(cuisineId > 0){
+			Cuisine cuisine = cuisineService.getCuisine(cuisineId);
+			order.setPrice(cuisine.getPrice());
+		}
+		
+		if(contractorId > 0){
+			Contractor contractor = contractorService.getContractor(contractorId);
+			order.setContractorId(contractor.getId());
+		}*/
+		
+		//geliDao.create(order);
+        return "/user/order/confirm";
+    }
+	
 }
