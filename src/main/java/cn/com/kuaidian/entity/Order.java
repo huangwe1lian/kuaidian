@@ -19,6 +19,7 @@ public class Order {
 	@Label("商家ID")
 	@Column(name = "contractor_id")
 	private long contractorId;
+	
 
 	@Label("用户ID")
 	@Column(name = "user_id")
