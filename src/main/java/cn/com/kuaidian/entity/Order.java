@@ -25,6 +25,10 @@ public class Order {
 	@Column(name = "user_id")
 	private long userId;
 	
+	@Label("总金额")
+	@Column(name = "price")
+	private double price;
+	
 	public long getId() {
 		return id;
 	}
@@ -55,5 +59,13 @@ public class Order {
 
 	public void setUserId(long userId) {
 		this.userId = userId;
+	}
+
+	public double getPrice() {
+		return price;
+	}
+
+	public void setPrice(double price) {
+		this.price = price;
 	}
 }

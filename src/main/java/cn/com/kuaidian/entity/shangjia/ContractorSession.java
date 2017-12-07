@@ -17,7 +17,7 @@ public class ContractorSession {
 	
 	@Label("用户ID")
 	@Column(name="contractor_id")
-	private long ContractorId;
+	private long contractorId;
 	
 	@Label("sessionId")
 	@Column(name="session_id")
@@ -39,11 +39,11 @@ public class ContractorSession {
 	}
 
 	public long getContractorId() {
-		return ContractorId;
+		return contractorId;
 	}
 
 	public void setContractorId(long contractorId) {
-		ContractorId = contractorId;
+		this.contractorId = contractorId;
 	}
 
 	public String getSessionId() {
