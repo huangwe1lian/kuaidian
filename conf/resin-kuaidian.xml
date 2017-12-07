@@ -9,9 +9,9 @@
           		
 	<database jndi-name="jdbc/kuaidian">
 		<driver type="com.mysql.jdbc.jdbc2.optional.MysqlConnectionPoolDataSource">
-	    		<url>jdbc:mysql://localhost:3306/mysql?useUnicode=true&amp;characterEncoding=UTF8&amp;zeroDateTimeBehavior=convertToNull</url>
-	    		<user>root</user>
-	    		<password>root</password>
+	    		<url>jdbc:mysql://bdm31787719.my3w.com:3306/bdm31787719_db?useUnicode=true&amp;characterEncoding=UTF8&amp;zeroDateTimeBehavior=convertToNull</url>
+	    		<user>bdm31787719</user>
+	    		<password>aa123456</password>
 	  		</driver>
 			<prepared-statement-cache-size>8</prepared-statement-cache-size>
 			<max-connections>60</max-connections>

@@ -3,14 +3,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <jsp:include page="/admin/header.jsp"></jsp:include>
+<title>快点</title>
 </head>
 <body>
-<c:forEach var="item" items="${cuisines}">
-	<p>${item.name}</p><p>${item.price}元</p><br/>
-</c:forEach>
-
-<jsp:include page="/admin/footer1.jsp"></jsp:include>
+欢迎页~！<br/>
+<a href="/user/cuisine/list.do">去选菜~</a>
 </body>
 </html>
 

@@ -32,4 +32,11 @@ public class CuisineService {
 		sql.appendSql("and c1.id = c.contractor_id");
 		return geliDao.page(Cuisine.class, sql.getSql(),pageNum , pageSize, sql.getValues());
 	}
+	
+	public int getCuisineCount(){
+		SqlBuilder sql = new SqlBuilder();
+		sql.appendSql("select count(*) from kd_cuisine c, kd_contractor c1 where 1=1 ");
+		sql.appendSql("and c1.id = c.contractor_id");
+		return geliDao.count(sql.getSql(), sql.getValues());
+	}
 }
