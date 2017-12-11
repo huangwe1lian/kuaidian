@@ -7,7 +7,7 @@
 <title>登录</title>
 </head>
 <body>
-登录失败，用户名或密码错误！
+登录失败，用户名或密码错误！  
 </form>
 </body>
 </html>
