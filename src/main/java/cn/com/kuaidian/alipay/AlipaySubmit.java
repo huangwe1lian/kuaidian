@@ -46,7 +46,6 @@ public class AlipaySubmit {
 		        "    \"product_code\":\"QUICK_WAP_PAY\"" + 
 		        "  }";
 	    
-	    bz = new String(bz.getBytes("ISO-8859-1"), "UTF-8");
 	    alipayRequest.setBizContent(bz);//填充业务参数 
 	    String form = "";
 	  		try {
