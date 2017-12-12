@@ -11,45 +11,20 @@ import cn.com.kuaidian.util.IPUtils;
 
 public class AlipayUtil { 
 	
-	public static String buildRequest(AlipayParams reqParams, PayType type, HttpServletRequest request) throws PayException, UnsupportedEncodingException{
+	public static String buildRequest(AlipayParams reqParams, PayType payType, HttpServletRequest request) throws PayException, UnsupportedEncodingException{
 		if (null == reqParams) {
 			throw new PayException(1000, "参数错误：传入params为空");
 		}
-		try {
-			String str;
-			switch (type.ordinal()){
-				case 0:
-		    		return buildRequest_pc(reqParams, request);
-		    	case 1:
-		    		return buildRequest_wap(reqParams, request);
-		    	case 2:
-		    		return buildRequest_refund(reqParams, request);
-			}
-		    return "";
-			
-		}finally {
-			//
-		}
-		   
-	}
-	
-	//pc发起支付
-	private static String buildRequest_pc(AlipayParams reqParams, HttpServletRequest request){
-		return "";
-	}
-	
-	//wap发起支付
-	private static String buildRequest_wap(AlipayParams reqParams, HttpServletRequest request) throws PayException, UnsupportedEncodingException{
+		
 		String url = request.getRequestURL().toString();
 	    String method = request.getMethod();
 	    String ip = IPUtils.getClientRealIp(request);
 	    reqParams.setNotify_url("");
 	    reqParams.setReturn_url("");
 	
-	    //TODO 参数过滤
+	    //TODO 参数过滤、日志记录
 	    
 	    Map paramMap = new HashMap();
-	    paramMap.put("payment_type", "wap");
 	    paramMap.put("out_trade_no", reqParams.getOut_trade_no());
 	    paramMap.put("total_amount", reqParams.getTotal_amount());
 	    paramMap.put("subject", reqParams.getSubject());
@@ -60,13 +35,9 @@ public class AlipayUtil {
 	    paramMap.put("overTime", reqParams.getOverTime());
 	 
 
-	    String returnHtml = AlipaySubmit.buildRequest(paramMap);
+	    String returnHtml = AlipaySubmit.buildRequest(paramMap, payType);
 	    return returnHtml;
-	}
-	
-	//退款
-	private static String buildRequest_refund(AlipayParams reqParams, HttpServletRequest request){
-		return "";
+		   
 	}
 		   
 	
