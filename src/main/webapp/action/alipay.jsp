@@ -4,11 +4,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
+
+	/*
+	*发起支付宝支付
+	*/
+	
+
 	/*
 	*发起支付宝支付
 	*/
 	
 	//TODO 参数验证、乱码解决
+	request.setCharacterEncoding("UTF-8");  //暂时用get请求
 	String out_trade_no = request.getParameter("out_trade_no");
 	String total_amount = request.getParameter("total_amount");
 	String subject = request.getParameter("subject");
@@ -17,7 +24,6 @@
 	AlipayParams params = new AlipayParams(out_trade_no, total_amount, 
 			 subject, product_code, "");
 	
-	System.out.println("params------"+params);
 	
 	/****** 业务处理开始   *****/
 	

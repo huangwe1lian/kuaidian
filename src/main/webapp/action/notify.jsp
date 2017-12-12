@@ -1,3 +1,5 @@
+<%@page import="com.alipay.api.internal.util.AlipaySignature"%>
+<%@page import="cn.com.kuaidian.alipay.PayConfig"%>
 <%@page import="java.util.Map"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="java.util.HashMap"%>
@@ -23,11 +25,17 @@
 					: valueStr + values[i] + ",";
 		}
 		
-		valueStr = new String(valueStr.getBytes("ISO-8859-1"), "UTF-8");
 		params.put(name, valueStr);
 	}
 	System.out.println("---kuaidian---"+params);
 	
 	//TODO 签名验证、业务处理
+	boolean signVerified = false;
+	signVerified= AlipaySignature.rsaCheckV1(params, PayConfig.ALIPAY_PUBLIC_KEY, "UTF-8", PayConfig.SIGN_TYPE);
+	if (signVerified) { //验签通过
+		
+	}else { //验签失败
+		
+	}
 	
 %>
