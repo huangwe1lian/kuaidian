@@ -23,7 +23,7 @@
 					: valueStr + values[i] + ",";
 		}
 		
-		valueStr = new String(valueStr.getBytes("ISO-8859-1"), "gbk");
+		valueStr = new String(valueStr.getBytes("ISO-8859-1"), "UTF-8");
 		params.put(name, valueStr);
 	}
 	System.out.println("---kuaidian---"+params);

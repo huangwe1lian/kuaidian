@@ -14,8 +14,8 @@
 	String subject = request.getParameter("subject");
 	String product_code = request.getParameter("product_code");
 	
-	AlipayParams params = new AlipayParams(out_trade_no, total_amount,
-			 subject, product_code, "", "");
+	AlipayParams params = new AlipayParams(out_trade_no, total_amount, 
+			 subject, product_code, "");
 	
 	System.out.println("params------"+params);
 	
@@ -25,7 +25,7 @@
 	
 	/****** 业务处理结束   *****/
 	
-	//发起支付
+	//发起wap支付
 	String form = AlipayUtil.buildRequest(params, PayType.wap, request);
 	
 	
