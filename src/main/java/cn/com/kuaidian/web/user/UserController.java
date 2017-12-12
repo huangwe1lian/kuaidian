@@ -65,9 +65,11 @@ public class UserController {
 			//long userid = contractorService.getContractorId(username, Cryptor.encode(password, AdminSecurity.passwordKey, Cryptor.DES));
 			if(userId > 0){
 				UserSecurity.saveSession(userId,request,response);
-		      	response.sendRedirect("/user/index.do");
+				response.getWriter().write("suceess");
+		      	//response.sendRedirect("/user/index.do");
 			} else {
-				response.sendRedirect("/user/login.do");
+				//response.sendRedirect("/user/login.do?code=login_fail");
+				response.getWriter().write("login_fail");
 			}
 		}catch(Exception e){
 			e.printStackTrace();
