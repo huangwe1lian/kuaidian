@@ -52,7 +52,7 @@
 		
 		
 		<dl id="menu-product">
-			<dt><i class="Hui-iconfont">&#xe620;</i> 产品管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+			<dt><i class="Hui-iconfont">&#xe620;</i> 菜式管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
 					<li><a href="/shangjia/cuisinebusiness/list.do" title="品牌管理">品牌管理</a></li>
