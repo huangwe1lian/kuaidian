@@ -1,0 +1,33 @@
+.area{background:#fff;}
+.g-doc {background:#efefef; text-align: center; position: relative; text-align:center; width: 7.5rem; margin: 0px auto;margin-bottom:0.99rem; }
+.area1{height: 5.22rem;}
+.inner{height: 100%; position: relative;}
+.bannerSwiper{height: 3rem;}
+.swiper-pagination-bullet-active{background:#fff;}
+.a1SortBox{height: 2.22rem; }
+.a1SortBox img{width: 1rem;height: 1rem;}
+.a1SortBox a{font:0.22rem/normal "microsoft yahei"; color:#000000; margin-top: 0.4rem; display:inline-block; width: 2.16rem;}
+.a1SortBox p{margin-top: 0.1rem;}
+.area2,.area3,.area4{margin-top:  0.2rem; height: 3.84rem;}
+.inner{margin:0 0.4rem;}
+.areaTitle{padding-top: 0.4rem; color:#333; text-align:left; font:bold 0.3rem/normal "microsoft yahei";}
+.areaTitle span{margin-left: 0.08rem; color:#999; font-weight:normal; font-size:0.12rem;}
+.titleBox{height: 0.89rem; border-bottom:1px solid #efefef;}
+.fooditem-pic{position: relative; width: 1.8rem;height: 1.8rem; margin-top: 0.3rem;}
+.fooditem{width: 1.8rem;}
+.foodname{white-space:nowrap; text-overflow: ellipsis; overflow:hidden; text-align:left; font:0.25rem/normal "microsoft yahei"; margin-top: 0.2rem;}
+.price{border-radius:0 0 0.2rem 0; position: absolute; left: 0;top: 0; width: 0.65rem;background:#ff5e59; height: 0.32rem; font:0.18rem/normal "microsoft yahei"; color:#fff;}
+.fooditem{display:inline-block; margin-right: 0.2rem;}
+.hor-scroll .inner{white-space:nowrap; overflow-y: scroll;}
+
+.compareItem{height: 3.1rem; border-bottom:1px solid #efefef; position: relative;}
+.compareItem-pic{width: 1.8rem;height: 1.8rem; border-radius:0.9rem;overflow: hidden;}
+.compareItem-pic img{width: 1.8rem;height: 1.8rem;}
+.supportBtn{background:#ff5e59; border-radius:0.1rem; font:0.22rem/0.5rem "microsoft yahei"; color:#fff; margin-top: 0.2rem; width: 1.2rem;height: 0.5rem; margin:0.2rem auto 0;}
+.compareFood{width: 1.8rem; padding-top: 0.3rem;}
+.LeftFood{float: left; margin-left: 0.3rem;}
+.RigthFood{float: right; margin-right: 0.3rem;}
+.compareCenter{background:#e0e0e0; width: 2.01rem; height: 0.83rem; position: absolute; left: 2.36rem;top: 1.2rem;}
+.colorBar{height: 100%;position: absolute; left: 0;top: 0; background:#ff5e59;}
+.compareCover{position: absolute;left: 0;top: 0; width: 100%;height: 100%; background:url(../img/compare-cover.png) 0 0/ cover;}
+

@@ -7,7 +7,11 @@
 </head>
 <body>
 订单信息如下：
-xxxxxx xxxx
+订单号：${order.number}
+总价：${order.price}
+有以下菜式：
+<c:forEach items="${cuisines}" var="item" varStatus="vs">
+${vs.count}.${item.name},价格：${item.price}
+</c:forEach>
 </body>
-<script src="http://js.3conline.com/min/temp/v1/lib-jquery1.10.2.js"></script>
 </html>

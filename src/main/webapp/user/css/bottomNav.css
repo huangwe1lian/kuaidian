@@ -1,0 +1,8 @@
+.bottomNav{border-top:1px solid #e5e0e1; background:#fff; height: 0.98rem; width: 100%; position: fixed; left: 0;bottom: 0;}
+.bottomNavBtn{width: 1.33rem; height:100%;}
+.bottomNav a{vertical-align:top; font:0.18rem/0.26rem "microsoft yahei"; color:#707070; display:inline-block; }
+.bottomNavBtn img{width: 0.5rem;height: 0.5rem;}
+.bottomNavBtnCenter{margin:0 1.1rem; background:url(../img/dclogo.png) 0 0/cover;}
+.bottomNav a.act{color:#ff5e59;}
+.bottomNav .sideBtn{margin-top:0.1rem;}
+.bottomNav .sideBtn p{margin-top: 0.1rem;}
