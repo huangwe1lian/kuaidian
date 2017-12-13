@@ -1,0 +1,7 @@
+.g-doc {position: relative; text-align:center; width: 7.5rem; margin: 0px auto; background:url(../img/loginbg.jpg) 0 0/ contain no-repeat;}
+.loginInput{text-align:left; width: 5.06rem; height: 0.96rem; border:1.5px solid #e5e0e1; border-radius:0.2rem; vertical-align:middle;}
+.loginInput span{text-align:center; font:0.28rem/0.96rem "microsoft yahei"; color:#999; display:inline-block; width: 1.24rem;}
+.loginInput input{outline:none; width: 3.68rem; height: 0.96rem; border:none; background:no-repeat;font:0.28rem/0.96rem "microsoft yahei";}
+.AccountInput{position: absolute; left: 1.22rem; top: 4.62rem;}
+.PasswordInput{position: absolute; left: 1.22rem; top: 5.83rem;}
+.loginBtn{left: 0.8rem; top: 8.87rem; position: absolute; width: 5.9rem; height: 1rem; background:#ff5e59; font:0.34rem/1rem "microsoft yahei"; color:#fff; border-radius:0.2rem;}

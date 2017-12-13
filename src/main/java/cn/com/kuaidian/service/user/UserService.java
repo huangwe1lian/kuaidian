@@ -33,7 +33,7 @@ public class UserService {
 			long contractorId = geliDao.getJdbcTemplate().queryForObject(_sql.getSql() ,new Object[]{username,password},Long.class);
 			return contractorId;
 		} catch (Exception e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 		return -1l;
 	}
