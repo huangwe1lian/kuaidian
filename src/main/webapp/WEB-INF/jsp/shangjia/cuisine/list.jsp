@@ -25,15 +25,17 @@
 						</tr>
 					</thead>
 					<tbody>
+						<c:forEach var="c" items="${list}" >
 						<tr class="text-c">
 							<td><input name="" type="checkbox" value=""></td>
-							<td>1</td>
+							<td>${c.id}</td>
 							<td>2016-12-31</td>
-							<td>13元</td>
-							<td class="text-c"> 姜葱鸡</td>
+							<td>${c.price}元</td>
+							<td class="text-c">${c.name} </td>
 							<td class="text-c">招牌菜</td>
 							<td class="f-14 product-brand-manage"><a style="text-decoration:none" onClick="product_brand_edit('品牌编辑','codeing.html','1')" href="javascript:;" title="编辑"><i class="Hui-iconfont">&#xe6df;</i></a> <a style="text-decoration:none" class="ml-5" onClick="active_del(this,'10001')" href="javascript:;" title="删除"><i class="Hui-iconfont">&#xe6e2;</i></a></td>
 						</tr>
+						</c:forEach>
 					</tbody>
 				</table>
 			</div>

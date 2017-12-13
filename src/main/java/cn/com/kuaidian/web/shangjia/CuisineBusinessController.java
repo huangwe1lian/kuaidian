@@ -25,13 +25,12 @@ public class CuisineBusinessController {
 
 	@RequestMapping(value = "/list.do", method = RequestMethod.GET)
 	public String list(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		/*Env env = EnvUtils.getEnv();
+		Env env = EnvUtils.getEnv();
 		int pageNo = env.paramInt("pageNo");
 		int pageSize = env.paramInt("pageSize");
-		
 		List<Cuisine> cuisineList = cuisineService.getCuisineAllByPage(1, 20);
-		
-		request.setAttribute("list", cuisineList);*/
+		System.out.println(cuisineList.size());
+		request.setAttribute("list", cuisineList);
 		return "/shangjia/cuisine/list";
 	}
 }
