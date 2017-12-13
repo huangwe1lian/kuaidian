@@ -13,5 +13,7 @@
 <c:forEach items="${cuisines}" var="item" varStatus="vs">
 ${vs.count}.${item.name},价格：${item.price}
 </c:forEach>
+
+<a href="/action/alipay.jsp">去付款</a>
 </body>
 </html>
