@@ -99,6 +99,13 @@
             <artifactId>postgresql</artifactId>
             <version>9.4-1212-jdbc42</version>
         </dependency>
+        <dependency>
+            <groupId>com.alipay</groupId>
+            <artifactId>alipay</artifactId>
+            <version>1.0.0</version>
+            <scope>system</scope>
+            <systemPath>E:/jar/alipay-sdk-java20170307171631.jar</systemPath> 
+        </dependency>
     </dependencies>
 
     <build>
