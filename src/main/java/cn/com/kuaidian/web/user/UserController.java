@@ -156,4 +156,20 @@ public class UserController {
         return "/user/order/confirm";
     }
 	
+	
+	@RequestMapping(value="/qr.do")
+    public String qr(HttpServletRequest req, HttpServletResponse resp) throws Exception {
+        return "/user/qr";
+    }
+	
+	@RequestMapping(value="/sum.do")
+    public String sum(HttpServletRequest req, HttpServletResponse resp) throws Exception {
+        return "/user/sum";
+    }
+	
+	@RequestMapping(value="/totallist.do")
+    public String totallist(HttpServletRequest req, HttpServletResponse resp) throws Exception {
+        return "/user/totallist";
+    }
+	
 }
