@@ -1,0 +1,48 @@
+.area{background:#fff;}
+.g-doc { position: relative; text-align:center; width: 7.5rem; margin: 0px auto;}
+.area1{height: 8.4rem; background:#ff5e59;}
+.a1swiper{height: 7.2rem;}
+.qrbox{width: 5.91rem; height: 6.5rem; background:url(../img/qrbg.png) 0 0/contain no-repeat; margin:0.41rem auto 0; position: relative;}
+.qrtitle{height: 0.89rem; font:bold 0.28rem/0.89rem "microsoft yahei"; color:#333;}
+.qrinfo{margin:0 0.32rem; height: 1.05rem;}
+.qrinfoLeft{float: left;}
+.qrinfoRight{float: right;}
+.qrinfoLi1{text-align:left; margin-top: 0.16rem; font:0.22rem/0.4rem "microsoft yahei"; color:;}
+.qrinfoLi1 span{color:#999;}
+.qrinfoLi2{font-size:0.16rem; color:#999;}
+.qrinfoRight{font:0.24rem/1.05rem "microsoft yahei";}
+.colorGreen{color:#58c469;}
+.qrCenter{overflow: hidden;height:3.5rem; position: relative;}
+.qrinner{ width: 2.34rem;height: 2.34rem; margin:0.4rem auto 0;}
+.qrnum{font:0.24rem/normal "microsoft yahei"; margin-top:0.24rem;}
+.qrpaidui{font:0.24rem/1.04rem "microsoft yahei"; color:#999;}
+.qrpaidui span{color:#ff5e59;}
+.tipsinfo{font:0.22rem/normal "microsoft yahei"; color:#fff; text-align:left; padding:0 0.8rem;}
+.swiper-pagination1.dz{width: 100%;}
+.bull{font:0.14rem/0.32rem "microsoft yahei"; color:#ff5e59; opacity:1; background:#ffafac; margin-right: 0.1rem; width: 0.32rem;height: 0.32rem;}
+.swiper-pagination-bullet-active{background:#fff;color:#ff5e59;}
+.icon-question{width: 0.25rem;height: 0.25rem;background:url(../img/icon-question.png) 0 0/contain no-repeat; display: inline-block; float: right; vertical-align:middle;}
+
+.area2 .inner{margin:0 0.4rem;}
+.a2title{height: 0.83rem; border-bottom:1px solid #efefef;}
+.a2titleLeft{float: left; font:bold 0.29rem/normal "microsoft yahei"; color:#333;margin-top:0.38rem;}
+.a2titleRigth{float: right; font:0.22rem/normal "microsoft yahei"; color:#333; margin-top:0.4rem;}
+.a2foodHistoryItem{height: 1.62rem; border-bottom:1px solid #efefef;}
+.picbox{position: absolute; top: 0.3rem; left: 0; width: 1rem;height: 1rem;}
+.picbox img{width: 1rem;height: 1rem;}
+.a2foodHistoryItem .inner{position: relative;}
+.foodHisInfo{position: absolute; left: 1.22rem; top: 0.31rem; text-align:left;}
+.foodHisInfoi1{font:0.28rem/normal "microsoft yahei"; color:#000;}
+.foodHisInfoi1 span{color:#999;}
+.foodHisInfoi2{font:0.18rem/normal "microsoft yahei"; color:#bbb; margin-top: 0.2rem;}
+.foodHisState{width: 3.6rem; text-align:right; position: absolute; right: 0; top: 0.3rem;}
+.Hisbtn{font:0.21rem/0.5rem "microsoft yahei"; border-radius:0.25rem; height: 0.5rem; padding:0 0.2rem; display:inline-block;}
+.gray{background:#c3c3c3; color:#fff;}
+.red{background:#ff5e59; color:#fff;}
+.green{background:#5dcf6f; color:#fff;}
+.foodHisState p{text-align:right; font:0.21rem/normal "microsoft yahei"; color:#ff5e59;}
+.foodHisState-btnbox{margin-top:0.1rem;}
+.foodHisState p.fontGray{color:#999;}
+.fontred{color:#ff5e59;}
+.qrinner.tick{background:url(../img/qrtick.png) center center/1.43rem 1.43rem no-repeat;}
+.foodHisState p.fontgreen{color:#5dcf6f;}

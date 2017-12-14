@@ -1,0 +1,30 @@
+.area{background:#fff;}
+.g-doc {background:#efefef; text-align: center; position: relative; text-align:center; width: 7.5rem; margin: 0px auto;}
+.area1{height: 4.11rem;}
+.icon-mail{background:url(../img/icon-mail.png) center center/0.42rem 0.29rem no-repeat;height: 0.84rem;width: 0.84rem; }
+.icon-function{background:url(../img/icon-function.png) center center/0.3rem 0.29rem no-repeat;height: 0.84rem;width: 0.84rem; }
+.a1Top span{font:0.28rem/0.84rem "microsoft yahei"; vertical-align:middle; display:inline-block;height: 0.84rem;width: 0.84rem; }
+.toptitle{margin:0 2.08rem;}
+.header{position: absolute;top: 1px;right: 0.13rem; border:1px solid #c6c7c7; width: 1.84rem;height: 1.84rem; border-radius:0.92rem;overflow: hidden;}
+.a1Center{position: relative;height: 2.18rem; }
+.name1{font:0.5rem/0.54rem "microsoft yahei"; color:#000; position: absolute; left: 0.46rem; top: 0.67rem;}
+.name2{font:0.2rem/normal "microsoft yahei"; color:#777; position: absolute; left: 0.46rem; top: 1.52rem;}
+.a1Bottom{height: 1.09rem; }
+.a1BottomLeft{ margin-top: 0.2rem; float: left;}
+.a1BottomLeft .num{font:bold 0.34rem/normal "microsoft yahei"; color:#f93b37;}
+.numinfo{font:0.22rem/0.44rem "microsoft yahei"; color:#333;}
+.gotoEdit{float: right; font:0.24rem/1.09rem "microsoft yahei"; color:#ff5e59;}
+.a1BottomInner{border-top:1px solid #e4e4e4; margin:0 0.32rem;}
+.area2{margin-top: 0.28rem;}
+.area2 a{height:1.28rem; display:block;}
+.listinner{height: 100%; margin:0 0.36rem;}
+.listLeft{float: left;}
+.listLeft .icon{width: 0.43rem;height: 0.43rem; display:inline-block;vertical-align:middle;}
+.listLeft span{margin-left: 0.2rem; color:#333; font:0.26rem/1.28rem "microsoft yahei";}
+.icon-dd{background:url(../img/icon-dd.png) 0 0/contain no-repeat;}
+.icon-msg{background:url(../img/icon-msg.png) 0 0/contain no-repeat;}
+.icon-fav{background:url(../img/icon-fav.png) 0 0/contain no-repeat;}
+.icon-tp{background:url(../img/icon-tp.png) 0 0/contain no-repeat;}
+.listRight{float: right;color:#333; font:bold 0.36rem/1.28rem "microsoft yahei";}
+.listRight.dz p{font:0.18rem/0.5rem "microsoft yahei";}
+.listRight.dz span{text-align:right; display:block;line-height:0.72rem; }

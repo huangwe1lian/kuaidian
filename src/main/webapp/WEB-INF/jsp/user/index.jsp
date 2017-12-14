@@ -384,7 +384,7 @@
 				<a href="/user/cuisine/list.do" class="bottomNavBtn bottomNavBtnCenter">
 					
 				</a>
-				<a href="#" class="bottomNavBtn sideBtn">
+				<a href="/user/usercenter.do" class="bottomNavBtn sideBtn">
 					<img src="img/icon-kuaidian.png"/>
 					<p>个人中心</p>
 				</a>

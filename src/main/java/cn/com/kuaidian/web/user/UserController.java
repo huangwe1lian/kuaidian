@@ -58,6 +58,11 @@ public class UserController {
 		return "/user/index";
 	}
 	
+	@RequestMapping(value="/usercenter.do",method=RequestMethod.GET)
+	public String UserCenter(HttpServletRequest req, HttpServletResponse resp) throws IOException{
+		return "/user/usercenter";
+	}
+	
 	@RequestMapping(value="/doLogin.do",method=RequestMethod.POST)
 	public void doLongin(HttpServletRequest request,HttpServletResponse response) throws IOException {
 		Env env = EnvUtils.getEnv();
