@@ -19,8 +19,8 @@ public class AlipayUtil {
 		String url = request.getRequestURL().toString();
 	    String method = request.getMethod();
 	    String ip = IPUtils.getClientRealIp(request);
-	    reqParams.setNotify_url("");
-	    reqParams.setReturn_url("");
+	    reqParams.setNotify_url("http://67cge8.natappfree.cc/notify.jsp");
+	    reqParams.setReturn_url("http://localhost:8090/user/qr.do");
 	
 	    //TODO 参数过滤、日志记录
 	    

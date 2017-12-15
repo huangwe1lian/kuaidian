@@ -14,7 +14,7 @@ public class Order {
 	@Column(name="id")
 	private long id;
 	
-	@Label("订单号")
+	@Label("取餐号")
 	@Column(name = "number")
 	private String number;
 	
@@ -30,6 +30,10 @@ public class Order {
 	@Column(name = "price")
 	private double price;
 	
+	@Label("订单号")
+	@Column(name = "out_trade_no")
+	private String outTradeNo;
+	
 	@Label("订单创建时间")
 	@Column(name = "create_time")
 	private Date createTime;
@@ -38,7 +42,7 @@ public class Order {
 	@Column(name = "update_time")
 	private Date updateTime;
 	
-	@Label("订单状态:-1:取消,0:待付款,1:已付款,2:已完成")
+	@Label("订单状态:-1:取消,0:待付款,1:已付款,2:已完成,3:已评价")
 	@Column(name = "status")
 	private int status;
 	
@@ -105,5 +109,12 @@ public class Order {
 	public void setStatus(int status) {
 		this.status = status;
 	}
-	
+
+	public String getOutTradeNo() {
+		return outTradeNo;
+	}
+
+	public void setOutTradeNo(String outTradeNo) {
+		this.outTradeNo = outTradeNo;
+	}
 }

@@ -107,7 +107,7 @@
 								<div class="qrinfo">
 									<div class="qrinfoLeft">
 										<div class="qrinfoLi1">土豆蘑菇饭<span> x2</span> ...</div>
-										<div class="qrinfoLi2">2017-10-20 12:30</div>
+										<div class="qrinfoLi2"><fmt:formatDate value="${order.createTime}" pattern="yyyy-MM-dd HH:mm:ss" /></div>
 									</div>
 									<div class="qrinfoRight colorGreen">
 										待取餐
@@ -116,7 +116,7 @@
 								<div class="qrCenter">
 									<div class="qrinner qr1">
 									</div>
-									<p class="qrnum">订单号：153686-153</p>
+									<p class="qrnum">订单号：${order.outTradeNo}</p>
 									
 									<p class="qrnum fontred">取餐成功，祝您用餐愉快</p>
 								</div>
@@ -173,85 +173,56 @@
 				<div class="a2title">
 					<div class="inner">
 						<div href="#" class="a2titleLeft">最近订单</div>
-						<a href="#" class="a2titleRigth">全部订单 ></a>
+						<a href="/user/totallist.do" class="a2titleRigth">全部订单 ></a>
 					</div>
 				</div>
 				<div class="a2foodHistoryList">
+					<c:forEach items="${orders}" var="item" begin="1">
 						<div class="a2foodHistoryItem">
 							<div class="inner">
 								<div class="picbox">
 									<img src="img/fooditem.jpg"/>
 								</div>
 								<div class="foodHisInfo">
-									<p class="foodHisInfoi1">土豆蘑菇饭<span> x2 </span>...</p>
-									<p class="foodHisInfoi2">2017-10-20 12:30</p>
+									<p class="foodHisInfoi1">土豆蘑菇饭${item.status}<span> x2 </span>...</p>
+									<p class="foodHisInfoi2"><fmt:formatDate value="${item.createTime}" pattern="yyyy-MM-dd HH:mm:ss" /></p>
 								</div>
-								<!--待支付-->
 								<div class="foodHisState">
-									<p>待支付</p>
+									<c:choose>
+										<c:when test="${item.status == 0}">
+											<p>待支付</p>
+										</c:when>
+										<c:when test="${item.status == 1}">
+											<p>待取餐</p>
+										</c:when>
+										<c:when test="${item.status == 2}">
+											<p class="fontGray">订单完成</p>
+										</c:when>
+									</c:choose>
 									<div class="foodHisState-btnbox">
-										<a href="#" class="Hisbtn gray" >取消订单</a>
-										<a href="#" class="Hisbtn red">去支付</a>
+										<c:choose>
+											<c:when test="${item.status == -1}">
+												<a href="#" class="Hisbtn gray" >已取消</a>
+											</c:when>
+											<c:when test="${item.status == 0}">
+												<a href="#" class="Hisbtn gray" >取消订单</a>
+												<a href="#" class="Hisbtn red">去支付</a>
+											</c:when>
+											<c:when test="${item.status == 1}">
+												<!-- <a href="#" class="Hisbtn gray" >取消订单</a>
+												<a href="#" class="Hisbtn red">去支付</a> -->
+											</c:when>
+											<c:when test="${item.status == 2}">
+												<div class="foodHisState-btnbox">
+													<a href="#" class="Hisbtn red" >去评价</a>
+												</div>
+											</c:when>
+										</c:choose>
 									</div>
 								</div>
-								<!--待支付-->
 							</div>
 						</div>
-						<div class="a2foodHistoryItem">
-							<div class="inner">
-								<div class="picbox">
-									<img src="img/fooditem.jpg"/>
-								</div>
-								<div class="foodHisInfo">
-									<p class="foodHisInfoi1">土豆蘑菇饭<span> x2 </span>...</p>
-									<p class="foodHisInfoi2">2017-10-20 12:30</p>
-								</div>
-								<!--完成-->
-								<div class="foodHisState">
-									<p class="fontGray">订单完成</p>
-									<div class="foodHisState-btnbox">
-										<a href="#" class="Hisbtn red" >去评价</a>
-									</div>
-								</div>
-								<!--完成-->
-							</div>
-						</div>
-						<div class="a2foodHistoryItem">
-							<div class="inner">
-								<div class="picbox">
-									<img src="img/fooditem.jpg"/>
-								</div>
-								<div class="foodHisInfo">
-									<p class="foodHisInfoi1">土豆蘑菇饭<span> x2 </span>...</p>
-									<p class="foodHisInfoi2">2017-10-20 12:30</p>
-								</div>
-								<!--完成-->
-								<div class="foodHisState">
-									<p class="fontGray">订单完成</p>
-									<div class="foodHisState-btnbox">
-										<a href="#" class="Hisbtn red" >去评价</a>
-									</div>
-								</div>
-								<!--完成-->
-							</div>
-						</div>
-						<div class="a2foodHistoryItem">
-							<div class="inner">
-								<div class="picbox">
-									<img src="img/fooditem.jpg"/>
-								</div>
-								<div class="foodHisInfo">
-									<p class="foodHisInfoi1">土豆蘑菇饭</p>
-									<p class="foodHisInfoi2">2017-10-20 12:30</p>
-								</div>
-								<!--完成-->
-								<div class="foodHisState">
-									<p class="fontGray">订单完成</p>
-									
-								</div>
-								<!--完成-->
-							</div>
-						</div>
+					</c:forEach>
 					</div>
 			</div>
 			

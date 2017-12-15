@@ -45,4 +45,18 @@ public class OrderService {
 		sql.appendSql("and o.id= ").appendValue(orderId);
 		return geliDao.list(Cuisine.class, sql.getSql(), sql.getValues());
 	}
+
+	public Order getOrderByoutTradeNo(String outTradeNo) {
+		SqlBuilder sql = new SqlBuilder();
+		sql.appendSql("select * from kd_order where out_trade_no = ").appendValue(outTradeNo);
+		return geliDao.findFirst(Order.class, sql.getSql(), sql.getValues());
+	}
+	
+	public List<Order> getOrdersByUserPage(long userId,int pageNo,int pageSize) {
+		SqlBuilder sql = new SqlBuilder();
+		sql.appendSql("select * from kd_order where user_id = ").appendValue(userId);
+		sql.appendSql(" order by create_time desc");
+		return geliDao.page(Order.class, sql.getSql(),pageNo,pageSize,sql.getValues());
+	}
+	
 }

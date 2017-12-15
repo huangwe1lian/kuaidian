@@ -110,10 +110,10 @@ public class UserController {
         User user = UserSecurity.getCurrentUser(req);
         //Random random = new Random();
         //int randomNum = random.nextInt(100);
-        //String num = System.currentTimeMillis() + "" + user.getId() + "" + randomNum;
+        String outTradeNo = System.currentTimeMillis()+"";
         String num = orderService.getOrderCountToday() + "";
         
-        
+        order.setOutTradeNo(outTradeNo);
         order.setNumber(num);
 		order.setUserId(user.getId());
 		Date now = new Date(); //当前时间
@@ -159,6 +159,15 @@ public class UserController {
 	
 	@RequestMapping(value="/qr.do")
     public String qr(HttpServletRequest req, HttpServletResponse resp) throws Exception {
+		Env env = EnvUtils.getEnv();
+		String outTradeNo =  env.param("out_trade_no", "");
+		Order order = orderService.getOrderByoutTradeNo(outTradeNo);
+		User user = UserSecurity.getCurrentUser(req);
+		long userId = user.getId();
+		List<Order> orders = orderService.getOrdersByUserPage(userId, 1, 5);
+		
+		req.setAttribute("order", order);
+		req.setAttribute("orders", orders);
         return "/user/qr";
     }
 	

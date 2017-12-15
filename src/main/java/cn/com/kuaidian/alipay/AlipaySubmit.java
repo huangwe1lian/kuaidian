@@ -34,9 +34,9 @@ public class AlipaySubmit {
 		//创建API对应的request  
 		AlipayTradeWapPayRequest alipayRequest = new AlipayTradeWapPayRequest();
 		//在公共参数中设置异步通地址方法
-	    alipayRequest.setNotifyUrl("http://67cge8.natappfree.cc/notify.jsp");  //外网链接,先写死
+	    alipayRequest.setNotifyUrl(paramMap.get("notify_url"));  //外网链接,先写死
 	    //在公共参数中设置同步通地址方法
-	    alipayRequest.setReturnUrl("https://www.alipay.com/");  //外网链接,先写死
+	    alipayRequest.setReturnUrl(paramMap.get("return_url"));  //外网链接,先写死
 	    
 	    //设置请求参数，建议测试时只是用必传参数
 	    String bz="{" + 

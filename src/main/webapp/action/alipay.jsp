@@ -1,3 +1,4 @@
+<%@page import="cn.com.kuaidian.util.StringUtils"%>
 <%@page import="cn.com.kuaidian.util.DateUtils"%>
 <%@page import="cn.com.kuaidian.alipay.PayType"%>
 <%@page import="cn.com.kuaidian.alipay.AlipayUtil"%>
@@ -18,15 +19,19 @@
 	
 	//TODO 参数验证、乱码解决
 	request.setCharacterEncoding("UTF-8");  //暂时用get请求
-	/* String out_trade_no = request.getParameter("out_trade_no");
+	long orderId = StringUtils.longValue(request.getParameter("orderId"), 0);
+	String out_trade_no = StringUtils.stringValue(request.getParameter("out_trade_no"),"");
+	/* 
 	String total_amount = request.getParameter("total_amount");
 	String subject = request.getParameter("subject");
 	String product_code = request.getParameter("product_code"); */
-	String out_trade_no = System.currentTimeMillis()+"";
+	//String out_trade_no = System.currentTimeMillis()+"";
 	String total_amount = "0.01";
 	String subject = "测试订单名称";
 	String product_code = "110";
 	String over_time = "60"; 
+	
+	
 	
 	AlipayParams params = new AlipayParams(out_trade_no, total_amount, 
 			 subject, product_code, over_time);
