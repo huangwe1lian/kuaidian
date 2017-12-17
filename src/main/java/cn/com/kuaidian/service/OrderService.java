@@ -2,6 +2,7 @@ package cn.com.kuaidian.service;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import org.gelivable.dao.GeliDao;
 import org.gelivable.dao.SqlBuilder;
@@ -52,11 +53,13 @@ public class OrderService {
 		return geliDao.findFirst(Order.class, sql.getSql(), sql.getValues());
 	}
 	
-	public List<Order> getOrdersByUserPage(long userId,int pageNo,int pageSize) {
+	public List<Map<String, Object>> getOrdersByUserPage(long userId,int pageNo,int pageSize) {
 		SqlBuilder sql = new SqlBuilder();
-		sql.appendSql("select * from kd_order where user_id = ").appendValue(userId);
-		sql.appendSql(" order by create_time desc");
-		return geliDao.page(Order.class, sql.getSql(),pageNo,pageSize,sql.getValues());
+		sql.appendSql("select o.*,c.name from kd_order o,kd_order_cuisine oc,kd_cuisine c where o.id = oc.order_id and c.id = oc.cuisine_id  and user_id = ").appendValue(userId);
+		sql.appendSql(" order by create_time desc ");
+		sql.appendSql("limit ").appendValue((pageNo-1)*pageSize);
+		sql.appendSql(",").appendValue(pageSize);
+		return geliDao.getJdbcTemplate().queryForList(sql.getSql(), sql.getValues());
 	}
 	
 }

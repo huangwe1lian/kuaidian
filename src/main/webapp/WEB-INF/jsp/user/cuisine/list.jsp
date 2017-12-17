@@ -12,6 +12,7 @@
 		<p>${item.name}</p>
 		<p>${item.price}元</p>
 		<input type="checkbox" id="${item.id}" contractor-data="${item.contractorId}" name="cuisine">
+		<a href="/buycar/add.do?id=${item.id}">添加购物车</a>
 		<br/>
 	</c:forEach>
 	<c:forEach begin="1" end="${totalPage}" varStatus="vs">

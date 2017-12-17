@@ -3,6 +3,7 @@ package cn.com.kuaidian.web.user;
 import java.io.IOException;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -164,8 +165,9 @@ public class UserController {
 		Order order = orderService.getOrderByoutTradeNo(outTradeNo);
 		User user = UserSecurity.getCurrentUser(req);
 		long userId = user.getId();
-		List<Order> orders = orderService.getOrdersByUserPage(userId, 1, 5);
-		
+		List<Map<String, Object>> orders = orderService.getOrdersByUserPage(userId, 1, 5);
+		List<Cuisine>  cuisine = orderService.getCuisineByOrderId(order.getId());
+		req.setAttribute("cuisine", cuisine);
 		req.setAttribute("order", order);
 		req.setAttribute("orders", orders);
         return "/user/qr";
@@ -178,7 +180,37 @@ public class UserController {
 	
 	@RequestMapping(value="/totallist.do")
     public String totallist(HttpServletRequest req, HttpServletResponse resp) throws Exception {
+		Env env = EnvUtils.getEnv();
+		int pageNo = env.paramInt("pageNo",1);
+		int pageSize = env.paramInt("pageSize",5);
+		User user = UserSecurity.getCurrentUser(req);
+		List<Map<String, Object>> orders = orderService.getOrdersByUserPage(user.getId(), pageNo, pageSize);
+		req.setAttribute("orders", orders);
         return "/user/totallist";
     }
 	
+	@RequestMapping(value="/order/list.do")
+    public String diancan(HttpServletRequest req, HttpServletResponse resp) throws Exception {
+        return "/user/order/list";
+    }
+	
+	
+	@RequestMapping(value="/xiadan.do")
+    public String xiadan(HttpServletRequest req, HttpServletResponse resp) throws Exception {
+        return "/user/xiadan";
+    }
+	
+	@RequestMapping(value="/order/canncel.do")
+    public String orderCanncel(HttpServletRequest req, HttpServletResponse resp) throws Exception {
+		Env env = EnvUtils.getEnv();
+		long orderId = env.paramLong("orderId", 0);
+		Order order =  orderService.getOrder(orderId);
+		User user = UserSecurity.getCurrentUser(req);
+		if(order.getUserId() == user.getId()){
+			order.setStatus(-1);
+			order.setUpdateTime(new Date());
+			geliDao.update(order);
+		}
+        return "redirect:/user/qr.do?out_trade_no=" + order.getOutTradeNo();
+    }
 }

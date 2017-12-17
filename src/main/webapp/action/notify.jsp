@@ -1,3 +1,6 @@
+<%@page import="cn.com.kuaidian.entity.Order"%>
+<%@page import="cn.com.kuaidian.service.OrderService"%>
+<%@page import="cn.com.kuaidian.util.StringUtils"%>
 <%@page import="com.alipay.api.internal.util.AlipaySignature"%>
 <%@page import="cn.com.kuaidian.alipay.PayConfig"%>
 <%@page import="java.util.Map"%>
@@ -8,6 +11,7 @@
 <%@page import="cn.com.kuaidian.alipay.AlipayParams"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@include file="/WEB-INF/jspf/import.jspf"%>
 <%
 	/*
 	* 支付完回调逻辑
@@ -33,7 +37,15 @@
 	boolean signVerified = false;
 	signVerified= AlipaySignature.rsaCheckV1(params, PayConfig.ALIPAY_PUBLIC_KEY, "UTF-8", PayConfig.SIGN_TYPE);
 	if (signVerified) { //验签通过
-		
+		 //改变订单状态，设置为待取餐
+		 long orderId = StringUtils.longValue(request.getParameter("orderId"), 0);
+		 Env env = EnvUtils.getEnv();
+		 OrderService orderService = env.getApplicationContext().getBean(OrderService.class);
+		 GeliDao geliDao = env.getApplicationContext().getBean(GeliDao.class);
+		 Order order = orderService.getOrder(orderId);
+		 order.setStatus(1);
+		 order.setUpdateTime(new Date());
+		 geliDao.update(order);
 	}else { //验签失败
 		
 	}
