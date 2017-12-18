@@ -44,8 +44,8 @@ public class UserBuyCarUtils {
 		return cuisineArray;
 	}
 	
-	public static List<Cuisine> getBuyCar(HttpServletRequest request) throws UnsupportedEncodingException{
-		List<Cuisine> list = new ArrayList<Cuisine>();
+	public static JSONArray getBuyCar(HttpServletRequest request) throws UnsupportedEncodingException{
+		JSONArray list = new JSONArray();
 		Env env = EnvUtils.getEnv();
 		CuisineService cuisineService = env.getBean(CuisineService.class);
 		String cuisineText = CookieUtils.getCookie(request, tookenCookieName);
@@ -56,8 +56,10 @@ public class UserBuyCarUtils {
 			  for (int i = 0 ; i < cuisineArray.size(); i++) {
 				JSONObject obj = cuisineArray.getJSONObject(i);
 				long id = obj.getLongValue("id");
-				Cuisine c = cuisineService.getCuisine(id);
-				list.add(c);
+				//Cuisine c = cuisineService.getCuisine(id);
+				if(obj != null){
+					list.add(obj);
+				}
 			}
 		  }
 		}

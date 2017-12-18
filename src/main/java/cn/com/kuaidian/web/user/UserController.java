@@ -109,8 +109,6 @@ public class UserController {
 		long cuisineId = env.paramLong("cuisineId", 0);
         Order order = new Order();
         User user = UserSecurity.getCurrentUser(req);
-        //Random random = new Random();
-        //int randomNum = random.nextInt(100);
         String outTradeNo = System.currentTimeMillis()+"";
         String num = orderService.getOrderCountToday() + "";
         

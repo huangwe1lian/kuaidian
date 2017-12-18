@@ -7,11 +7,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-11
 <c:forEach var="item" items="${cuisine}">
 	id:${item.id}
 	name:${item.name}
 	price:${item.price}
+	count:${item.count}
 </c:forEach>
 </body>
 </html>

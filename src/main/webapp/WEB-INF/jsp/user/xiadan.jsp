@@ -101,35 +101,20 @@
 			<div class="area area1">
 				<div class="titleBox">
 					<div class="inner">
-						<div class="areaTitle">支付方式</div>
+						<div class="areaTitle">已选菜品</div>
 					</div>
 				</div>
 				<div>
+				<c:forEach var="item" items="${cuisine}">
 					<div class="infoitem ">
 						<div class="inner">
-							<img src="img/fooditem.jpg" alt="" />
-							<span>土豆蘑菇饭</span>
-							<i class="fenshu">x1</i>
-							<i class="price">24</i>
+							<img src="/user/img/fooditem.jpg" alt="" />
+							<span>${item.name}</span>
+							<i class="fenshu">x${item.count}</i>
+							<i class="price">￥${item.price}</i>
 						</div>
 					</div>
-					<div class="infoitem ">
-						<div class="inner">
-							<img src="img/fooditem.jpg" alt="" />
-							<span>土豆蘑菇饭</span>
-							<i class="fenshu">x1</i>
-							<i class="price">24</i>
-						</div>
-					</div>
-					<div class="infoitem ">
-						<div class="inner">
-							<img src="img/fooditem.jpg" alt="" />
-							<span>土豆蘑菇饭</span>
-							<i class="fenshu">x1</i>
-							<i class="price">24</i>
-						</div>
-					</div>
-
+				</c:forEach>
 				</div>
 			</div>
 			<div class="area area2">
@@ -171,8 +156,8 @@
 				</div>
 			</div>
 			<div class="paybottom">
-				<span class="TotalPrice">$98</span>
-				<a href="#" >去支付</a>
+				<span class="TotalPrice">${totalMoney}</span>
+				<a href="/user/order/create.do" >去支付</a>
 			</div>
 			
 		</div>

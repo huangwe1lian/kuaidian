@@ -30,9 +30,20 @@ public class BuyCarController {
 	@RequestMapping("list.do")
 	public String list(HttpServletRequest request , HttpServletResponse response) throws UnsupportedEncodingException{
 		Env env = EnvUtils.getEnv();
-		List<Cuisine> cuisine = UserBuyCarUtils.getBuyCar(request);
+		JSONArray cuisine = UserBuyCarUtils.getBuyCar(request);
+		int totalMoney = 0;
+		if(cuisine !=null && cuisine.size() >0){
+			for(int i=0 ;i < cuisine.size() ;i++){
+				JSONObject json = cuisine.getJSONObject(i);
+				double price = json.getDouble("price");
+				double count = json.getDouble("count");
+				totalMoney += (price * count);
+			}
+		}
+		
 		request.setAttribute("cuisine", cuisine);
-		return "/user/buycar";
+		request.setAttribute("totalMoney", totalMoney);
+		return "/user/xiadan";
 	}
 	
 	@RequestMapping("add.do")
@@ -40,13 +51,26 @@ public class BuyCarController {
 		Env env = EnvUtils.getEnv();
 		long id = env.paramLong("id", 0);
 		Cuisine cuisine = cuisineService.getCuisine(id);
-		
+		long cuisineId = cuisine.getId();
 		JSONObject json = new JSONObject();
 		json.put("id", cuisine.getId());
+		json.put("name",cuisine.getName());
+		json.put("price", cuisine.getPrice());
+		json.put("count", 1);
 		
 		JSONArray cuisines = UserBuyCarUtils.getBuyCarByJsonArray(request);
-		if(cuisines != null){
-			cuisines.add(json);
+		if(cuisines != null && cuisines.size() >0){
+			boolean ifhas = false;
+			for (int i = 0; i < cuisines.size(); i++) {
+				JSONObject obj = cuisines.getJSONObject(i);
+				if(obj.getLong("id") == cuisineId){
+					obj.put("count", obj.getIntValue("count") + 1);
+					ifhas = true;
+				}
+			}
+			if(!ifhas){
+				cuisines.add(json);
+			}
 		}else{
 			cuisines = new JSONArray();
 			cuisines.add(json);
@@ -54,6 +78,7 @@ public class BuyCarController {
 		
 		String cuisineText = JSONObject.toJSONString(cuisines);
 		UserBuyCarUtils.saveBuyCar(request, response, cuisineText);
+
 	}
 	
 	@RequestMapping("deleted.do")
@@ -61,15 +86,18 @@ public class BuyCarController {
 		Env env = EnvUtils.getEnv();
 		long id = env.paramLong("id", 0);
 		Cuisine cuisine = cuisineService.getCuisine(id);
+		long cuisineId = cuisine.getId();
 		
-		Cuisine c = new Cuisine();
-		c.setId(id);
-		c.setContractorId(cuisine.getContractorId());
-		c.setName(cuisine.getName());
-		c.setPrice(cuisine.getPrice());
-		
-		List<Cuisine> cuisines = UserBuyCarUtils.getBuyCar(request);
-		cuisines.remove(c);
+		JSONArray cuisines = UserBuyCarUtils.getBuyCarByJsonArray(request);
+		if(cuisines != null && cuisines.size() >0){
+			for (int i = 0; i < cuisines.size(); i++) {
+				JSONObject obj = cuisines.getJSONObject(i);
+				if(obj.getLong("id") == cuisineId){
+					cuisines.remove(obj);
+					break;
+				}
+			}
+		}
 		
 		UserBuyCarUtils.saveBuyCar(request, response, cuisines.toString());
 	}
