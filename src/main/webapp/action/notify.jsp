@@ -38,11 +38,11 @@
 	signVerified= AlipaySignature.rsaCheckV1(params, PayConfig.ALIPAY_PUBLIC_KEY, "UTF-8", PayConfig.SIGN_TYPE);
 	if (signVerified) { //验签通过
 		 //改变订单状态，设置为待取餐
-		 long orderId = StringUtils.longValue(request.getParameter("orderId"), 0);
+		 String out_trade_no = StringUtils.stringValue(request.getParameter("out_trade_no"), "");
 		 Env env = EnvUtils.getEnv();
 		 OrderService orderService = env.getApplicationContext().getBean(OrderService.class);
 		 GeliDao geliDao = env.getApplicationContext().getBean(GeliDao.class);
-		 Order order = orderService.getOrder(orderId);
+		 Order order = orderService.getOrderByoutTradeNo(out_trade_no);
 		 order.setStatus(1);
 		 order.setUpdateTime(new Date());
 		 geliDao.update(order);
