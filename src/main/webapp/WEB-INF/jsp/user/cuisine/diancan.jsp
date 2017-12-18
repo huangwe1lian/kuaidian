@@ -110,13 +110,15 @@
 				<div class="Listright">
 					<!--tap1-->
 					<div class="tapbox">
-						<div data-id="1" class="fooditem">
+					<c:forEach var="item" items="${cuisines}" varStatus="vs">
+						<div data-id="${vs.count}" class="fooditem">
 							<div class="foodinner">
-								<img src="img/fooditem.jpg" />
+								<img src="/user/img/fooditem.jpg" />
 								<div class="foodinfobox">
-									<p class="foodname">土豆蘑菇饭</p>
+									<input class="foodid" type="hidden" value="${item.id}">
+									<p class="foodname">${item.name}</p>
 									<p class="foodinfo">土豆+蘑菇+姜丝</p>
-									<p class="foodprice">¥ <span>8</span></p>
+									<p class="foodprice">¥ <span>${item.price}</span></p>
 								</div>
 								<div class="toCar">
 
@@ -127,126 +129,14 @@
 							</div>
 
 						</div>
-						<div data-id="2" class="fooditem">
-							<div class="foodinner">
-								<img src="img/fooditem.jpg" />
-								<div class="foodinfobox">
-									<p class="foodname">土豆蘑菇饭</p>
-									<p class="foodinfo">土豆+蘑菇+姜丝</p>
-									<p class="foodprice">¥ <span>8</span></p>
-								</div>
-								<div class="toCar">
-									<span class="toCarReduce"></span>
-									<span class="toCarNum">0</span>
-									<span class="toCarAdd"></span>
-								</div>
-							</div>
-
-						</div>
-						<div data-id="3" class="fooditem">
-							<div class="foodinner">
-								<img src="img/fooditem.jpg" />
-								<div class="foodinfobox">
-									<p class="foodname">土豆蘑菇饭</p>
-									<p class="foodinfo">土豆+蘑菇+姜丝</p>
-									<p class="foodprice">¥ <span>8</span></p>
-								</div>
-								<div class="toCar">
-									<span class="toCarReduce"></span>
-									<span class="toCarNum">0</span>
-									<span class="toCarAdd"></span>
-								</div>
-							</div>
-
-						</div>
-						<div data-id="4" class="fooditem">
-							<div class="foodinner">
-								<img src="img/fooditem.jpg" />
-								<div class="foodinfobox">
-									<p class="foodname">土豆蘑菇饭</p>
-									<p class="foodinfo">土豆+蘑菇+姜丝</p>
-									<p class="foodprice">¥ <span>8</span></p>
-								</div>
-								<div class="toCar">
-									<span class="toCarReduce"></span>
-									<span class="toCarNum">0</span>
-									<span class="toCarAdd"></span>
-								</div>
-							</div>
-
-						</div>
-						<div data-id="5" class="fooditem">
-							<div class="foodinner">
-								<img src="img/fooditem.jpg" />
-								<div class="foodinfobox">
-									<p class="foodname">土豆蘑菇饭</p>
-									<p class="foodinfo">土豆+蘑菇+姜丝</p>
-									<p class="foodprice">¥ <span>8</span></p>
-								</div>
-								<div class="toCar">
-									<span class="toCarReduce"></span>
-									<span class="toCarNum">0</span>
-									<span class="toCarAdd"></span>
-								</div>
-							</div>
-
-						</div>
-						<div data-id="6" class="fooditem">
-							<div class="foodinner">
-								<img src="img/fooditem.jpg" />
-								<div class="foodinfobox">
-									<p class="foodname">土豆蘑菇饭</p>
-									<p class="foodinfo">土豆+蘑菇+姜丝</p>
-									<p class="foodprice">¥ <span>8</span></p>
-								</div>
-								<div class="toCar">
-									<span class="toCarReduce"></span>
-									<span class="toCarNum">0</span>
-									<span class="toCarAdd"></span>
-								</div>
-							</div>
-
-						</div>
-						<div data-id="7" class="fooditem">
-							<div class="foodinner">
-								<img src="img/fooditem.jpg" />
-								<div class="foodinfobox">
-									<p class="foodname">土豆蘑菇饭</p>
-									<p class="foodinfo">土豆+蘑菇+姜丝</p>
-									<p class="foodprice">¥ <span>8</span></p>
-								</div>
-								<div class="toCar">
-									<span class="toCarReduce"></span>
-									<span class="toCarNum">0</span>
-									<span class="toCarAdd"></span>
-								</div>
-							</div>
-
-						</div>
-						<div data-id="8" class="fooditem">
-							<div class="foodinner">
-								<img src="img/fooditem.jpg" />
-								<div class="foodinfobox">
-									<p class="foodname">土豆蘑菇饭</p>
-									<p class="foodinfo">土豆+蘑菇+姜丝</p>
-									<p class="foodprice">¥ <span>8</span></p>
-								</div>
-								<div class="toCar">
-									<span class="toCarReduce"></span>
-									<span class="toCarNum">0</span>
-									<span class="toCarAdd"></span>
-								</div>
-							</div>
-
-						</div>
-
+					</c:forEach>
 					</div>
 					<!--tap1-->
 					<!--tap2-->
 					<div class="tapbox" style="display:none;">
 						<div data-id="9" class="fooditem">
 							<div class="foodinner">
-								<img src="img/fooditem.jpg" />
+								<img src="/user/img/fooditem.jpg" />
 								<div class="foodinfobox">
 									<p class="foodname">1土豆蘑菇饭</p>
 									<p class="foodinfo">土豆+蘑菇+姜丝</p>
@@ -263,7 +153,7 @@
 						</div>
 						<div data-id="10" class="fooditem">
 							<div class="foodinner">
-								<img src="img/fooditem.jpg" />
+								<img src="/user/img/fooditem.jpg" />
 								<div class="foodinfobox">
 									<p class="foodname">1土豆蘑菇饭</p>
 									<p class="foodinfo">土豆+蘑菇+姜丝</p>
@@ -284,7 +174,7 @@
 					<div class="tapbox" style="display:none;">
 						<div data-id="11" class="fooditem">
 							<div class="foodinner">
-								<img src="img/fooditem.jpg" />
+								<img src="/user/img/fooditem.jpg" />
 								<div class="foodinfobox">
 									<p class="foodname">2土豆蘑菇饭</p>
 									<p class="foodinfo">土豆+蘑菇+姜丝</p>
@@ -301,7 +191,7 @@
 						</div>
 						<div data-id="12" class="fooditem">
 							<div class="foodinner">
-								<img src="img/fooditem.jpg" />
+								<img src="/user/img/fooditem.jpg" />
 								<div class="foodinfobox">
 									<p class="foodname">2土豆蘑菇饭</p>
 									<p class="foodinfo">土豆+蘑菇+姜丝</p>
@@ -332,15 +222,6 @@
 				<div class="buyCarList">
 					<div class="buyCarListTitle">已选菜式</div>
 					<div class="buyCarItembox">
-						<!--<div class="buyCarListItem">
-							<span class="buyCarItemName">土豆蘑菇饭</span>
-							<span class="buyCarItemPrice">¥ <i>8</i></span>
-							<div class="toCar">
-								<span class="toCarReduce"></span>
-								<span class="toCarNum">0</span>
-								<span class="toCarAdd"></span>
-							</div>
-						</div>-->
 
 					</div>
 				</div>
@@ -377,7 +258,7 @@
 					num++
 					$(this).siblings('.toCarNum').html(num)
 					$(this).parents('.fooditem').addClass('act')
-
+					
 				})
 				
 				$('.fooditem .toCarReduce').click(function() {
@@ -402,9 +283,17 @@
 				$('.buyCarSum').click(function(){
 					//结算按钮
 					if($('.buycar').hasClass('act')){
-						com.tips('正在结算')
+						com.tips('正在结算');
+						var ids = "";
+						for(var i in arr) {
+							ids += arr[i].cuisineid + ",";
+						}
+						if(ids.length > 0){
+							ids = ids.substring(0,ids.length-1);
+							location.href = '/user/order/create.do?contractorId=1&cuisineId='+ids;
+						}
 					}else{
-						com.tips('请选择菜品')
+						com.tips('请选择菜品');
 					}
 					
 				})
@@ -470,6 +359,7 @@
 							if(nowFoodiTem.eq(j).find('.toCarNum').html() > 0) {
 								arr.push({
 									foodid: nowFoodiTem.eq(j).attr('data-id'),
+									cuisineid: nowFoodiTem.eq(j).find('.foodid').val(),
 									foodname: nowFoodiTem.eq(j).find('.foodname').html(),
 									price: nowFoodiTem.eq(j).find('.foodprice span').html(),
 									num: parseInt(nowFoodiTem.eq(j).find('.toCarNum').html())
@@ -506,7 +396,7 @@
 						str += '<div class="toCar">'
 						str += '<span class="toCarReduce"></span>'
 						str += '<span class="toCarNum">' + arr[i].num + '</span>'
-						str += '<span class="toCarAdd"></span>'
+						str += '<span class="toCarAdd"></span>';
 						str += '</div>'
 						str += '</div>'
 

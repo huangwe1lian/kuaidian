@@ -155,7 +155,7 @@
 
 				</div>
 			</div>
-			<a href="/alipay/aciton.do?orderId=${order.id}" class="submitbtn">确认支付￥${order.price}</a>
+			<a href="/alipay/action.do?orderId=${order.id}" class="submitbtn">确认支付￥${order.price}</a>
 		</div>
 
 		<!--页面脚本区S-->
