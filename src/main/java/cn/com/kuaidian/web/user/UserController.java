@@ -27,6 +27,7 @@ import cn.com.kuaidian.service.CuisineService;
 import cn.com.kuaidian.service.OrderService;
 import cn.com.kuaidian.service.shangjia.ContractorService;
 import cn.com.kuaidian.service.user.UserService;
+import cn.com.kuaidian.util.StringUtils;
 import cn.com.kuaidian.util.dwz.DwzUtils;
 
 @Controller
@@ -98,15 +99,14 @@ public class UserController {
 		req.setAttribute("total", total);
 		req.setAttribute("totalPage", totalPage);
 		
-        return "/user/cuisine/list";
+        return "/user/cuisine/diancan";
     }
 	
 	@RequestMapping(value="/order/create.do")
-	@ResponseBody
     public String orderCreate(HttpServletRequest req, HttpServletResponse resp) throws Exception {
 		Env env = EnvUtils.getEnv();
 		long contractorId = env.paramLong("contractorId",0);
-		long cuisineId = env.paramLong("cuisineId", 0);
+		String cuisineId = env.param("cuisineId", "");
         Order order = new Order();
         User user = UserSecurity.getCurrentUser(req);
         String outTradeNo = System.currentTimeMillis()+"";
@@ -120,11 +120,16 @@ public class UserController {
 		order.setUpdateTime(now);
 		order.setStatus(0);
 		
-		if(cuisineId > 0){
-			Cuisine cuisine = cuisineService.getCuisine(cuisineId);
-			order.setPrice(cuisine.getPrice());
+		double total = 0;
+		if(!StringUtils.isEmpty(cuisineId)){
+			String[] idsArr = cuisineId.split(",");
+			for(int i = 0 ; i< idsArr.length;i++){
+				long id = StringUtils.longValue(idsArr[i], 0);
+				Cuisine cuisine = cuisineService.getCuisine(id);
+				total += cuisine.getPrice();
+			}
 		}
-		
+		order.setPrice(total);
 		if(contractorId > 0){
 			Contractor contractor = contractorService.getContractor(contractorId);
 			order.setContractorId(contractor.getId());
@@ -132,12 +137,18 @@ public class UserController {
 		
 		geliDao.create(order);
 		
-		OrderCuisine orderCuisine = new OrderCuisine();
-		orderCuisine.setOrderId(order.getId());
-		orderCuisine.setCuisineId(cuisineId);
 		
-		geliDao.create(orderCuisine);
-        return DwzUtils.successAndForward("success", "/user/order/confirm.do?orderId="+ order.getId());
+		if(!StringUtils.isEmpty(cuisineId)){
+			String[] idsArr = cuisineId.split(",");
+			for(int i = 0 ; i< idsArr.length;i++){
+				long id = StringUtils.longValue(idsArr[i], 0);
+				OrderCuisine orderCuisine = new OrderCuisine();
+				orderCuisine.setOrderId(order.getId());
+				orderCuisine.setCuisineId(id);
+				geliDao.create(orderCuisine);
+			}
+		}
+		return "redirect:/user/order/confirm.do?orderId="+ order.getId();
     }
 	
 	@RequestMapping(value="/order/confirm.do")

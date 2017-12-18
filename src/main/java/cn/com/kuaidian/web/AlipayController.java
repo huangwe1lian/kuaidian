@@ -26,7 +26,7 @@ public class AlipayController {
 	@Autowired
 	private OrderService orderService;
 	
-	@RequestMapping(value="/aciton.do")
+	@RequestMapping(value="/action.do")
     public void list(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		request.setCharacterEncoding("UTF-8");  //暂时用get请求
 		Env env = EnvUtils.getEnv();
