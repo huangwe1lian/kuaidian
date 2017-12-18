@@ -1,5 +1,7 @@
 package cn.com.kuaidian.entity;
 
+import java.util.Date;
+
 import org.gelivable.dao.Column;
 import org.gelivable.dao.Entity;
 import org.gelivable.dao.Id;
@@ -27,6 +29,10 @@ public class Comment {
 	@Label("评价内容")
 	@Column(name="text")
 	private String text;
+	
+	@Label("创建时间")
+	@Column(name="create_at")
+	private Date createAt;
 
 	public long getId() {
 		return id;
@@ -66,5 +72,13 @@ public class Comment {
 
 	public void setText(String text) {
 		this.text = text;
+	}
+
+	public Date getCreateAt() {
+		return createAt;
+	}
+
+	public void setCreateAt(Date createAt) {
+		this.createAt = createAt;
 	}
 }
