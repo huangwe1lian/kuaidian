@@ -27,7 +27,8 @@ public class BuyCarController {
 	@Autowired
 	private CuisineService cuisineService;
 	
-	@RequestMapping("list.do")
+	
+	@RequestMapping("/list.do")
 	public String list(HttpServletRequest request , HttpServletResponse response) throws UnsupportedEncodingException{
 		Env env = EnvUtils.getEnv();
 		JSONArray cuisine = UserBuyCarUtils.getBuyCar(request);
@@ -46,10 +47,56 @@ public class BuyCarController {
 		return "/user/xiadan";
 	}
 	
-	@RequestMapping("add.do")
+	/*@RequestMapping("/list.do")
+	public String list(HttpServletRequest request , HttpServletResponse response) throws UnsupportedEncodingException{
+		Env env = EnvUtils.getEnv();
+		JSONArray cuisine = UserBuyCarUtils.getBuyCar(request);
+		int totalMoney = 0;
+		if(cuisine !=null && cuisine.size() >0){
+			for(int i=0 ;i < cuisine.size() ;i++){
+				JSONObject json = cuisine.getJSONObject(i);
+				double price = json.getDouble("price");
+				double count = json.getDouble("count");
+				totalMoney += (price * count);
+			}
+		}
+		
+		request.setAttribute("cuisine", cuisine);
+		request.setAttribute("totalMoney", totalMoney);
+		return "/user/xiadan";
+	}*/
+	
+	@RequestMapping("/reduce.do")
+	public void reduce(HttpServletRequest request , HttpServletResponse response) throws UnsupportedEncodingException{
+		Env env = EnvUtils.getEnv();
+		long id = env.paramLong("cuisineId", 0);
+		Cuisine cuisine = cuisineService.getCuisine(id);
+		long cuisineId = cuisine.getId();
+		
+		JSONArray cuisines = UserBuyCarUtils.getBuyCarByJsonArray(request);
+		if(cuisines != null && cuisines.size() >0){
+			for (int i = 0; i < cuisines.size(); i++) {
+				JSONObject obj = cuisines.getJSONObject(i);
+				if(obj.getLong("id") == cuisineId){
+					int num = obj.getIntValue("count") - 1;
+					obj.put("count", obj.getIntValue("count") - 1);
+					if(num == 0){
+						cuisines.remove(obj);
+					}
+				}
+			}
+			
+		}
+		
+		String cuisineText = JSONObject.toJSONString(cuisines);
+		UserBuyCarUtils.saveBuyCar(request, response, cuisineText);
+
+	}
+	
+	@RequestMapping("/add.do")
 	public void add(HttpServletRequest request , HttpServletResponse response) throws UnsupportedEncodingException{
 		Env env = EnvUtils.getEnv();
-		long id = env.paramLong("id", 0);
+		long id = env.paramLong("cuisineId", 0);
 		Cuisine cuisine = cuisineService.getCuisine(id);
 		long cuisineId = cuisine.getId();
 		JSONObject json = new JSONObject();
@@ -81,7 +128,7 @@ public class BuyCarController {
 
 	}
 	
-	@RequestMapping("deleted.do")
+	@RequestMapping("/deleted.do")
 	public void deleted(HttpServletRequest request , HttpServletResponse response) throws UnsupportedEncodingException{
 		Env env = EnvUtils.getEnv();
 		long id = env.paramLong("id", 0);
@@ -102,7 +149,7 @@ public class BuyCarController {
 		UserBuyCarUtils.saveBuyCar(request, response, cuisines.toString());
 	}
 	
-	@RequestMapping("clean.do")
+	@RequestMapping("/clean.do")
 	public void clean(HttpServletRequest request , HttpServletResponse response){
 		UserBuyCarUtils.saveBuyCar(request, response, "");
 	}

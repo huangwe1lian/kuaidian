@@ -121,7 +121,7 @@
 									<p class="foodprice">¥ <span>${item.price}</span></p>
 								</div>
 								<div class="toCar">
-
+									<input class="foodid2" type="hidden" value="${item.id}">
 									<span class="toCarReduce"></span>
 									<span class="toCarNum">0</span>
 									<span class="toCarAdd"></span>
@@ -257,8 +257,10 @@
 					var num = $(this).siblings('.toCarNum').html()
 					num++
 					$(this).siblings('.toCarNum').html(num)
-					$(this).parents('.fooditem').addClass('act')
-					
+					$(this).parents('.fooditem').addClass('act');
+					var id = $(this).siblings('.foodid2').val()
+					var image = new Image();
+					image.src =  '/buycar/add.do?cuisineId=' + id;
 				})
 				
 				$('.fooditem .toCarReduce').click(function() {
@@ -270,6 +272,9 @@
 						}
 					}
 					$(this).siblings('.toCarNum').html(num)
+					var id = $(this).siblings('.foodid2').val()
+					var image = new Image();
+					image.src =  '/buycar/reduce.do?cuisineId=' + id;
 				})
 
 				$('.nav').click(function() {
@@ -288,9 +293,10 @@
 						for(var i in arr) {
 							ids += arr[i].cuisineid + ",";
 						}
+						console.log(arr);
 						if(ids.length > 0){
 							ids = ids.substring(0,ids.length-1);
-							location.href = '/user/order/create.do?contractorId=1&cuisineId='+ids;
+							location.href = '/buycar/list.do';
 						}
 					}else{
 						com.tips('请选择菜品');
@@ -379,7 +385,6 @@
 					} else {
 						$('.buycar').addClass('act')
 					}
-					console.log(arr)
 					$('.buyCarPrice span').html(totalfoddPrice)
 					$('.buyCarnum').html(totalfoodNum)
 					refreshList()

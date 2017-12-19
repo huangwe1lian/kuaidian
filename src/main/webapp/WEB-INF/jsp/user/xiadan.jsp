@@ -110,6 +110,7 @@
 						<div class="inner">
 							<img src="/user/img/fooditem.jpg" alt="" />
 							<span>${item.name}</span>
+							<input name="foodid" type="hidden" value="${item.id}">
 							<i class="fenshu">x${item.count}</i>
 							<i class="price">￥${item.price}</i>
 						</div>
@@ -157,7 +158,7 @@
 			</div>
 			<div class="paybottom">
 				<span class="TotalPrice">${totalMoney}</span>
-				<a href="/user/order/create.do" >去支付</a>
+				<a href="/user/order/create.do?contractorId=1&" >去支付</a>
 			</div>
 			
 		</div>
