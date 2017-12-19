@@ -1,12 +1,12 @@
 .area{background:#fff;}
-.g-doc {background:#efefef; text-align: center; position: relative; text-align:center; width: 7.5rem; margin: 0px auto;margin-bottom:0.99rem; }
-.area1{height: 5.22rem;}
+.g-doc {background:#efefef; text-align: center; position: relative; text-align:center; width: 7.5rem; margin: 0px auto;margin-bottom:2.99rem; }
+.area1{height: 4.6rem;}
 .inner{height: 100%; position: relative;}
 .bannerSwiper{height: 3rem;}
 .swiper-pagination-bullet-active{background:#fff;}
-.a1SortBox{height: 2.22rem; }
-.a1SortBox img{width: 1rem;height: 1rem;}
-.a1SortBox a{font:0.22rem/normal "microsoft yahei"; color:#000000; margin-top: 0.4rem; display:inline-block; width: 2.16rem;}
+.a1SortBox{height: 2.22rem; border-radius:0.5rem 0.5rem 0 0; position: relative; top: -0.4rem; background:#fff; z-index:2;}
+.a1SortBox img{width: 0.61rem;height:auto}
+.a1SortBox a{font:0.22rem/normal "microsoft yahei"; color:#000000; margin-top: 0.7rem; display:inline-block; width: 1.6rem;}
 .a1SortBox p{margin-top: 0.1rem;}
 .area2,.area3,.area4{margin-top:  0.2rem; height: 3.84rem;}
 .inner{margin:0 0.4rem;}
@@ -30,4 +30,21 @@
 .compareCenter{background:#e0e0e0; width: 2.01rem; height: 0.83rem; position: absolute; left: 2.36rem;top: 1.2rem;}
 .colorBar{height: 100%;position: absolute; left: 0;top: 0; background:#ff5e59;}
 .compareCover{position: absolute;left: 0;top: 0; width: 100%;height: 100%; background:url(../img/compare-cover.png) 0 0/ cover;}
+
+.swiper-pagination{bottom:24px !important;}
+.area2{margin-top: 0.4rem;}
+.ad{margin-top: 0.2rem;}
+.week-item{height: 2rem; text-align:left; border-bottom:1px solid #efefef;}
+.week-item img{margin-right: 0.2rem; height: 1.4rem;width: 1.4rem; margin-top: 0.28rem; float: left;}
+.rbox .foodname{margin-top: 0.24rem; font:0.26rem/normal "microsoft yahei"; color:#333;}
+.foodinfo{margin-top: 0.1rem; font:0.21rem/normal "microsoft yahei"; color:#bbb;}
+.foodfavnum{margin-top: 0.4rem; font:0.21rem/normal "microsoft yahei"; color:#333;}
+.rbox {overflow: hidden;}
+.week-item{position: relative;}
+.favbtn{position: absolute; right: 0;top:0.7rem; background:url(../img/icon-indexfav.png) 0 0/contain; width: 1.5rem;height: 0.6rem;}
+.favbtn.act{background:url(../img/icon-indexfava.png) 0 0/contain;}
+.iconplus{z-index:10; background:url(../img/icon-plus.png) 0 0/contain; z-index:2; width: 1rem;height: 1rem; position: fixed; top:300px;right: 0;}
+.iconplus.act{background:url(../img/icon-pluscar.png) 0 0/contain;}
+.hor-scroll .inner{-webkit-overflow-scrolling:touch;}
+.hor-scroll .foodname{text-align:center;}
 
