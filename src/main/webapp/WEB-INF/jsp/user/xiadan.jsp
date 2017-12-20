@@ -97,7 +97,7 @@
 	<body>
 
 		<div class="g-doc">
-			<form id="form" action="" method="post"> 
+			<form id="form" action="/user/order/create.do?contractorId=1" method="post"> 
 				<div class="area area1">
 					<div class="titleBox">
 						<div class="inner">
@@ -129,10 +129,10 @@
 							<div class="inner">
 								<label for="sel1">
 									<span class="infoitemKey">预约时间</span>
-									<select id="sel1" name="sel1">
-										<option value="12:30~12:40">12:30 ~ 12:40</option>
-										<option value="12:40~12:50">12:40 ~ 12:50</option>
-										<option value="12:50~13:00">12:50 ~ 13:00</option>
+									<select id="appointTimne" name="appointTimne">
+										<option value="1">12:30 ~ 12:40</option>
+										<option value="2">12:40 ~ 12:50</option>
+										<option value="3">12:50 ~ 13:00</option>
 									</select>
 									<i class="icon-arrow"></i>
 								</label>
@@ -142,7 +142,7 @@
 							<div class="inner">
 								<label for="sel2">
 									<span class="infoitemKey">口味设置</span>
-									<select id="sel2" name="sel1">
+									<select id="taste" name="taste">
 										<option value="0">无</option>
 										<option value="1">甜</option>
 										<option value="2">酸</option>
@@ -160,7 +160,7 @@
 				</div>
 				<div class="paybottom">
 					<span class="TotalPrice">￥${totalMoney}</span>
-					<a href="/user/order/create.do?contractorId=1&cuisineId=${ids}" >去支付</a>
+					<a href="javascript:doSubmit();">去支付</a>
 				</div>
 			</form>
 		</div>
@@ -171,6 +171,9 @@
 		<script src="/user/js/popup.js" type="text/javascript" charset="utf-8"></script>
 		<script src="/user/js/com.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
+			function doSubmit(){
+				$("#form").submit();
+			}
 		</script>
 
 		<!--页面脚本区E-->

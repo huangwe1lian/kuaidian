@@ -104,13 +104,13 @@
 				<div class="swiper-container bannerSwiper">
 					<div class="swiper-wrapper">
 						<div class="swiper-slide">
-							<img src="img/banner.jpg" />
+							<img src="/user/img/banner.jpg" />
 						</div>
 						<div class="swiper-slide">
-							<img src="img/banner.jpg" />
+							<img src="/user/img/banner.jpg" />
 						</div>
 						<div class="swiper-slide">
-							<img src="img/banner.jpg" />
+							<img src="/user/img/banner.jpg" />
 						</div>
 					</div>
 					<div class="swiper-pagination"></div>
@@ -118,155 +118,77 @@
 
 				<div class="a1SortBox">
 					<a href="#">
-						<img src="img/icon-index1.png" alt="" />
+						<img src="/user/img/icon-index1.png" alt="主食" />
 						<p>主食</p>
 					</a>
 					<a href="#">
-						<img src="img/icon-index2.png" alt="" />
+						<img src="/user/img/icon-index2.png" alt="主食" />
 						<p>主食</p>
 					</a>
 					<a href="#">
-						<img src="img/icon-index3.png" alt="" />
+						<img src="/user/img/icon-index3.png" alt="面食" />
 						<p>面食</p>
 					</a>
 					<a href="#">
-						<img src="img/icon-index4.png" alt="" />
+						<img src="/user/img/icon-index4.png" alt="粥汤" />
 						<p>粥汤</p>
 					</a>
 				</div>
 
 			</div>
-
-			<div class="area area2">
-
-				<div class="titleBox">
-					<div class="inner">
-						<div class="areaTitle">今日推荐<span>Today's selection</span></div>
-					</div>
-				</div>
-				<div class="hor-scroll">
-					<div class="inner ">
-						<div class="fooditem">
-							<div class="fooditem-pic">
-								<img src="img/fooditem.jpg" />
-								<div class="price">￥18</div>
-							</div>
-							<p class="foodname">土豆蘑菇饭</p>
-						</div>
-						<div class="fooditem">
-							<div class="fooditem-pic">
-								<img src="img/fooditem.jpg" />
-								<div class="price">￥18</div>
-							</div>
-							<p class="foodname">土豆蘑菇饭</p>
-						</div>
-						<div class="fooditem">
-							<div class="fooditem-pic">
-								<img src="img/fooditem.jpg" />
-								<div class="price">￥18</div>
-							</div>
-							<p class="foodname">土豆蘑菇饭</p>
-						</div>
-						<div class="fooditem">
-							<div class="fooditem-pic">
-								<img src="img/fooditem.jpg" />
-								<div class="price">￥18</div>
-							</div>
-							<p class="foodname">土豆蘑菇饭</p>
-						</div>
-						<div class="fooditem">
-							<div class="fooditem-pic">
-								<img src="img/fooditem.jpg" />
-								<div class="price">￥18</div>
-							</div>
-							<p class="foodname">土豆蘑菇饭</p>
-						</div>
-						<div class="fooditem">
-							<div class="fooditem-pic">
-								<img src="img/fooditem.jpg" />
-								<div class="price">￥18</div>
-							</div>
-							<p class="foodname">土豆蘑菇饭</p>
-						</div>
-						<div class="fooditem">
-							<div class="fooditem-pic">
-								<img src="img/fooditem.jpg" />
-								<div class="price">￥18</div>
-							</div>
-							<p class="foodname">土豆蘑菇饭</p>
+			<c:if test="${!empty today}">
+				<div class="area area2">
+	
+					<div class="titleBox">
+						<div class="inner">
+							<div class="areaTitle">今日推荐<span>Today's selection</span></div>
 						</div>
 					</div>
+					<div class="hor-scroll">
+							<div class="inner ">
+								<c:forEach items="${today}" var="item">
+									<div class="fooditem">
+										<div class="fooditem-pic">
+											<img src="/user/img/fooditem.jpg" />
+											<div class="price">￥${item.price}</div>
+										</div>
+										<p class="foodname">${item.name}</p>
+									</div>
+								</c:forEach>
+							</div>
+					</div>
+	
 				</div>
-
-			</div>
-
+			</c:if>
 			<div class="area ad">
 				<a href="#" target="_blank">
-					<img src="img/adbanner.jpg" />
+					<img src="/user/img/adbanner.jpg" />
 				</a>
 			</div>
-			<div class="area area3">
-
-				<div class="titleBox">
-					<div class="inner">
-						<div class="areaTitle">明日推荐<span>Tomorrow's selection</span></div>
-					</div>
-				</div>
-				<div class="hor-scroll">
-					<div class="inner ">
-						<div class="fooditem">
-							<div class="fooditem-pic">
-								<img src="img/fooditem.jpg" />
-								<div class="price">￥18</div>
-							</div>
-							<p class="foodname">土豆蘑菇饭</p>
-						</div>
-						<div class="fooditem">
-							<div class="fooditem-pic">
-								<img src="img/fooditem.jpg" />
-								<div class="price">￥18</div>
-							</div>
-							<p class="foodname">土豆蘑菇饭</p>
-						</div>
-						<div class="fooditem">
-							<div class="fooditem-pic">
-								<img src="img/fooditem.jpg" />
-								<div class="price">￥18</div>
-							</div>
-							<p class="foodname">土豆蘑菇饭</p>
-						</div>
-						<div class="fooditem">
-							<div class="fooditem-pic">
-								<img src="img/fooditem.jpg" />
-								<div class="price">￥18</div>
-							</div>
-							<p class="foodname">土豆蘑菇饭</p>
-						</div>
-						<div class="fooditem">
-							<div class="fooditem-pic">
-								<img src="img/fooditem.jpg" />
-								<div class="price">￥18</div>
-							</div>
-							<p class="foodname">土豆蘑菇饭</p>
-						</div>
-						<div class="fooditem">
-							<div class="fooditem-pic">
-								<img src="img/fooditem.jpg" />
-								<div class="price">￥18</div>
-							</div>
-							<p class="foodname">土豆蘑菇饭</p>
-						</div>
-						<div class="fooditem">
-							<div class="fooditem-pic">
-								<img src="img/fooditem.jpg" />
-								<div class="price">￥18</div>
-							</div>
-							<p class="foodname">土豆蘑菇饭</p>
+			<c:if test="${!empty tromorrow}">
+				<div class="area area3">
+	
+					<div class="titleBox">
+						<div class="inner">
+							<div class="areaTitle">明日推荐<span>Tomorrow's selection</span></div>
 						</div>
 					</div>
+					<div class="hor-scroll">
+							<div class="inner ">
+								<c:forEach items="${tromorrow}" var="item">
+									<div class="fooditem">
+										<div class="fooditem-pic">
+											<img src="/user/img/fooditem.jpg" />
+											<div class="price">￥${item.price}</div>
+										</div>
+										<p class="foodname">${item.name}</p>
+									</div>
+								</c:forEach>
+							</div>
+					</div>
+	
 				</div>
-
-			</div>
+			</c:if>
 			<div class="area area4">
 
 				<div class="titleBox">
@@ -277,7 +199,7 @@
 				<div class="week-selectbox">
 					<div class="inner">
 						<div class="week-item">
-							<img src="img/fooditem.jpg" />
+							<img src="/user/img/fooditem.jpg" />
 							<div class="rbox">
 								<div class="foodname">土豆蘑菇饭</div>
 								<div class="foodinfo">土豆+蘑菇+生姜</div>
@@ -287,7 +209,7 @@
 
 						</div>
 						<div class="week-item">
-							<img src="img/fooditem.jpg" />
+							<img src="/user/img/fooditem.jpg" />
 							<div class="rbox">
 								<div class="foodname">土豆蘑菇饭</div>
 								<div class="foodinfo">土豆+蘑菇+生姜</div>

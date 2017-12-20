@@ -171,16 +171,17 @@
 			</div>
 			
 			<div class="bottomNav">
-				<a href="/user/index.do" class="bottomNavBtn sideBtn act">
-					<img src="img/icon-kuaidian.png"/>
+				<a href="/user/index.do" class="bottomNavBtn sideBtn ">
+					<img src="/user/img/icon-b1a.png" />
 					<p>快点</p>
 				</a>
-				<a href="/user/cuisine/list.do" class="bottomNavBtn bottomNavBtnCenter">
-					
+				<a href="/user/cuisine/list.do" class="bottomNavBtn sideBtn bottomNavBtnCenter">
+					<img src="/user/img/icon-b2a.png" />
+					<p>订餐</p>
 				</a>
-				<a href="#" class="bottomNavBtn sideBtn">
-					<img src="img/icon-kuaidian.png"/>
-					<p>个人中心</p>
+				<a href="#" class="bottomNavBtn sideBtn act">
+					<img src="/user/img/icon-b3.png" />
+					<p>我</p>
 				</a>
 			</div>
 			

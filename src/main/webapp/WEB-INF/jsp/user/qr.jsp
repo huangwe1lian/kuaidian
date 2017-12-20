@@ -107,7 +107,7 @@
 									<div class="qrtitle">当前订单</div>
 									<div class="qrinfo">
 										<div class="qrinfoLeft">
-											<div class="qrinfoLi1">${item.name}<span> x2 item.num</span> ...</div>
+											<div class="qrinfoLi1">${item.name}<span> x${item.num}</span> </div>
 											<div class="qrinfoLi2"><fmt:formatDate value="${order.createTime}" pattern="yyyy-MM-dd HH:mm:ss" /></div>
 										</div>
 										<div class="qrinfoRight colorGreen">
@@ -127,7 +127,7 @@
 						</c:forEach>
 					</div>
 				</div>
-				<div class="tipsinfo">取餐时段：2017-10-20 12:30至13:30 <span class="icon-question"></span></div>
+				<div class="tipsinfo">取餐时段：<fmt:formatDate value="${order.appointTimeStart}" pattern="MM-dd HH:mm" />至<fmt:formatDate value="${order.appointTimeEnd}" pattern="HH:mm" /> <span class="icon-question"></span></div>
 				<div class="swiper-pagination1 dz"></div>
 			</div>
 			
@@ -139,7 +139,7 @@
 					</div>
 				</div>
 				<div class="a2foodHistoryList">
-					<c:forEach items="${orders}" var="item" begin="1">
+					<c:forEach items="${orders}" var="item" >
 						<div class="a2foodHistoryItem">
 							<div class="inner">
 								<div class="picbox">
