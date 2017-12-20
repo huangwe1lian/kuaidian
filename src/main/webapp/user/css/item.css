@@ -1,0 +1,52 @@
+body{-webkit-tap-highlight-color:transparent;}
+.area{background:#fff;}
+.g-doc {background:#efefef; text-align: center; position: relative; text-align:center; width: 7.5rem; margin: 0px auto 2rem;}
+
+.buycar{z-index:3; background:url(../img/xiadanBottom.png) 0 0/contain; width: 7.5rem; height: 1.42rem; position: fixed; bottom:0; left: 0;}
+.buyCarnum{display:none; font:0.2rem/0.4rem "microsoft yahei"; color:#fff; border:0.03rem solid #fff; box-sizing:border-box; background:#ff8383; position: absolute; left: 1.21rem; top: 0.1rem; width: 0.41rem; border-radius:0.2rem; height: 0.41rem;}
+.buyCarSum{ width: 2rem; height: 0.98rem; position: absolute; right: 0;bottom: 0; display:block; background:#ccc;font:0.3rem/0.98rem "microsoft yahei"; color:#fff;}
+.buycar.act .buyCarnum{display:block;}
+.buycar.act .buyCarSum{background:#ff5e59;}
+.buyCarPrice{position: absolute; top: 0.66rem; left: 1.9rem; color:#333; font:bold 0.27rem/normal "microsoft yahei";}
+.mask{background:rgba(0,0,0,.7);position: absolute; width: 100%;height: 100%;left: 0;bottom: 0;}
+.buyCarpopup{z-index:2; position: fixed; width: 100%;height: 100%;left: 0;top: 0;}
+.buyCarListItem{position: relative; height: 1rem; background:#fff;}
+.buyCarList{position: absolute; letter-spacing: 0;bottom: 0; width: 100%; padding-bottom: 1.4rem; background:#efefef;}
+.buyCarListTitle{height: 0.75rem; background:#fff; border-bottom:1px solid #efefef; font:bold 0.24rem/0.75rem "microsoft yahei"; text-align:left; text-indent:0.41rem; color:#999;}
+.buyCarListItem{font:0.3rem/1rem "microsoft yahei";border-bottom:1px solid #efefef; color:#333;}
+.buyCarItemName{position: absolute; left: 0.4rem;top: 0;}
+.buyCarItemPrice{position: absolute; left: 4.86rem; top: 0;}
+.buyCarListItem .toCar{bottom: 0;}
+.buycarbtn{width: 1.2rem; height: 1.42rem;position: absolute;left: 0.41rem; top: 0;}
+.fooditem .toCarNum,.fooditem .toCarReduce{display:none;}
+.fooditem.act .toCarNum,.fooditem.act .toCarReduce{display:inline-block;}
+.a1picbox{height: 3.6rem; width: 100%; }
+.a1picbox img{width: 100%;height: 100%;object-fit: cover;}
+.area1{height: 5.3rem;}
+.icon-star{ width: 0.28rem;height: 0.27rem; background:url(../img/start.png) 0 0/ contain no-repeat; display:inline-block;}
+.icon-star.act{background:url(../img/starta.png) 0 0/ contain no-repeat; }
+.foodstar{float: right;}
+.foodname{float: left; font:bold 0.28rem/normal "microsoft yahei"; color:#333;}
+.a1infoline{min-height: 0.4rem; overflow: hidden; margin:0 0.2rem;}
+.a1infoline:nth-of-type(1){margin-top: 0.2rem;}
+.foodmakeby{float: left; font: 0.21rem/normal "microsoft yahei"; color:#777;}
+.foodprice{float: left; font:bold 0.34rem/normal "microsoft yahei"; color:#ff5e59;}
+.foodsalenum{float: right; font:0.2rem/normal "microsoft yahei"; color:#777;}
+..toCar{position: absolute; right:0.4rem; bottom: 0.2rem;}
+.toCarAdd,.toCarReduce{vertical-align:middle; display:inline-block; width: 0.4rem;height: 0.4rem;}
+.toCarAdd{background:url(../img/icon-add.png) 0 0/contain no-repeat;}
+.toCarReduce{background:url(../img/icon-reduce.png) 0 0/contain no-repeat;}
+.toCarNum{font:0.24rem/0.4rem "microsoft yahei";margin:0 0.1rem; color:#333;}
+.foodctr{float: right;}
+.area2{border-top:0.2rem solid #f3f3f3;}
+.areaTitle{padding-top: 0.4rem; color:#333; text-align:left; font:bold 0.3rem/normal "microsoft yahei";}
+.titleBox{height: 0.89rem; border-bottom:1px solid #efefef;}
+.inner{margin:0 0.4rem;}
+.headbox{float: left; margin-right: 0.24rem; height: 0.6rem;width: 0.6rem; border-radius:0.6rem;overflow: hidden;}
+.plitem{text-align:left; min-height:1.26rem; padding-top: 0.25rem; box-sizing:border-box;}
+.plname{font:0.3rem/normal "microsoft yahei"; color:#333;}
+.plstar .foodstar{display:inline-block; float: none;}
+.plstar{font:0.22rem/normal "microsoft yahei";}
+.infobox{overflow: hidden;}
+.plmain{font:0.2rem/normal "microsoft yahei"; color:#ffae23;}
+.buyCarListItem .toCar{right: 0.4rem; position: absolute;}
