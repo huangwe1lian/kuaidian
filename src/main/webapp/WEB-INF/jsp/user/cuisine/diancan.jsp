@@ -102,10 +102,14 @@
 			</div>
 			<div class="area area2">
 				<div class="Listleft">
-					<div class="nav act">推荐1</div>
-					<div class="nav">推荐2</div>
-					<div class="nav">推荐3</div>
-
+					<div class="nav act">推荐</div>
+					<div class="nav">主菜</div>
+					<div class="nav">副菜</div>
+					<div class="nav">素菜</div>
+					<div class="nav">小吃</div>
+					<div class="nav">水果</div>
+					<div class="nav">明日推荐</div>
+					<div class="nav">后日推荐</div>
 				</div>
 				<div class="Listright">
 					<!--tap1-->
@@ -212,9 +216,9 @@
 			</div>
 
 			<div class="buycar act">
-				<div class="buyCarnum">1</div>
-				<div class="buyCarPrice">¥ <span>32</span></div>
-				<div class="buyCarSum">结算</div>
+				<div class="buyCarnum">0</div>
+				<div class="buyCarPrice">¥ <span>0</span></div>
+				<a href="/buycar/list.do" class="buyCarSum">结算</a>
 				<div class="buycarbtn"></div>
 			</div>
 			<div class="buyCarpopup" style="display:none;">
@@ -236,45 +240,59 @@
 		<script src="/user/js/com.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
 			$(function() {
-				var arr = []
+				if(!com.getCookie('_kd_user_buyCar_')){
+					var arr=[]
+				}else{
+					var arr=JSON.parse(com.getCookie('_kd_user_buyCar_')).Carlist
+				}
+		
+				init()
+				function init() {
+					for(var j in arr) {
+						$('.fooditem').map(function(index, item) {
+							if($(item).attr('data-id') == arr[j].foodid) {
+								$(item).find('.toCarNum').html(arr[j].num)
+								$(item).addClass('act')
+							}
+						})
+
+					}
+				}
 
 				var pxa = parseFloat(window.getComputedStyle(document.documentElement)["fontSize"])
 				$('.area2').css('height', $(window).height() - (2.3 * pxa) + 'px')
 				$('.g-doc').css('height', $(window).height())
 
 				$('.buycarbtn').click(function() {
-					
-					if(arr.length){
+
+					if(arr.length) {
 						$('.buyCarpopup').toggle()
-					}else{
+					} else {
 						com.tips('请选择菜品')
 						$('.buyCarpopup').hide()
 					}
-					
+
 				})
 				$('.fooditem .toCarAdd').click(function() {
 
 					var num = $(this).siblings('.toCarNum').html()
 					num++
 					$(this).siblings('.toCarNum').html(num)
-					$(this).parents('.fooditem').addClass('act');
-					var id = $(this).siblings('.foodid2').val()
-					var image = new Image();
-					image.src =  '/buycar/add.do?cuisineId=' + id;
+					$(this).parents('.fooditem').addClass('act')
+					refreshCar()
+
 				})
-				
+
 				$('.fooditem .toCarReduce').click(function() {
 					var num = $(this).siblings('.toCarNum').html()
 					if(num > 0) {
 						num--
-						if(num==0){
+						if(num == 0) {
 							$(this).parents('.fooditem').removeClass('act')
 						}
 					}
 					$(this).siblings('.toCarNum').html(num)
-					var id = $(this).siblings('.foodid2').val()
-					var image = new Image();
-					image.src =  '/buycar/reduce.do?cuisineId=' + id;
+					refreshCar()
 				})
 
 				$('.nav').click(function() {
@@ -282,26 +300,17 @@
 					$('.tapbox').eq($(this).index()).show().siblings().hide()
 
 				})
-				$('.mask').click(function(){
+				$('.mask').click(function() {
 					$('.buyCarpopup').hide()
 				})
-				$('.buyCarSum').click(function(){
+				$('.buyCarSum').click(function() {
 					//结算按钮
-					if($('.buycar').hasClass('act')){
-						com.tips('正在结算');
-						var ids = "";
-						for(var i in arr) {
-							ids += arr[i].cuisineid + ",";
-						}
-						console.log(arr);
-						if(ids.length > 0){
-							ids = ids.substring(0,ids.length-1);
-							location.href = '/buycar/list.do';
-						}
-					}else{
-						com.tips('请选择菜品');
+					if($('.buycar').hasClass('act')) {
+						com.tips('正在结算')
+					} else {
+						com.tips('请选择菜品')
 					}
-					
+
 				})
 
 				$('.buyCarItembox').on('click', '.toCarReduce', function() {
@@ -311,7 +320,7 @@
 						if($('.fooditem').eq(i).attr('data-id') == nowid) {
 							var num = $('.fooditem').eq(i).find('.toCarNum').html()
 							num--
-							if(num==0){
+							if(num == 0) {
 								$('.fooditem').eq(i).removeClass('act')
 							}
 							$('.fooditem').eq(i).find('.toCarNum').html(num)
@@ -321,16 +330,17 @@
 						if(parseInt(arr[i].foodid) == nowid) {
 							arr[i].num--
 								if(arr[i].num == 0) {
-									
+
 									arr.splice(i, 1)
-									
+
 								}
 						}
 					}
 					refreshCar()
+					
 
 				})
-				
+
 				$('.buyCarItembox').on('click', '.toCarAdd', function() {
 					var nowid = $(this).parents('.buyCarListItem').attr('data-id')
 
@@ -365,7 +375,6 @@
 							if(nowFoodiTem.eq(j).find('.toCarNum').html() > 0) {
 								arr.push({
 									foodid: nowFoodiTem.eq(j).attr('data-id'),
-									cuisineid: nowFoodiTem.eq(j).find('.foodid').val(),
 									foodname: nowFoodiTem.eq(j).find('.foodname').html(),
 									price: nowFoodiTem.eq(j).find('.foodprice span').html(),
 									num: parseInt(nowFoodiTem.eq(j).find('.toCarNum').html())
@@ -373,18 +382,18 @@
 								totalfoodNum += parseInt(nowFoodiTem.eq(j).find('.toCarNum').html())
 								totalfoddPrice += (nowFoodiTem.eq(j).find('.toCarNum').html() * nowFoodiTem.eq(j).find('.foodprice span').html())
 							}
-							
-							
+
 						}
-						if(arr.length==0){
-								$('.buyCarpopup').hide()
-							}
+						if(arr.length == 0) {
+							$('.buyCarpopup').hide()
+						}
 					}
 					if(totalfoodNum == 0) {
 						$('.buycar').removeClass('act')
 					} else {
 						$('.buycar').addClass('act')
 					}
+					console.log(arr)
 					$('.buyCarPrice span').html(totalfoddPrice)
 					$('.buyCarnum').html(totalfoodNum)
 					refreshList()
@@ -401,17 +410,21 @@
 						str += '<div class="toCar">'
 						str += '<span class="toCarReduce"></span>'
 						str += '<span class="toCarNum">' + arr[i].num + '</span>'
-						str += '<span class="toCarAdd"></span>';
+						str += '<span class="toCarAdd"></span>'
 						str += '</div>'
 						str += '</div>'
 
 					}
 					$('.buyCarItembox').html(str)
+					
+					
 
+					
+					com.setCookie('_kd_user_buyCar_', JSON.stringify({Carlist:arr}))
 				}
 
 				$('.toCar').click(function() {
-					refreshCar()
+					
 				})
 
 			})

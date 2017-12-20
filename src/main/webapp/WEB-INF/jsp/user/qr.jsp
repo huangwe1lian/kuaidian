@@ -107,7 +107,7 @@
 									<div class="qrtitle">当前订单</div>
 									<div class="qrinfo">
 										<div class="qrinfoLeft">
-											<div class="qrinfoLi1">${item.name}<span> x2</span> ...</div>
+											<div class="qrinfoLi1">${item.name}<span> x2 item.num</span> ...</div>
 											<div class="qrinfoLi2"><fmt:formatDate value="${order.createTime}" pattern="yyyy-MM-dd HH:mm:ss" /></div>
 										</div>
 										<div class="qrinfoRight colorGreen">

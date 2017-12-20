@@ -14,6 +14,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
+
 import cn.com.kuaidian.entity.Cuisine;
 import cn.com.kuaidian.entity.Order;
 import cn.com.kuaidian.entity.OrderCuisine;
@@ -25,6 +28,7 @@ import cn.com.kuaidian.service.OrderService;
 import cn.com.kuaidian.service.shangjia.ContractorService;
 import cn.com.kuaidian.service.user.UserService;
 import cn.com.kuaidian.util.StringUtils;
+import cn.com.kuaidian.util.UserBuyCarUtils;
 
 @Controller
 @RequestMapping("/user")
@@ -49,7 +53,7 @@ public class OrderController {
     public String orderCreate(HttpServletRequest req, HttpServletResponse resp) throws Exception {
 		Env env = EnvUtils.getEnv();
 		long contractorId = env.paramLong("contractorId",0);
-		String cuisineId = env.param("cuisineId", "");
+		//String cuisineId = env.param("cuisineId", "");
         Order order = new Order();
         User user = UserSecurity.getCurrentUser(req);
         String outTradeNo = System.currentTimeMillis()+"";
@@ -62,8 +66,35 @@ public class OrderController {
 		order.setCreateTime(now);
 		order.setUpdateTime(now);
 		order.setStatus(0);
+		geliDao.create(order);
 		
-		double total = 0;
+		double totalMoney = 0;
+		JSONArray cuisine = UserBuyCarUtils.getBuyCarByJsonArray(req);
+		if(cuisine !=null && cuisine.size() >0){
+			for(int i=0 ;i < cuisine.size() ;i++){
+				JSONObject json = cuisine.getJSONObject(i);
+				long id = json.getLong("foodid");
+				double price = json.getDouble("price");
+				double count = json.getDouble("num");
+				
+				OrderCuisine orderCuisine = new OrderCuisine();
+				orderCuisine.setOrderId(order.getId());
+				orderCuisine.setCuisineId(id);
+				orderCuisine.setNum(1);
+				geliDao.create(orderCuisine);
+				
+				totalMoney += (price * count);
+			}
+		}
+		
+		if(contractorId > 0){
+			Contractor contractor = contractorService.getContractor(contractorId);
+			order.setContractorId(contractor.getId());
+		}
+		order.setPrice(totalMoney);
+		geliDao.update(order);
+		
+		/*double total = 0;
 		if(!StringUtils.isEmpty(cuisineId)){
 			String[] idsArr = cuisineId.split(",");
 			for(int i = 0 ; i< idsArr.length;i++){
@@ -76,9 +107,9 @@ public class OrderController {
 		if(contractorId > 0){
 			Contractor contractor = contractorService.getContractor(contractorId);
 			order.setContractorId(contractor.getId());
-		}
+		}*/
 		
-		geliDao.create(order);
+		/*geliDao.create(order);
 		
 		
 		if(!StringUtils.isEmpty(cuisineId)){
@@ -88,9 +119,11 @@ public class OrderController {
 				OrderCuisine orderCuisine = new OrderCuisine();
 				orderCuisine.setOrderId(order.getId());
 				orderCuisine.setCuisineId(id);
+				orderCuisine.setNum(1);
 				geliDao.create(orderCuisine);
 			}
-		}
+		}*/
+		UserBuyCarUtils.saveBuyCar(req, resp, "");
 		return "redirect:/user/order/confirm.do?orderId="+ order.getId();
     }
 	
@@ -160,11 +193,5 @@ public class OrderController {
 	@RequestMapping(value="/sum.do")
     public String sum(HttpServletRequest req, HttpServletResponse resp) throws Exception {
         return "/user/sum";
-    }
-	
-	
-	@RequestMapping(value="/xiadan.do")
-    public String xiadan(HttpServletRequest req, HttpServletResponse resp) throws Exception {
-        return "/user/xiadan";
     }
 }

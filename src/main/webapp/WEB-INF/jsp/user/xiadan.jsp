@@ -97,70 +97,72 @@
 	<body>
 
 		<div class="g-doc">
-
-			<div class="area area1">
-				<div class="titleBox">
-					<div class="inner">
-						<div class="areaTitle">已选菜品</div>
-					</div>
-				</div>
-				<div>
-				<c:forEach var="item" items="${cuisine}">
-					<div class="infoitem ">
+			<form id="form" action="" method="post"> 
+				<div class="area area1">
+					<div class="titleBox">
 						<div class="inner">
-							<img src="/user/img/fooditem.jpg" alt="" />
-							<span>${item.name}</span>
-							<input name="foodid" type="hidden" value="${item.id}">
-							<i class="fenshu">x${item.count}</i>
-							<i class="price">￥${item.price}</i>
+							<div class="areaTitle">已选菜品</div>
 						</div>
 					</div>
-				</c:forEach>
-				</div>
-			</div>
-			<div class="area area2">
-				<div class="titleBox">
-					<div class="inner">
-						<div class="areaTitle">备注</div>
+					<div>
+					<c:forEach var="item" items="${cuisine}">
+						<div class="infoitem ">
+							<div class="inner">
+								<img src="/user/img/fooditem.jpg" alt="" />
+								<span>${item.foodname}</span>
+								<input name="foodid" type="hidden" value="${item.foodid}">
+								<i class="fenshu">x${item.num}</i>
+								<i class="price">￥${item.price}</i>
+							</div>
+						</div>
+					</c:forEach>
 					</div>
 				</div>
-				<div>
-					<div class="infoitem2 ">
+				<div class="area area2">
+					<div class="titleBox">
 						<div class="inner">
-							<label for="sel1">
-								<span class="infoitemKey">预约时间</span>
-								<select id="sel1" name="sel1">
-									<option value="12:40 ~ 12:50">12:40 ~ 12:50</option>
-									<option value="12:40 ~ 12:50">12:40 ~ 12:50</option>
-									<option value="12:40 ~ 12:50">12:40 ~ 12:50</option>
-								</select>
-								<i class="icon-arrow"></i>
-							</label>
-
+							<div class="areaTitle">备注</div>
 						</div>
 					</div>
-					<div class="infoitem2 ">
-						<div class="inner">
-							<label for="sel2">
-								<span class="infoitemKey">口味设置</span>
-								<select id="sel2" name="sel1">
-									<option value=""></option>
-									<option value="">甜</option>
-									
-								</select>
-								<i class="icon-arrow"></i>
-							</label>
-
+					<div>
+						<div class="infoitem2 ">
+							<div class="inner">
+								<label for="sel1">
+									<span class="infoitemKey">预约时间</span>
+									<select id="sel1" name="sel1">
+										<option value="12:30~12:40">12:30 ~ 12:40</option>
+										<option value="12:40~12:50">12:40 ~ 12:50</option>
+										<option value="12:50~13:00">12:50 ~ 13:00</option>
+									</select>
+									<i class="icon-arrow"></i>
+								</label>
+							</div>
 						</div>
+						<div class="infoitem2 ">
+							<div class="inner">
+								<label for="sel2">
+									<span class="infoitemKey">口味设置</span>
+									<select id="sel2" name="sel1">
+										<option value="0">无</option>
+										<option value="1">甜</option>
+										<option value="2">酸</option>
+										<option value="3">苦</option>
+										<option value="4">辣</option>
+										<option value="5">咸</option>
+									</select>
+									<i class="icon-arrow"></i>
+								</label>
+	
+							</div>
+						</div>
+	
 					</div>
-
 				</div>
-			</div>
-			<div class="paybottom">
-				<span class="TotalPrice">${totalMoney}</span>
-				<a href="/user/order/create.do?contractorId=1&" >去支付</a>
-			</div>
-			
+				<div class="paybottom">
+					<span class="TotalPrice">￥${totalMoney}</span>
+					<a href="/user/order/create.do?contractorId=1&cuisineId=${ids}" >去支付</a>
+				</div>
+			</form>
 		</div>
 
 		<!--页面脚本区S-->

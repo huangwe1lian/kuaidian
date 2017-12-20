@@ -19,7 +19,11 @@ public class OrderCuisine {
 	@Label("订单菜式中间表")
 	@Column(name = "cuisine_id")
 	private long cuisineId;
-
+	
+	@Label("数量")
+	@Column(name = "num")
+	private int num;
+	
 	public long getId() {
 		return id;
 	}
@@ -44,4 +48,11 @@ public class OrderCuisine {
 		this.cuisineId = cuisineId;
 	}
 
+	public int getNum() {
+		return num;
+	}
+
+	public void setNum(int num) {
+		this.num = num;
+	}
 }

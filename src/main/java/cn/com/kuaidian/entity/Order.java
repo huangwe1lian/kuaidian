@@ -46,6 +46,14 @@ public class Order {
 	@Column(name = "status")
 	private int status;
 	
+	@Label("预约时间")
+	@Column(name="appoint_time")
+	private Date appointTime; 
+	
+	@Label("口味，0：无，1甜，2酸，3苦，4辣，5咸")
+	@Column(name="taste")
+	private int taste;
+	
 	public long getId() {
 		return id;
 	}
@@ -116,5 +124,21 @@ public class Order {
 
 	public void setOutTradeNo(String outTradeNo) {
 		this.outTradeNo = outTradeNo;
+	}
+
+	public Date getAppointTime() {
+		return appointTime;
+	}
+
+	public void setAppointTime(Date appointTime) {
+		this.appointTime = appointTime;
+	}
+
+	public int getTaste() {
+		return taste;
+	}
+
+	public void setTaste(int taste) {
+		this.taste = taste;
 	}
 }

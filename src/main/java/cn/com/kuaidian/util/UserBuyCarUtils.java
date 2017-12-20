@@ -2,8 +2,6 @@ package cn.com.kuaidian.util;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -13,19 +11,19 @@ import org.gelivable.web.EncodeUtils;
 import org.gelivable.web.Env;
 import org.gelivable.web.EnvUtils;
 
+import cn.com.kuaidian.service.CuisineService;
+
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 
-import cn.com.kuaidian.entity.Cuisine;
-import cn.com.kuaidian.service.CuisineService;
-
 public class UserBuyCarUtils {
-	public final static String tookenCookieName = "_kd_user_buyCar";
+	public final static String tookenCookieName = "_kd_user_buyCar_";
 	
 	
 	public static void saveBuyCar(HttpServletRequest request, HttpServletResponse response,String cuisineText) {
         try { 	 
         	 Cookie c = new Cookie(tookenCookieName, EncodeUtils.encodeURIComponent(cuisineText));
+        	 c.setPath("/");
         	 response.addCookie(c);
         } catch (Exception e) {
             e.printStackTrace();
@@ -35,28 +33,27 @@ public class UserBuyCarUtils {
 	
 	public static JSONArray getBuyCarByJsonArray(HttpServletRequest request) throws UnsupportedEncodingException{
 		JSONArray cuisineArray = null;
-		Env env = EnvUtils.getEnv();
 		String cuisineText = CookieUtils.getCookie(request, tookenCookieName);
 		if(!StringUtils.isBlank(cuisineText))
 		{
-		  cuisineArray = JSONObject.parseArray(URLDecoder.decode(cuisineText, "utf-8"));
+			JSONObject buycar = JSONObject.parseObject(unescape(cuisineText));
+			cuisineArray = buycar.getJSONArray("Carlist");
 		}
 		return cuisineArray;
 	}
 	
 	public static JSONArray getBuyCar(HttpServletRequest request) throws UnsupportedEncodingException{
 		JSONArray list = new JSONArray();
-		Env env = EnvUtils.getEnv();
-		CuisineService cuisineService = env.getBean(CuisineService.class);
 		String cuisineText = CookieUtils.getCookie(request, tookenCookieName);
+		System.out.println(cuisineText);
 		if(!StringUtils.isBlank(cuisineText))
 		{
-		  JSONArray cuisineArray = JSONObject.parseArray(URLDecoder.decode(cuisineText, "utf-8"));
+		  //System.out.println(unescape(cuisineText));
+		  JSONObject buycar = JSONObject.parseObject(unescape(cuisineText));
+		  JSONArray cuisineArray = buycar.getJSONArray("Carlist");
 		  if(cuisineArray != null && cuisineArray.size() > 0){
 			  for (int i = 0 ; i < cuisineArray.size(); i++) {
 				JSONObject obj = cuisineArray.getJSONObject(i);
-				long id = obj.getLongValue("id");
-				//Cuisine c = cuisineService.getCuisine(id);
 				if(obj != null){
 					list.add(obj);
 				}
@@ -65,4 +62,61 @@ public class UserBuyCarUtils {
 		}
 		return list;
 	}
+	
+	
+	public static String unescape(String src) {
+		StringBuffer tmp = new StringBuffer();
+		tmp.ensureCapacity(src.length());
+		int lastPos = 0, pos = 0;
+		char ch;
+		while (lastPos < src.length()) {
+			pos = src.indexOf("%", lastPos);
+			if (pos == lastPos) {
+				if (src.charAt(pos + 1) == 'u') {
+					ch = (char) Integer.parseInt(
+							src.substring(pos + 2, pos + 6), 16);
+					tmp.append(ch);
+					lastPos = pos + 6;
+				} else {
+					ch = (char) Integer.parseInt(
+							src.substring(pos + 1, pos + 3), 16);
+					tmp.append(ch);
+					lastPos = pos + 3;
+				}
+			} else {
+				if (pos == -1) {
+					tmp.append(src.substring(lastPos));
+					lastPos = src.length();
+				} else {
+					tmp.append(src.substring(lastPos, pos));
+					lastPos = pos;
+				}
+			}
+		}
+		return tmp.toString();
+	}
+	
+	public String escape(String src) {
+		int i;
+		char j;
+		StringBuffer tmp = new StringBuffer();
+		tmp.ensureCapacity(src.length() * 6);
+		for (i = 0; i < src.length(); i++) {
+			j = src.charAt(i);
+			if (Character.isDigit(j) || Character.isLowerCase(j)
+					|| Character.isUpperCase(j))
+				tmp.append(j);
+			else if (j < 256) {
+				tmp.append("%");
+				if (j < 16)
+					tmp.append("0");
+				tmp.append(Integer.toString(j, 16));
+			} else {
+				tmp.append("%u");
+				tmp.append(Integer.toString(j, 16));
+			}
+		}
+		return tmp.toString();
+	}
+		  
 }
