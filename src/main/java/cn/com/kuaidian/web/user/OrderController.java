@@ -29,6 +29,8 @@ import cn.com.kuaidian.service.shangjia.ContractorService;
 import cn.com.kuaidian.service.user.UserService;
 import cn.com.kuaidian.util.StringUtils;
 import cn.com.kuaidian.util.UserBuyCarUtils;
+import cn.com.kuaidian.util.dwz.Constants.AppointTimeEnd;
+import cn.com.kuaidian.util.dwz.Constants.AppointTimeStart;
 
 @Controller
 @RequestMapping("/user")
@@ -54,6 +56,9 @@ public class OrderController {
 		Env env = EnvUtils.getEnv();
 		long contractorId = env.paramLong("contractorId",0);
 		//String cuisineId = env.param("cuisineId", "");
+		int appointTimne = env.paramInt("appointTimne",0);
+		int taste = env.paramInt("taste",0);
+		
         Order order = new Order();
         User user = UserSecurity.getCurrentUser(req);
         String outTradeNo = System.currentTimeMillis()+"";
@@ -66,6 +71,20 @@ public class OrderController {
 		order.setCreateTime(now);
 		order.setUpdateTime(now);
 		order.setStatus(0);
+		order.setTaste(taste);
+		if(appointTimne == 1){
+			order.setAppointTimeStart(AppointTimeStart.FIRST);
+			order.setAppointTimeEnd(AppointTimeEnd.FIRST);
+		}else if(appointTimne == 2){
+			order.setAppointTimeStart(AppointTimeStart.SECOND);
+			order.setAppointTimeEnd(AppointTimeEnd.SECOND);
+		}else if(appointTimne == 3){
+			order.setAppointTimeStart(AppointTimeStart.THREE);
+			order.setAppointTimeEnd(AppointTimeEnd.THREE);
+		}else if(appointTimne == 4){
+			order.setAppointTimeStart(AppointTimeStart.FOUR);
+			order.setAppointTimeEnd(AppointTimeEnd.FOUR);
+		}
 		geliDao.create(order);
 		
 		double totalMoney = 0;
@@ -94,35 +113,6 @@ public class OrderController {
 		order.setPrice(totalMoney);
 		geliDao.update(order);
 		
-		/*double total = 0;
-		if(!StringUtils.isEmpty(cuisineId)){
-			String[] idsArr = cuisineId.split(",");
-			for(int i = 0 ; i< idsArr.length;i++){
-				long id = StringUtils.longValue(idsArr[i], 0);
-				Cuisine cuisine = cuisineService.getCuisine(id);
-				total += cuisine.getPrice();
-			}
-		}
-		order.setPrice(total);
-		if(contractorId > 0){
-			Contractor contractor = contractorService.getContractor(contractorId);
-			order.setContractorId(contractor.getId());
-		}*/
-		
-		/*geliDao.create(order);
-		
-		
-		if(!StringUtils.isEmpty(cuisineId)){
-			String[] idsArr = cuisineId.split(",");
-			for(int i = 0 ; i< idsArr.length;i++){
-				long id = StringUtils.longValue(idsArr[i], 0);
-				OrderCuisine orderCuisine = new OrderCuisine();
-				orderCuisine.setOrderId(order.getId());
-				orderCuisine.setCuisineId(id);
-				orderCuisine.setNum(1);
-				geliDao.create(orderCuisine);
-			}
-		}*/
 		UserBuyCarUtils.saveBuyCar(req, resp, "");
 		return "redirect:/user/order/confirm.do?orderId="+ order.getId();
     }
@@ -134,7 +124,7 @@ public class OrderController {
 		Order order = orderService.getOrder(orderId);
 		
 		if(order != null){
-			List<Cuisine> cuisines = orderService.getCuisineByOrderId(orderId);
+			List<Map<String,Object>> cuisines = orderService.getCuisineByOrderId(orderId);
 			req.setAttribute("cuisines", cuisines);
 		}
 		req.setAttribute("order", order);
@@ -180,10 +170,12 @@ public class OrderController {
 		Env env = EnvUtils.getEnv();
 		String outTradeNo =  env.param("out_trade_no", "");
 		Order order = orderService.getOrderByoutTradeNo(outTradeNo);
+		order.setStatus(1); //模拟成功支付,将状态设置为已支付
+		geliDao.update(order);//模拟成功支付
 		User user = UserSecurity.getCurrentUser(req);
 		long userId = user.getId();
 		List<Map<String, Object>> orders = orderService.getOrdersByUserPage(userId, 1, 5);
-		List<Cuisine>  cuisine = orderService.getCuisineByOrderId(order.getId());
+		List<Map<String,Object>>  cuisine = orderService.getCuisineByOrderId(order.getId());
 		req.setAttribute("cuisine", cuisine);
 		req.setAttribute("order", order);
 		req.setAttribute("orders", orders);

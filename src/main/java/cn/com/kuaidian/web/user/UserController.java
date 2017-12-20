@@ -1,9 +1,7 @@
 package cn.com.kuaidian.web.user;
 
 import java.io.IOException;
-import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,20 +13,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import cn.com.kuaidian.entity.Cuisine;
-import cn.com.kuaidian.entity.Order;
-import cn.com.kuaidian.entity.OrderCuisine;
-import cn.com.kuaidian.entity.shangjia.Contractor;
-import cn.com.kuaidian.entity.user.User;
 import cn.com.kuaidian.resource.auth.UserSecurity;
 import cn.com.kuaidian.service.CuisineService;
 import cn.com.kuaidian.service.OrderService;
 import cn.com.kuaidian.service.shangjia.ContractorService;
 import cn.com.kuaidian.service.user.UserService;
-import cn.com.kuaidian.util.StringUtils;
-import cn.com.kuaidian.util.dwz.DwzUtils;
 
 @Controller
 @RequestMapping("/user")
@@ -48,7 +39,7 @@ public class UserController {
 	
 	@Autowired
 	private GeliDao geliDao;
-
+	
 	@RequestMapping("/login.do")
 	public String longin(){
 		return "/user/login";
@@ -57,6 +48,12 @@ public class UserController {
 	
 	@RequestMapping(value="/index.do",method=RequestMethod.GET)
 	public String Index(HttpServletRequest req, HttpServletResponse resp) throws IOException{
+		List<Cuisine> today = cuisineService.getCuisineAllByPage(1, 5); //今日推荐,先出假数据
+		List<Cuisine> tromorrow = cuisineService.getCuisineAllByPage(2, 5); //明天日推荐,先出假数据
+		
+		req.setAttribute("today", today);
+		req.setAttribute("tromorrow", tromorrow);
+		
 		return "/user/index";
 	}
 	

@@ -277,6 +277,16 @@ public class DateUtils extends org.apache.commons.lang.time.DateUtils {
         cld.set(Calendar.MILLISECOND, 0);
         return cld.getTime();
     }
+    
+    public static Date getTimeOfDay(Date date,int hour,int minute,int second,int milliSecond) {
+        Calendar cld = Calendar.getInstance();
+        cld.setTime(date);
+        cld.set(Calendar.HOUR_OF_DAY, hour);
+        cld.set(Calendar.MINUTE, minute);
+        cld.set(Calendar.SECOND, second);
+        cld.set(Calendar.MILLISECOND, milliSecond);
+        return cld.getTime();
+    }
     /**
      * 获取某天的结束时刻23:59:59.000
      * @param date 需要获取天内的时间

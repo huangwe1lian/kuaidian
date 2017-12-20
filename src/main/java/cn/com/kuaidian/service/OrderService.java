@@ -39,12 +39,12 @@ public class OrderService {
 	}
 	
 	
-	public List<Cuisine> getCuisineByOrderId(long orderId){
+	public List<Map<String, Object>> getCuisineByOrderId(long orderId){
 		SqlBuilder sql = new SqlBuilder();
-		sql.appendSql("select * from kd_cuisine c,kd_order o,kd_order_cuisine oc ");
+		sql.appendSql("select c.*,oc.num  from kd_cuisine c,kd_order o,kd_order_cuisine oc ");
 		sql.appendSql("where oc.cuisine_id = c.id and oc.order_id = o.id ");
 		sql.appendSql("and o.id= ").appendValue(orderId);
-		return geliDao.list(Cuisine.class, sql.getSql(), sql.getValues());
+		return geliDao.getJdbcTemplate().queryForList(sql.getSql(), sql.getValues());
 	}
 
 	public Order getOrderByoutTradeNo(String outTradeNo) {

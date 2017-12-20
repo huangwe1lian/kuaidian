@@ -47,8 +47,12 @@ public class Order {
 	private int status;
 	
 	@Label("预约时间")
-	@Column(name="appoint_time")
-	private Date appointTime; 
+	@Column(name="appoint_time_start")
+	private Date appointTimeStart; 
+	
+	@Label("预约时间")
+	@Column(name="appoint_time_end")
+	private Date appointTimeEnd; 
 	
 	@Label("口味，0：无，1甜，2酸，3苦，4辣，5咸")
 	@Column(name="taste")
@@ -126,12 +130,20 @@ public class Order {
 		this.outTradeNo = outTradeNo;
 	}
 
-	public Date getAppointTime() {
-		return appointTime;
+	public Date getAppointTimeStart() {
+		return appointTimeStart;
 	}
 
-	public void setAppointTime(Date appointTime) {
-		this.appointTime = appointTime;
+	public void setAppointTimeStart(Date appointTimeStart) {
+		this.appointTimeStart = appointTimeStart;
+	}
+
+	public Date getAppointTimeEnd() {
+		return appointTimeEnd;
+	}
+
+	public void setAppointTimeEnd(Date appointTimeEnd) {
+		this.appointTimeEnd = appointTimeEnd;
 	}
 
 	public int getTaste() {
