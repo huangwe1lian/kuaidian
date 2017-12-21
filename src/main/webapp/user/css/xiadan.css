@@ -9,7 +9,7 @@ body{background:#efefef;}
 .infoitem span{font:0.28rem/1.2rem "microsoft yahei"; color:#000;}
 .infoitem i{position: absolute; top: 0.45rem; font:0.24rem/normal "microsoft yahei";}
 .fenshu{color:#999; width: 0.48rem; right: 1.08rem;}
-.price{color:#ff5e59; width: 0.64rem; right: 0;}
+.price{color:#ff5e59; width: 1.14rem; right: 0; text-align:center;}
 .infoitemKey{}
 .infoitem2{font:0.28rem/1.2rem "microsoft yahei";}
 .infoitem2 select{text-align:center; position: absolute; -webkit-appearance:none; right: 0;top: 0; border:none; width: 2.38rem;height: 100%; outline:none; background:none;}
