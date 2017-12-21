@@ -26,6 +26,18 @@ public class Cuisine {
 	@Column(name="price")
 	private double price;
 	
+	@Label("用户评分")
+	@Column(name = "score")
+	private double score;
+	
+	@Label("描述")
+	@Column(name="desc")
+	private String desc;
+	
+	@Label("热度值")
+	@Column(name="hot")
+	private int hot;
+	
 	@Label("菜式创建时间")
 	@Column(name = "create_time")
 	private Date createTime;
@@ -81,5 +93,28 @@ public class Cuisine {
 	public void setUpdateTime(Date updateTime) {
 		this.updateTime = updateTime;
 	}
-	
+
+	public double getScore() {
+		return score;
+	}
+
+	public void setScore(double score) {
+		this.score = score;
+	}
+
+	public String getDesc() {
+		return desc;
+	}
+
+	public void setDesc(String desc) {
+		this.desc = desc;
+	}
+
+	public int getHot() {
+		return hot;
+	}
+
+	public void setHot(int hot) {
+		this.hot = hot;
+	}
 }

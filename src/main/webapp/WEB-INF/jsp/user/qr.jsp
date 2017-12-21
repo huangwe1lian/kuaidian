@@ -89,10 +89,10 @@
 		</script>
 
 		<!-- 公用重置样式 -->
-		<link rel="stylesheet" type="text/css" href="css/reset.css" />
-		<link rel="stylesheet" type="text/css" href="css/swiper-3.4.2.min.css" />
+		<link rel="stylesheet" type="text/css" href="/user/css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="/user/css/swiper-3.4.2.min.css" />
 		<!-- 自定义样式区域 -->
-		<link rel="stylesheet" type="text/css" href="css/qr.css" />
+		<link rel="stylesheet" type="text/css" href="/user/css/qr.css" />
 	</head>
 
 	<body>
@@ -191,11 +191,11 @@
 
 		<!--页面脚本区S-->
 		<!--所有页面用到的js脚本都必须放到此位置，包括外链js和内嵌js-->
-		<script src="js/jquery.js" type="text/javascript" charset="utf-8"></script>
-		<script src="js/popup.js" type="text/javascript" charset="utf-8"></script>
-		<script src="js/com.js" type="text/javascript" charset="utf-8"></script>
-		<script src="js/swiper-3.4.2.min.js" type="text/javascript" charset="utf-8"></script>
-		<script src="js/qrcode.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/user/js/jquery.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/user/js/popup.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/user/js/com.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/user/js/swiper-3.4.2.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/user/js/qrcode.min.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
 			$(function() {
 				new Swiper('.a1swiper', {

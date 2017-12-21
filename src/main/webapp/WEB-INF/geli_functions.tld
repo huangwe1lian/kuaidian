@@ -56,7 +56,7 @@
     <function>
         <description>获取对象 指定 字段中的refer注解类对象</description>
         <name>refer</name>
-        <function-class>cn.com.fawtoyota.util.Functions</function-class>
+        <function-class>cn.com.kuaidian.util.Functions</function-class>
         <function-signature>java.lang.Object refer(java.lang.Object, java.lang.String)</function-signature>
     </function>
 </taglib>

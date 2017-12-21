@@ -15,8 +15,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import cn.com.kuaidian.entity.Comment;
-import cn.com.kuaidian.service.CommentService;
+import cn.com.kuaidian.entity.OrderComment;
+import cn.com.kuaidian.service.OrderCommentService;
 import cn.com.kuaidian.util.dwz.DwzUtils;
 
 
@@ -30,7 +30,7 @@ public class CommentController {
 	private GeliOrm geliOrm;
 	
 	@Autowired
-	private CommentService commentService;
+	private OrderCommentService commentService;
 	
 	@RequestMapping(value="/list.do")
     public String list(HttpServletRequest req, HttpServletResponse resp) throws Exception {
@@ -38,7 +38,7 @@ public class CommentController {
 		req.getAttribute("");
 		long userId = env.paramLong("userId",0L);
 		
-		List<Comment> comments = commentService.listComment(userId, 0, 0, 0);
+		List<OrderComment> comments = commentService.listComment(userId, 0, 0, 0);
 		
 		req.setAttribute("comments", comments);
 		
@@ -58,12 +58,12 @@ public class CommentController {
 		String content = env.param("content", ""); //评论内容
 		Date now = new Date();
 		
-		Comment comment = new Comment();
+		OrderComment comment = new OrderComment();
 		comment.setUserId(userId);
 		comment.setOrderId(orderId);
 		comment.setAvgScore(avgScore);
 		comment.setText(content);
-		comment.setCreateAt(now);
+		comment.setCreateTime(now);
 		
 		geliDao.create(comment);	
 		

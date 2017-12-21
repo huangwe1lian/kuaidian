@@ -145,17 +145,19 @@
 						</div>
 					</div>
 					<div class="hor-scroll">
-							<div class="inner ">
+						<div class="inner ">
 								<c:forEach items="${today}" var="item">
 									<div class="fooditem">
 										<div class="fooditem-pic">
-											<img src="/user/img/fooditem.jpg" />
+											<a href="/user/cuisine/cuisineDetail.do?cuisineId=${item.id}">
+												<img src="/user/img/fooditem.jpg" />
+											</a>
 											<div class="price">￥${item.price}</div>
 										</div>
 										<p class="foodname">${item.name}</p>
 									</div>
 								</c:forEach>
-							</div>
+						</div>
 					</div>
 	
 				</div>
@@ -170,19 +172,21 @@
 	
 					<div class="titleBox">
 						<div class="inner">
-							<div class="areaTitle">明日推荐<span>Tomorrow's selection</span></div>
+							<div class="areaTitle">猜你喜欢<span>Assume you like</span></div>
 						</div>
 					</div>
 					<div class="hor-scroll">
 							<div class="inner ">
 								<c:forEach items="${tromorrow}" var="item">
-									<div class="fooditem">
-										<div class="fooditem-pic">
-											<img src="/user/img/fooditem.jpg" />
-											<div class="price">￥${item.price}</div>
+										<div class="fooditem">
+											<div class="fooditem-pic">
+												<a href="/user/cuisine/cuisineDetail.do?cuisineId=${item.id}">
+													<img src="/user/img/fooditem.jpg" />
+												</a>
+												<div class="price">￥${item.price}</div>
+											</div>
+											<p class="foodname">${item.name}</p>
 										</div>
-										<p class="foodname">${item.name}</p>
-									</div>
 								</c:forEach>
 							</div>
 					</div>
@@ -223,7 +227,7 @@
 
 			</div>
 			<!--有act变部车-->
-			<a class="iconplus act" href="#"></a>
+			<a class="iconplus act" href="/buycar/list.do"></a>
 			<div class="bottomNav">
 				<a href="#" class="bottomNavBtn sideBtn act">
 					<img src="/user/img/icon-b1.png" />
@@ -254,7 +258,7 @@
 				})
 
 				$('.favbtn').click(function() {
-					$(this).addClass('act')
+					$(this).toggleClass('act')
 				})
 				
 

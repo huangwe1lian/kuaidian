@@ -105,8 +105,8 @@
 					<span class="icon-function"></span>
 				</div>
 				<div class="a1Center">
-					<div class="name1">猫咪点点</div>
-					<div class="name2">liminmin</div>
+					<div class="name1">${user.name}</div>
+					<div class="name2">${user.username}</div>
 					<div class="header">
 						<img src="./img/headerpic.jpg"/>
 					</div>
@@ -123,7 +123,7 @@
 				</div>
 			</div>
 			<div class="area area2">
-				<a href="#">
+				<a href="/user/totallist.do">
 					<div class="listinner">
 						<div class="listLeft">
 							<i class="icon icon-dd"></i>
@@ -138,7 +138,7 @@
 					<div class="listinner">
 						<div class="listLeft">
 							<i class="icon icon-msg"></i>
-							<span>我的订单</span>
+							<span>我的评论</span>
 						</div>
 						<div class="listRight">
 							<span>20</span>
@@ -149,6 +149,17 @@
 					<div class="listinner">
 						<div class="listLeft">
 							<i class="icon icon-fav"></i>
+							<span>我的收藏</span>
+						</div>
+						<div class="listRight">
+							<span>20</span>
+						</div>
+					</div>
+				</a>
+				<!-- <a href="#">
+					<div class="listinner">
+						<div class="listLeft">
+							<i class="icon icon-tp"></i>
 							<span>我的订单</span>
 						</div>
 						<div class="listRight dz">
@@ -156,18 +167,7 @@
 							<p>最新于02月11日</p>
 						</div>
 					</div>
-				</a>
-				<a href="#">
-					<div class="listinner">
-						<div class="listLeft">
-							<i class="icon icon-tp"></i>
-							<span>我的订单</span>
-						</div>
-						<div class="listRight">
-							<span>20</span>
-						</div>
-					</div>
-				</a>
+				</a> -->
 			</div>
 			
 			<div class="bottomNav">

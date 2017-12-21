@@ -132,11 +132,6 @@ public class OrderController {
         return "/user/order/confirm";
     }
 	
-	@RequestMapping(value="/order/list.do")
-    public String diancan(HttpServletRequest req, HttpServletResponse resp) throws Exception {
-        return "/user/order/list";
-    }
-	
 	
 	@RequestMapping(value="/order/canncel.do")
     public String orderCanncel(HttpServletRequest req, HttpServletResponse resp) throws Exception {

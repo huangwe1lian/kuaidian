@@ -43,8 +43,8 @@ body{-webkit-tap-highlight-color:transparent;}
 .titleBox{height: 0.89rem; border-bottom:1px solid #efefef;}
 .inner{margin:0 0.4rem;}
 .headbox{float: left; margin-right: 0.24rem; height: 0.6rem;width: 0.6rem; border-radius:0.6rem;overflow: hidden;}
-.plitem{text-align:left; min-height:1.26rem; padding-top: 0.25rem; box-sizing:border-box;}
-.plname{font:0.3rem/normal "microsoft yahei"; color:#333;}
+.plitem{border-bottom:1px solid #EFEFEF; padding-bottom:0.2rem; text-align:left; min-height:1.26rem; padding-top: 0.25rem; box-sizing:border-box;}
+.plname{font:0.3rem/normal "microsoft yahei"; color:#333; }
 .plstar .foodstar{display:inline-block; float: none;}
 .plstar{font:0.22rem/normal "microsoft yahei";}
 .infobox{overflow: hidden;}

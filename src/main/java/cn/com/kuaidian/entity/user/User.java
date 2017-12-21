@@ -13,6 +13,10 @@ public class User {
 	@Column(name="id")
 	private long id;
 	
+	@Label("昵称")
+	@Column(name="name")
+	private String name;
+	
 	@Label("用户名")
 	@Column(name="username")
 	private String username;
@@ -29,6 +33,14 @@ public class User {
 		this.id = id;
 	}
 	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	public String getUsername() {
 		return username;
 	}

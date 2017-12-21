@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import cn.com.kuaidian.entity.Cuisine;
+import cn.com.kuaidian.entity.user.User;
 import cn.com.kuaidian.resource.auth.UserSecurity;
 import cn.com.kuaidian.service.CuisineService;
 import cn.com.kuaidian.service.OrderService;
@@ -59,6 +60,9 @@ public class UserController {
 	
 	@RequestMapping(value="/usercenter.do",method=RequestMethod.GET)
 	public String UserCenter(HttpServletRequest req, HttpServletResponse resp) throws IOException{
+		User user = UserSecurity.getCurrentUser(req);
+		
+		req.setAttribute("user", user);
 		return "/user/usercenter";
 	}
 	
