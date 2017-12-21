@@ -51,10 +51,10 @@ public class UserController {
 	public String Index(HttpServletRequest req, HttpServletResponse resp) throws IOException{
 		List<Cuisine> today = cuisineService.getCuisineAllByPage(1, 5); //今日推荐,先出假数据
 		List<Cuisine> tromorrow = cuisineService.getCuisineAllByPage(2, 5); //明天日推荐,先出假数据
-		
+		List<Cuisine> favorite = cuisineService.getCuisineAllByPage(3, 5); //明天日推荐,先出假数据
 		req.setAttribute("today", today);
 		req.setAttribute("tromorrow", tromorrow);
-		
+		req.setAttribute("favorite", favorite);
 		return "/user/index";
 	}
 	

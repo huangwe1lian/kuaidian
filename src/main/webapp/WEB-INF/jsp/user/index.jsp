@@ -202,32 +202,23 @@
 				</div>
 				<div class="week-selectbox">
 					<div class="inner">
-						<div class="week-item">
-							<img src="/user/img/fooditem.jpg" />
-							<div class="rbox">
-								<div class="foodname">土豆蘑菇饭</div>
-								<div class="foodinfo">土豆+蘑菇+生姜</div>
-								<div class="foodfavnum"><span>155</span>人喜欢</div>
+						<c:forEach items="${favorite}" var="item">
+							<div class="week-item">
+								<img src="/user/img/fooditem.jpg" />
+								<div class="rbox">
+									<div class="foodname">${item.name}</div>
+									<div class="foodinfo">${item.desc}</div>
+									<div class="foodfavnum"><span>155</span>人喜欢</div>
+								</div>
+								<a href="javascript:addrfavrite(${item.id});" class="favbtn"></a>
 							</div>
-							<div class="favbtn act"></div>
-
-						</div>
-						<div class="week-item">
-							<img src="/user/img/fooditem.jpg" />
-							<div class="rbox">
-								<div class="foodname">土豆蘑菇饭</div>
-								<div class="foodinfo">土豆+蘑菇+生姜</div>
-								<div class="foodfavnum"><span>155</span>人喜欢</div>
-							</div>
-							<div class="favbtn"></div>
-
-						</div>
+						</c:forEach>
 					</div>
 				</div>
 
 			</div>
 			<!--有act变部车-->
-			<a class="iconplus act" href="/buycar/list.do"></a>
+			<a class="iconplus act" href="javascript:toBuyCar();"></a>
 			<div class="bottomNav">
 				<a href="#" class="bottomNavBtn sideBtn act">
 					<img src="/user/img/icon-b1.png" />
@@ -260,9 +251,18 @@
 				$('.favbtn').click(function() {
 					$(this).toggleClass('act')
 				})
-				
-
 			})
+			function toBuyCar(){
+				if(!com.getCookie('_kd_user_buyCar_')){
+					location.href='/buycar/list.do';
+				}else{
+					com.tips('请选择菜品');
+				}
+			}
+			
+			function addrfavrite(cuisineId){
+				$.getScript('/user/collection/add.do?cuisineId='+cuisineId);
+			}
 		</script>
 
 		<!--页面脚本区E-->
