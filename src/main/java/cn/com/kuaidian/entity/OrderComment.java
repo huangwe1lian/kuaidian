@@ -7,8 +7,8 @@ import org.gelivable.dao.Entity;
 import org.gelivable.dao.Id;
 import org.gelivable.dao.Label;
 
-@Entity(tableName ="kd_comment")
-public class Comment {
+@Entity(tableName ="kd_order_comment")
+public class OrderComment {
 	@Id
 	@Label("评论ID")
 	@Column(name = "id")
@@ -31,9 +31,13 @@ public class Comment {
 	private String text;
 	
 	@Label("创建时间")
-	@Column(name="create_at")
-	private Date createAt;
-
+	@Column(name="create_time")
+	private Date createTime;
+	
+	@Label("创建时间")
+	@Column(name="update_time")
+	private Date updateTime;
+	
 	public long getId() {
 		return id;
 	}
@@ -74,11 +78,20 @@ public class Comment {
 		this.text = text;
 	}
 
-	public Date getCreateAt() {
-		return createAt;
+	public Date getCreateTime() {
+		return createTime;
 	}
 
-	public void setCreateAt(Date createAt) {
-		this.createAt = createAt;
+	public void setCreateTime(Date createTime) {
+		this.createTime = createTime;
 	}
+
+	public Date getUpdateTime() {
+		return updateTime;
+	}
+
+	public void setUpdateTime(Date updateTime) {
+		this.updateTime = updateTime;
+	}
+
 }
