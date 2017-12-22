@@ -1,3 +1,5 @@
+<%@page contentType="text/html" pageEncoding="utf-8" session="false"%>
+<%@include file="/WEB-INF/jspf/import.jspf"%>
 <!DOCTYPE html>
 <html>
 
@@ -87,131 +89,115 @@
 		</script>
 
 		<!-- 公用重置样式 -->
-		<link rel="stylesheet" type="text/css" href="css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="/user/css/reset.css" />
 		<!-- 自定义样式区域 -->
-		<link rel="stylesheet" type="text/css" href="css/sum.css" />
+		<link rel="stylesheet" type="text/css" href="/user/css/pl.css" />
 	</head>
 
 	<body>
 
 		<div class="g-doc">
 			<div class="area area1">
-				<div class="daojishi">
-					<!--data-time赋值剩余秒数进行倒数-->
-					<h1 data-time="10"></h1>
-					<h2>请在支付剩余时间内完成支付</h2>
-				</div>
 				<div class="titleBox">
 					<div class="inner">
 						<div class="areaTitle">订单信息</div>
 					</div>
 				</div>
 				<div>
-					<div class="infoitem">
+					<div class="plitem">
 						<div class="inner">
-							<span class="infoitemName">订单号码</span>
-							<span class="infoitemValue">1259302-121</span>
+							<a href="#" class="pltop">
+								<img src="/user/img/fooditem.jpg" />
+								<div class="foodinfobox">
+									<p class="foodname">土豆蘑菇饭</p>
+									<p class="foodinfo">虾+鸡蛋+葱</p>
+								</div>
+								<div class="cpxx">菜品详情 ></div>
+							</a>
+							<div class="pf">
+								<span>评分:</span>
+								<div class="startbox" data-value="5">
+									<i class="icon-star act"></i>
+									<i class="icon-star act"></i>
+									<i class="icon-star act"></i>
+									<i class="icon-star act"></i>
+									<i class="icon-star act"></i>
+								</div>
+								<span class="fpvalue">
+									<span style="display:none;">1星</span>
+									<span style="display:none;">2星</span>
+									<span style="display:none;">3星</span>
+									<span style="display:none;">4星</span>
+									<span>哎哟~不错哦</span>
+								</span>
+							</div>
+							<div class="txtbox">
+								<textarea placeholder="请填写您的评价~最多100字" class="txt" ></textarea>
+							</div>
 						</div>
+
 					</div>
-					<div class="infoitem">
+					<div class="plitem">
 						<div class="inner">
-							<span class="infoitemName">订单时间</span>
-							<span class="infoitemValue">2017-05-25  05:23</span>
+							<a href="#" class="pltop">
+								<img src="/user/img/fooditem.jpg" />
+								<div class="foodinfobox">
+									<p class="foodname">土豆蘑菇饭</p>
+									<p class="foodinfo">虾+鸡蛋+葱</p>
+								</div>
+								<div class="cpxx">菜品详情 ></div>
+							</a>
+							<div class="pf">
+								<span>评分:</span>
+								<div class="startbox" data-value="5">
+									<i class="icon-star act"></i>
+									<i class="icon-star act"></i>
+									<i class="icon-star act"></i>
+									<i class="icon-star act"></i>
+									<i class="icon-star act"></i>
+								</div>
+								<span class="fpvalue">
+									<span style="display:none;">1星</span>
+									<span style="display:none;">2星</span>
+									<span style="display:none;">3星</span>
+									<span style="display:none;">4星</span>
+									<span>哎哟~不错哦</span>
+								</span>
+							</div>
+							<div class="txtbox">
+								<textarea placeholder="请填写您的评价~最多100字" class="txt" ></textarea>
+							</div>
 						</div>
+
 					</div>
-					<div class="infoitem">
-						<div class="inner">
-							<span class="infoitemName">支付金额</span>
-							<span class="infoitemValue fontred">￥50</span>
-						</div>
-					</div>
+
 				</div>
+				<div class="submitbtn">发表评价</div>
 
 			</div>
 
-			<div class="area area2">
-				<div class="titleBox">
-					<div class="inner">
-						<div class="areaTitle">支付方式</div>
-					</div>
-				</div>
-				<div>
-					<div class="infoitem act">
-						<div class="inner">
-							<span class="infoitemName icon-pay icon-zfb"></span>
-							<span class="infoitemValue">支付宝</span>
-							<span class="infotick"></span>
-						</div>
-					</div>
-					<div class="infoitem">
-						<div class="inner">
-							<span class="infoitemName icon-pay icon-wx"></span>
-							<span class="infoitemValue">微信</span>
-							<span class="infotick"></span>
-						</div>
-					</div>
-
-				</div>
-			</div>
-			<div class="submitbtn">确认支付￥50</div>
 		</div>
 
 		<!--页面脚本区S-->
 		<!--所有页面用到的js脚本都必须放到此位置，包括外链js和内嵌js-->
-		<script src="js/jquery.js" type="text/javascript" charset="utf-8"></script>
-		<script src="js/popup.js" type="text/javascript" charset="utf-8"></script>
-		<script src="js/com.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/user/js/jquery.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/user/js/popup.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/user/js/com.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
-			$(function() {
-
-				var lesstime = $('h1').attr('data-time');
-				$('h1').html(fixzero(toTime(lesstime).min) + ':' + fixzero(toTime(lesstime).sec))
-				setInterval(function() {
-					lesstime--;
-					if(lesstime >= 0) {
-						//继续倒计时
-
-						$('h1').html(fixzero(toTime(lesstime).min) + ':' + fixzero(toTime(lesstime).sec))
-					} else {
-						//倒计时停止
-					}
-
-				}, 1000)
-
-				function toTime(arg) {
-					var min = parseInt(arg / 60);
-					var sec = arg % 60
-					return {
-						min: min,
-						sec: sec
-					}
-				}
-
-				function fixzero(arg) {
-					arg = arg.toString()
-					if(arg.length == 1) {
-						return '0' + arg
-					} else {
-						return arg
-					}
-				}
-
-				var zfType = 0;
-				//0支付宝 1微信
-				$('.infoitem').click(function() {
-					$(this).addClass('act').siblings().removeClass('act')
-					zfType = $(this).index()
-				})
-				$('.submitbtn').click(function() {
-					if(zfType == 0) {
-						//支付宝
-					} else {
-						//微信
-						com.tips('暂不支持微信支付')
+			$('.icon-star').click(function(){
+				$(this).parents('.pf').find('.fpvalue span').eq($(this).index()).show().siblings().hide()
+				$(this).parent().attr('data-value',$(this).index());
+				var score=$(this).index()
+				var oi=$(this).parent().find('i')
+				oi.map(function(index,item){
+					if(index<=score){
+						oi.eq(index).addClass('act')
+					}else{
+						oi.eq(index).removeClass('act')
 					}
 				})
-
 			})
+			
 		</script>
 
 		<!--页面脚本区E-->

@@ -261,7 +261,14 @@
 			}
 			
 			function addrfavrite(cuisineId){
-				$.getScript('/user/collection/add.do?cuisineId='+cuisineId);
+				$.ajax({
+					url:'/user/collection/add.do?cuisineId='+cuisineId,
+					type:'get',
+					dataType:'josn',
+					success:function(data){
+						
+					}
+				});
 			}
 		</script>
 

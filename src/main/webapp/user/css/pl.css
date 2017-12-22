@@ -1,0 +1,20 @@
+body{-webkit-tap-highlight-color:transparent;}
+.area{background:#fff;}
+.g-doc {background:#efefef; text-align: center; position: relative; text-align:center; width: 7.5rem; margin: 0px auto 2rem;}
+.areaTitle{padding-top: 0.4rem; color:#333; text-align:left; font:bold 0.3rem/normal "microsoft yahei";}
+.titleBox{height: 0.89rem; }
+.inner{margin:0 0.4rem;}
+.area1{border-top:0.2rem solid #efefef;}
+.plitem{margin-bottom: 0.42rem;border-top:1px solid #efefef;}
+.pltop{text-align:left; position: relative; padding-top: 0.3rem; display:block; height: 1.41rem; box-sizing:border-box;}
+.pltop img{width: 0.8rem;height: 0.8rem; float:left; margin-right: 0.2rem;}
+.foodname{font:0.28rem/normal "microsoft yahei"; color:#000;}
+.foodinfo{margin-top: 0.1rem; font:0.22rem/normal "microsoft yahei"; color:#bbb;}
+.cpxx{position:absolute; top: 0.3rem; right: 0; font:0.22rem/normal "microsoft yahei"; color:#bbb;}
+.icon-star{position: relative; top: -0.06rem; vertical-align:middle; width: 0.4rem;height: 0.4rem; background:url(../img/start2.png) 0 0/ contain no-repeat; display:inline-block; margin-left: 0.3rem;}
+.icon-star.act{ background:url(../img/start2a.png) 0 0/ contain no-repeat; }
+.startbox{display:inline-block;}
+.pf{border-top:1px solid #efefef; text-align:left; height: 1.21rem; font:0.28rem/1.21rem "microsoft yahei"; color:#333;}
+.fpvalue{float: right; color:#bbb;}
+.txt{font:0.24rem/normal "microsoft yahei"; height: 1.5rem; box-sizing:border-box; padding:0.2rem; background:#efefef; width: 100%; height: 1.5rem; resize:none; -webkit-appearance:none; border-radius:0; border:none;}
+.submitbtn{height: 0.9rem; background:#ff5e59; font:bold 0.3rem/0.9rem "microsoft yahei"; color:#fff; border-radius:0.45rem; margin:0 0.4rem;}

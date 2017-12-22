@@ -177,8 +177,10 @@ public class OrderController {
         return "/user/qr";
     }
 	
-	@RequestMapping(value="/sum.do")
-    public String sum(HttpServletRequest req, HttpServletResponse resp) throws Exception {
-        return "/user/sum";
-    }
+	@RequestMapping("/order/pl.do")
+	public String pl(HttpServletRequest request,HttpServletResponse response){
+		Env env = EnvUtils.getEnv();
+		long orderId = env.paramLong("orderId");
+		return "/user/order/pl";
+	}
 }
