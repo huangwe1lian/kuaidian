@@ -42,6 +42,7 @@
             <mvc:exclude-mapping path="/user/css/**"/>
             <mvc:exclude-mapping path="/user/img/**"/>
             <mvc:exclude-mapping path="/user/js/**"/>
+             <mvc:exclude-mapping path="/user/index.do"/>
             <bean class="cn.com.kuaidian.resource.interceptor.UserSecurityInterceptor"/>
         </mvc:interceptor>
         

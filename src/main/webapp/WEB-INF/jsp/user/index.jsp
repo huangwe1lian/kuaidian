@@ -130,8 +130,8 @@
 						<p>面食</p>
 					</a>
 					<a href="#">
-						<img src="/user/img/icon-index4.png" alt="粥汤" />
-						<p>粥汤</p>
+						<img src="/user/img/icon-index4.png" alt="优惠券" />
+						<p>优惠券</p>
 					</a>
 				</div>
 

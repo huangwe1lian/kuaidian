@@ -62,8 +62,10 @@ public class OrderController {
         Order order = new Order();
         User user = UserSecurity.getCurrentUser(req);
         String outTradeNo = System.currentTimeMillis()+"";
-        String num = orderService.getOrderCountToday() + "";
-        
+        String num = (orderService.getOrderCountToday() +1) + "";
+    	while(num.length() < 3){
+    		num = "0" + num ;
+    	}
         order.setOutTradeNo(outTradeNo);
         order.setNumber(num);
 		order.setUserId(user.getId());
@@ -182,5 +184,13 @@ public class OrderController {
 		Env env = EnvUtils.getEnv();
 		long orderId = env.paramLong("orderId");
 		return "/user/order/pl";
+	}
+	
+
+	@RequestMapping("/order/close.do")
+	public String close(HttpServletRequest request,HttpServletResponse response){
+		Env env = EnvUtils.getEnv();
+		long orderId = env.paramLong("orderId");
+		return "/user/order/close";
 	}
 }

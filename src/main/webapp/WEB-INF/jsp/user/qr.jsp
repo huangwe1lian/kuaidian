@@ -104,7 +104,7 @@
 						<c:forEach items="${cuisine}" var="item"> 
 							<div class="swiper-slide">
 								<div class="qrbox">
-									<div class="qrtitle">当前订单</div>
+									<div class="qrtitle">取餐号：${order.number}</div>
 									<div class="qrinfo">
 										<div class="qrinfoLeft">
 											<div class="qrinfoLi1">${item.name}<span> x${item.num}</span> </div>
@@ -164,7 +164,7 @@
 									<div class="foodHisState-btnbox">
 										<c:choose>
 											<c:when test="${item.status == -1}">
-												<a href="#" class="Hisbtn gray" >已取消</a>
+												<a href="/user/order/close.do?cuisineId=${item.id}" class="Hisbtn gray" >已取消</a>
 											</c:when>
 											<c:when test="${item.status == 0}">
 												<a href="/user/order/canncel.do?orderId=${item.id}" class="Hisbtn gray" >取消订单</a>
