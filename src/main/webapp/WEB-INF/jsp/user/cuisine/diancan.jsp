@@ -218,7 +218,7 @@
 			<div class="buycar act">
 				<div class="buyCarnum">0</div>
 				<div class="buyCarPrice">¥ <span>0</span></div>
-				<a href="/buycar/list.do" class="buyCarSum">结算</a>
+				<a href="/user/buycar/list.do" class="buyCarSum">结算</a>
 				<div class="buycarbtn"></div>
 			</div>
 			<div class="buyCarpopup" style="display:none;">

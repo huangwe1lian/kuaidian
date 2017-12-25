@@ -254,7 +254,7 @@
 			})
 			function toBuyCar(){
 				if(!com.getCookie('_kd_user_buyCar_')){
-					location.href='/buycar/list.do';
+					location.href='/user/buycar/list.do';
 				}else{
 					com.tips('请选择菜品');
 				}

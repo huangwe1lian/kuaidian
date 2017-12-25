@@ -22,7 +22,7 @@ import cn.com.kuaidian.service.OrderService;
 import cn.com.kuaidian.util.UserBuyCarUtils;
 
 @Controller
-@RequestMapping("/buycar")
+@RequestMapping("/user/buycar")
 public class BuyCarController {
 	@Autowired
 	private CuisineService cuisineService;
