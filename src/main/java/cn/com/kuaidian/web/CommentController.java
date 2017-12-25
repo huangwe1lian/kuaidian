@@ -21,7 +21,7 @@ import cn.com.kuaidian.util.dwz.DwzUtils;
 
 
 @Controller
-@RequestMapping("/comment")
+@RequestMapping("/user/comment")
 public class CommentController {
 	@Autowired
 	private GeliDao geliDao;
