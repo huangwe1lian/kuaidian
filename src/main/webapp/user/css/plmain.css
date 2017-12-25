@@ -1,0 +1,28 @@
+body{-webkit-tap-highlight-color:transparent;}
+.area{background:#fff;}
+.g-doc {background:#efefef; text-align: center; position: relative; text-align:center; width: 7.5rem; margin: 0px auto;}
+.area1 .a1bg{object-fit:cover; position: absolute;left: 0;top: 0; width: 7.5rem;height: 3.2rem;}
+.area1{height: 3.2rem; position: relative;}
+.a1box{height: 1.48rem;  width:7rem; background:#fff; position: absolute; left:0.28rem;bottom: 0;}
+.a1head{position: absolute; top: -0.63rem; left: 2.86rem; width: 1.26rem;height: 1.26rem; border-radius:0.63rem; overflow: hidden;}
+.a1head img{width: 100%;}
+.icon-star{position: relative; top: -0.06rem; vertical-align:middle; width: 0.24rem;height: 0.24rem; background:url(../img/start2.png) 0 0/ contain no-repeat; display:inline-block; margin-left: 0.09rem;}
+.icon-star.act{ background:url(../img/start2a.png) 0 0/ contain no-repeat; }
+.startbox{display:inline-block;}
+.a1name{margin-top: 0.74rem; font:bold 0.23rem/normal "microsoft yahei"; color:#333;}
+.a1time{font:bold 0.22rem/normal "microsoft yahei"; color:#888;}
+.a1score{font:bold 0.22rem/normal "microsoft yahei"; color:#bbb;}
+.foodinfobox{ margin:0.6rem 0.68rem 0; overflow: hidden;}
+.foodinfobox img{margin-right: 0.24rem; float: left; width: 1.2rem;height: 1.2rem; float: left;}
+.area2{overflow: hidden;}
+.foodinfobox{text-align:left;}
+.foodname{font:0.33rem/normal "microsoft yahei"; color:#000;}
+.foodinfo{font:0.22rem/normal "microsoft yahei"; margin-top: 0.1rem;}
+.plbox{margin:0.56rem 0.5rem 0; text-align:left; font:0.23rem/0.37rem "microsoft yahei"; color:#333;}
+.icon-syh{ display:inline-block; width: 0.36rem;height: 0.24rem;}
+.icon-syh1{ background:url(../img/icon-syh1.png) 0 0/ contain no-repeat;}
+.icon-syh2{ background:url(../img/icon-syh2.png) 0 0/ contain no-repeat;}
+.hfbox{padding:0.3rem; text-align:left; margin:0.28rem 0.5rem 0.62rem; background:#f7f7f7; font:0.23rem/0.3rem "microsoft yahei"; color:#333;}
+.area2{background:#fff;}
+html{background:#efefef;}
+.logo2{background:url(../img/icon-logo2.png) 0 0/contain; margin:0.4rem auto; width: 3.45rem;height: 0.47rem;}

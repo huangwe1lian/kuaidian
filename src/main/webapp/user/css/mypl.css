@@ -1,0 +1,59 @@
+body{-webkit-tap-highlight-color:transparent;}
+.area{/* background:#fff; */}
+.g-doc {background:#efefef; text-align: center; position: relative; text-align:center; width: 7.5rem; margin: 0px auto ;}
+.areaTitle{padding-top: 0.4rem; color:#333; text-align:left; font:bold 0.3rem/normal "microsoft yahei";}
+.titleBox{height: 0.89rem;background: #fff;}
+.inner{margin:0 0.4rem;}
+.area1{border-top:0.2rem solid #efefef;}
+.plitem{margin-bottom: 0.42rem;border-top:1px solid #efefef;background: #fff;}
+.pltop{text-align:left;position: relative;padding-top: .25rem;display:block;height: 1.5rem;box-sizing:border-box;}
+.pltop img{width: 1rem;height: 1rem;float:left;margin-right: 0.2rem;}
+.foodname{font:0.28rem/normal "microsoft yahei"; color:#000;}
+.foodinfo{/* margin-top: 0.1rem; */font:0.22rem/normal "microsoft yahei";color:#000;}
+.data{margin-top: 0.1rem;font:0.22rem/normal "microsoft yahei";color:#bbb;float: right;}
+.cpxx{position:absolute; top: 0.3rem; right: 0; font:0.22rem/normal "microsoft yahei"; color:#bbb;}
+.icon-star{position: relative;top: -0.06rem;vertical-align:middle;width: .2rem;height: .2rem;background:url(../img/start2.png) 0 0/ contain no-repeat;display:inline-block;margin-left: 0.07rem;}
+.icon-star.act{ background:url(../img/start2a.png) 0 0/ contain no-repeat; }
+.startbox{display:inline-block;float: right;}
+.pf{border-top:1px solid #efefef;text-align:left;height: .75rem;font: 0.28rem/.75rem "microsoft yahei";color:#333;}
+.fpvalue{float: right; color:#bbb;}
+.txt{font:0.24rem/normal "microsoft yahei"; height: 1.5rem; box-sizing:border-box; padding:0.2rem; background:#efefef; width: 100%; height: 1.5rem; resize:none; -webkit-appearance:none; border-radius:0; border:none;}
+.submitbtn{height: 0.9rem; background:#ff5e59; font:bold 0.3rem/0.9rem "microsoft yahei"; color:#fff; border-radius:0.45rem; margin:0 0.4rem;}
+.cpxx i{
+  width:.06rem;
+  height:.06rem;
+  display: inline-block;
+  border-radius:.06rem;
+  background: #bbbbbb;
+  margin-right:.08rem;
+  vertical-align: top;
+}
+.mark1{
+  color:#ff5e59;
+}
+.g-doc2 i.yuexiao{
+  float: left;
+}
+.g-doc2 .startbox{
+  float: none;
+}
+.g-doc2 .p3{
+  font-size:.24rem;
+  color:#000;
+}
+.g-doc2 .p3 .data{
+  margin-top:0;
+}
+.g-doc2 .fpvalue{
+  float: none;
+  color:#000;
+}
+.g-doc2 .area{
+  background: #fff
+}
+.foodinfobox{
+  line-height:.36rem
+}
+.g-doc2  .plitem{
+  margin-bottom:.35rem
+}
