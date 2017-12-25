@@ -134,7 +134,7 @@
 						</div>
 					</div>
 				</a>
-				<a href="#">
+				<a href="/user/mypl.do">
 					<div class="listinner">
 						<div class="listLeft">
 							<i class="icon icon-msg"></i>
@@ -145,7 +145,7 @@
 						</div>
 					</div>
 				</a>
-				<a href="#">
+				<a href="/user/mylike.do">
 					<div class="listinner">
 						<div class="listLeft">
 							<i class="icon icon-fav"></i>

@@ -21,4 +21,11 @@ public class CuisineCommentService {
 		sql.appendSql("and cc.cuisine_id = ").appendValue(cuisineId);
 		return geliDao.page(CuisineComment.class, sql.getSql(), pageNo, pageSize, sql.getValues());
 	}
+	
+	
+	public List<CuisineComment> getCuisineCommentByUserId(long userId){
+		SqlBuilder sql = new SqlBuilder();
+		sql.appendSql("select cc.* from kd_user u,kd_cuisine_comment cc where 1=1 and u.id = cc.id and u.id = ").appendValue(userId);
+		return geliDao.list(CuisineComment.class, sql.getSql(), sql.getValues());
+	}
 }

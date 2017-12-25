@@ -15,8 +15,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import cn.com.kuaidian.entity.Cuisine;
+import cn.com.kuaidian.entity.CuisineComment;
+import cn.com.kuaidian.entity.user.Collection;
 import cn.com.kuaidian.entity.user.User;
 import cn.com.kuaidian.resource.auth.UserSecurity;
+import cn.com.kuaidian.service.CollectionService;
+import cn.com.kuaidian.service.CuisineCommentService;
 import cn.com.kuaidian.service.CuisineService;
 import cn.com.kuaidian.service.OrderService;
 import cn.com.kuaidian.service.shangjia.ContractorService;
@@ -37,6 +41,12 @@ public class UserController {
 	
 	@Autowired
 	private OrderService orderService;
+	
+	@Autowired
+	private CuisineCommentService cuisineCommentService;
+	
+	@Autowired
+	private CollectionService collectionService;
 	
 	@Autowired
 	private GeliDao geliDao;
@@ -84,5 +94,24 @@ public class UserController {
 			e.printStackTrace();
 			response.getWriter().write("login_fail");
 		}
+	}
+	
+	@RequestMapping(value="/mypl.do",method=RequestMethod.GET)
+	public String mypl(HttpServletRequest req, HttpServletResponse resp) throws IOException{
+		User user = UserSecurity.getCurrentUser(req);
+		List<CuisineComment> cuisineComments = cuisineCommentService.getCuisineCommentByUserId(user.getId());
+		
+		req.setAttribute("cuisineComments",cuisineComments);
+		return "/user/mypl";
+	}
+	
+	
+	
+	@RequestMapping(value="/mylike.do",method=RequestMethod.GET)
+	public String mylike(HttpServletRequest req, HttpServletResponse resp) throws IOException{
+		User user = UserSecurity.getCurrentUser(req);
+		List<Collection> collections = collectionService.getCollection(user.getId());
+		req.setAttribute("collections", collections);
+		return "/user/mylike";
 	}
 }

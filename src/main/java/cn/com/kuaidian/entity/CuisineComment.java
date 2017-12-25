@@ -19,6 +19,7 @@ public class CuisineComment {
 	
 	@Label("订单ID")
 	@Column(name="order_id")
+	@Refer(fieldPath = "order.id", type = Order.class)
 	private long orderId;
 	
 	@Label("菜式ID")

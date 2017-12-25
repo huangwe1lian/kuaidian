@@ -6,6 +6,9 @@ import org.gelivable.dao.Column;
 import org.gelivable.dao.Entity;
 import org.gelivable.dao.Id;
 import org.gelivable.dao.Label;
+import org.gelivable.dao.Refer;
+
+import cn.com.kuaidian.entity.Cuisine;
 
 @Entity(tableName="kd_collection")
 public class Collection {
@@ -19,6 +22,7 @@ public class Collection {
 	private long userId;
 	
 	@Label("菜式ID")
+	@Refer(fieldPath = "cuisine.id", type = Cuisine.class)
 	@Column(name="cuisine_id")
 	private long cuisineId;
 	

@@ -121,7 +121,7 @@
 								<div class="foodinfobox">
 									<input class="foodid" type="hidden" value="${item.id}">
 									<p class="foodname">${item.name}</p>
-									<p class="foodinfo">土豆+蘑菇+姜丝</p>
+									<p class="foodinfo">${item.desc}</p>
 									<p class="foodprice">¥ <span>${item.price}</span></p>
 								</div>
 								<div class="toCar">
