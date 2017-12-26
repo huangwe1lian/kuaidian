@@ -16,7 +16,7 @@
 .fooditem-pic{position: relative; width: 1.8rem;height: 1.8rem; margin-top: 0.3rem;}
 .fooditem{width: 1.8rem;}
 .foodname{white-space:nowrap; text-overflow: ellipsis; overflow:hidden; text-align:left; font:0.25rem/normal "microsoft yahei"; margin-top: 0.2rem;}
-.price{border-radius:0 0 0.2rem 0; position: absolute; left: 0;top: 0; width: 0.65rem;background:#ff5e59; height: 0.32rem; font:0.18rem/normal "microsoft yahei"; color:#fff;}
+.price{border-radius:0 0 0.2rem 0; position: absolute; left: 0;top: 0; width: 0.85rem;background:#ff5e59; height: 0.32rem; font:0.18rem/normal "microsoft yahei"; color:#fff;}
 .fooditem{display:inline-block; margin-right: 0.2rem;}
 .hor-scroll .inner{white-space:nowrap; overflow-y: scroll;}
 
