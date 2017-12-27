@@ -26,6 +26,10 @@ public class Cuisine {
 	@Column(name="price")
 	private double price;
 	
+	@Label("图片")
+	@Column(name="pic")
+	private String pic;
+	
 	@Label("用户评分")
 	@Column(name = "score")
 	private double score;
@@ -76,6 +80,14 @@ public class Cuisine {
 
 	public void setPrice(double price) {
 		this.price = price;
+	}
+	
+	public String getPic() {
+		return pic;
+	}
+
+	public void setPic(String pic) {
+		this.pic = pic;
 	}
 
 	public Date getCreateTime() {
