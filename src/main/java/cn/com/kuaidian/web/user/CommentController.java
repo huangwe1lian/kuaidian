@@ -1,4 +1,4 @@
-package cn.com.kuaidian.web;
+package cn.com.kuaidian.web.user;
 
 import java.util.Date;
 import java.util.List;
@@ -15,11 +15,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import cn.com.kuaidian.entity.CuisineComment;
 import cn.com.kuaidian.entity.OrderComment;
+import cn.com.kuaidian.entity.user.User;
+import cn.com.kuaidian.resource.auth.UserSecurity;
 import cn.com.kuaidian.service.OrderCommentService;
 import cn.com.kuaidian.util.dwz.DwzUtils;
 
 
+@Controller
 @RequestMapping("/user/comment")
 public class CommentController {
 	@Autowired
@@ -48,25 +52,41 @@ public class CommentController {
 	
 	//创建评论
 	@RequestMapping(value="/create.do")
-	@ResponseBody
     public String createComment(HttpServletRequest req, HttpServletResponse resp) throws Exception {
 		Env env = EnvUtils.getEnv();
-		long userId = env.paramLong("userId", 0);
+		User user = UserSecurity.getCurrentUser(req);
+		req.setCharacterEncoding("utf-8");
+		long userId = user.getId();
 		long orderId = env.paramLong("orderId", 0);
+		long cuisineId = env.paramLong("cuisineId1",0);
+		long cuisineId2 = env.paramLong("cuisineId2",0);
 		Double avgScore = env.paramDouble("avgScore", 0);
-		String content = env.param("content", ""); //评论内容
+		String text = env.param("text1", "");
+		String text2 = env.param("text2", "");
+		int score = env.paramInt("score1", 5);
+		int score2 = env.paramInt("score2", 5);
 		Date now = new Date();
 		
-		OrderComment comment = new OrderComment();
-		comment.setUserId(userId);
-		comment.setOrderId(orderId);
-		comment.setAvgScore(avgScore);
-		comment.setText(content);
-		comment.setCreateTime(now);
+		CuisineComment c1 = new CuisineComment();
+		c1.setOrderId(orderId);
+		c1.setText(text);
+		c1.setCuisineId(cuisineId);
+		c1.setScore(score);
+		c1.setCreateTime(now);
+		c1.setUpdateTime(now);
+		geliDao.create(c1);	
 		
-		geliDao.create(comment);	
+		if(cuisineId2 > 0){
+			CuisineComment c2 = new CuisineComment();
+			c2.setOrderId(orderId);
+			c2.setText(text2);
+			c2.setCuisineId(cuisineId2);
+			c2.setScore(score2);
+			c2.setCreateTime(now);
+			c2.setUpdateTime(now);
+			geliDao.create(c2);	
+		}
 		
-		
-        return DwzUtils.successAndForward("success", "");
+        return "redirect:/user/mypl.do";
     }
 }

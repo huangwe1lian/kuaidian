@@ -104,76 +104,47 @@
 					</div>
 				</div>
 				<div>
-					<div class="plitem">
-						<div class="inner">
-							<a href="#" class="pltop">
-								<img src="/user/img/fooditem.jpg" />
-								<div class="foodinfobox">
-									<p class="foodname">土豆蘑菇饭</p>
-									<p class="foodinfo">虾+鸡蛋+葱</p>
+				<form id="form" action="/user/comment/create.do?orderId=${orderId}" method="post">
+					<c:if test="${not empty cuisines}">
+						<c:forEach items="${cuisines}" var="item" varStatus="vs">
+							<div class="plitem">
+								<input type="hidden" value="${item.id}" name="cuisineId${vs.count}">
+								<div class="inner">
+									<a href="#" class="pltop">
+										<img src="${item.pic}" />
+										<div class="foodinfobox">
+											<p class="foodname">${item.name}</p>
+											<p class="foodinfo">${item.desc}</p>
+										</div>
+										<div class="cpxx" onclick="link(${item.id});">菜品详情 ></div>
+									</a>
+									<div class="pf">
+										<span>评分:</span>
+										<div class="startbox" data-value="5">
+											<i class="icon-star act"></i>
+											<i class="icon-star act"></i>
+											<i class="icon-star act"></i>
+											<i class="icon-star act"></i>
+											<i class="icon-star act"></i>
+										</div>
+										<span class="fpvalue">
+											<span style="display:none;">1星</span>
+											<span style="display:none;">2星</span>
+											<span style="display:none;">3星</span>
+											<span style="display:none;">4星</span>
+											<span>哎哟~不错哦</span>
+										</span>
+									</div>
+									<div class="txtbox">
+										<textarea name="text${vs.count}" placeholder="请填写您的评价~最多100字" class="txt" ></textarea>
+									</div>
 								</div>
-								<div class="cpxx">菜品详情 ></div>
-							</a>
-							<div class="pf">
-								<span>评分:</span>
-								<div class="startbox" data-value="5">
-									<i class="icon-star act"></i>
-									<i class="icon-star act"></i>
-									<i class="icon-star act"></i>
-									<i class="icon-star act"></i>
-									<i class="icon-star act"></i>
-								</div>
-								<span class="fpvalue">
-									<span style="display:none;">1星</span>
-									<span style="display:none;">2星</span>
-									<span style="display:none;">3星</span>
-									<span style="display:none;">4星</span>
-									<span>哎哟~不错哦</span>
-								</span>
 							</div>
-							<div class="txtbox">
-								<textarea placeholder="请填写您的评价~最多100字" class="txt" ></textarea>
-							</div>
-						</div>
-
+						</c:forEach>
+					</c:if>
 					</div>
-					<div class="plitem">
-						<div class="inner">
-							<a href="#" class="pltop">
-								<img src="/user/img/fooditem.jpg" />
-								<div class="foodinfobox">
-									<p class="foodname">土豆蘑菇饭</p>
-									<p class="foodinfo">虾+鸡蛋+葱</p>
-								</div>
-								<div class="cpxx">菜品详情 ></div>
-							</a>
-							<div class="pf">
-								<span>评分:</span>
-								<div class="startbox" data-value="5">
-									<i class="icon-star act"></i>
-									<i class="icon-star act"></i>
-									<i class="icon-star act"></i>
-									<i class="icon-star act"></i>
-									<i class="icon-star act"></i>
-								</div>
-								<span class="fpvalue">
-									<span style="display:none;">1星</span>
-									<span style="display:none;">2星</span>
-									<span style="display:none;">3星</span>
-									<span style="display:none;">4星</span>
-									<span>哎哟~不错哦</span>
-								</span>
-							</div>
-							<div class="txtbox">
-								<textarea placeholder="请填写您的评价~最多100字" class="txt" ></textarea>
-							</div>
-						</div>
-
-					</div>
-
-				</div>
-				<div class="submitbtn">发表评价</div>
-
+					<div class="submitbtn" onclick="doSubmit();">发表评价</div>
+				</form>
 			</div>
 
 		</div>
@@ -197,7 +168,13 @@
 					}
 				})
 			})
+			function link(cuisineId){
+				location.href="/user/cuisine/cuisineDetail.do?cuisineId="+cuisineId;
+			}
 			
+			function doSubmit(){
+				$("#form").submit();
+			}
 		</script>
 
 		<!--页面脚本区E-->

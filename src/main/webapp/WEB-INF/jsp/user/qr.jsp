@@ -175,7 +175,7 @@
 											</c:when>
 											<c:when test="${item.status == 2}">
 												<div class="foodHisState-btnbox">
-													<a href="javascript:alert('去评价页');" class="Hisbtn red" >去评价</a>
+													<a href="/user/order/pl.do?orderId=${item.id}" class="Hisbtn red" >去评价</a>
 												</div>
 											</c:when>
 										</c:choose>

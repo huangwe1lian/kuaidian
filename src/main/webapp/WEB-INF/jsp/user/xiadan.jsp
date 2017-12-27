@@ -129,10 +129,11 @@
 							<div class="inner">
 								<label for="sel1">
 									<span class="infoitemKey">预约时间</span>
-									<select id="appointTimne" name="appointTimne">
-										<option value="1">12:30 ~ 12:40</option>
-										<option value="2">12:40 ~ 12:50</option>
-										<option value="3">12:50 ~ 13:00</option>
+									<select id="appointTimne" name="appointTimne" style="width: 3.38rem">
+										<option value="0">请选择预约时间</option>
+										<option value="1" disabled="disabled">12:30 ~ 12:40（不可选）</option>
+										<option value="2">12:40 ~ 12:50（可选）</option>
+										<option value="3">12:50 ~ 13:00（可选）</option>
 									</select>
 									<i class="icon-arrow"></i>
 								</label>

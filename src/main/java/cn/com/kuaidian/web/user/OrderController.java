@@ -183,6 +183,9 @@ public class OrderController {
 	public String pl(HttpServletRequest request,HttpServletResponse response){
 		Env env = EnvUtils.getEnv();
 		long orderId = env.paramLong("orderId");
+		List<Map<String,Object>> cuisines = orderService.getCuisineByOrderId(orderId);
+		request.setAttribute("cuisines", cuisines);
+		request.setAttribute("orderId", orderId);
 		return "/user/order/pl";
 	}
 	

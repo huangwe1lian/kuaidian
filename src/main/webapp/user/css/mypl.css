@@ -5,7 +5,7 @@ body{-webkit-tap-highlight-color:transparent;}
 .titleBox{height: 0.89rem;background: #fff;}
 .inner{margin:0 0.4rem;}
 .area1{border-top:0.2rem solid #efefef;}
-.plitem{margin-bottom: 0.42rem;border-top:1px solid #efefef;background: #fff;}
+.plitem{margin-bottom: 0.12rem;border-top:1px solid #efefef;background: #fff;}
 .pltop{text-align:left;position: relative;padding-top: .25rem;display:block;height: 1.5rem;box-sizing:border-box;}
 .pltop img{width: 1rem;height: 1rem;float:left;margin-right: 0.2rem;}
 .foodname{font:0.28rem/normal "microsoft yahei"; color:#000;}
@@ -55,5 +55,5 @@ body{-webkit-tap-highlight-color:transparent;}
   line-height:.36rem
 }
 .g-doc2  .plitem{
-  margin-bottom:.35rem
+  margin-bottom:.12rem
 }
