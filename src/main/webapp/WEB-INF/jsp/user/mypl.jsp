@@ -109,8 +109,8 @@
 	       	<c:forEach items="${cuisineComments}" var="item">
 		          <div class="plitem">
 		            <div class="inner">
-		              <a href="#" class="pltop">
-		                <img src="img/pic_03.jpg" />
+		              <a href="/user/cuisine/cuisineDetail.do?cuisineId=${geli:refer(item,'cuisineId').id}" class="pltop">
+		                <img src="${geli:refer(item,'cuisineId').pic}" />
 		                <div class="foodinfobox">
 		                  <p class="foodname">${geli:refer(item,'cuisineId').name}</p>
 		                  <p class="foodinfo">${geli:refer(item,'cuisineId').desc}</p>

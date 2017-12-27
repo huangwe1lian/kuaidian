@@ -99,7 +99,7 @@
 		<div class="g-doc">
 			<div class="area area1">
 				<div class="a1picbox">
-					<img src="/user/img/fooditem.jpg" />
+					<img src="${cuisine.pic}" />
 				</div>
 				<div class="a1infobox" data-id="${cuisine.id}">
 					<div class="a1infoline">

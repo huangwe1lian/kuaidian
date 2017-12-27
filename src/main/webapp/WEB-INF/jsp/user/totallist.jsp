@@ -110,10 +110,10 @@
 						<div class="a2foodHistoryItem">
 							<div class="inner">
 								<div class="picbox">
-									<img src="img/fooditem.jpg" />
+									<img src="${item.pic}" />
 								</div>
 								<div class="foodHisInfo">
-									<p class="foodHisInfoi1">${item.name}<span> x2 </span>...</p>
+									<p class="foodHisInfoi1">${item.name}<span> x${item.num} </span>...</p>
 									<p class="foodHisInfoi2">${item.update_time}</p>
 								</div>
 								<!--待取-->

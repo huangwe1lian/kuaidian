@@ -109,16 +109,11 @@
 	          	<div class="plitem">
 		            <div class="inner">
 		              <a href="/user/cuisine/cuisineDetail.do?cuisineId=${item.cuisineId}" class="pltop">
-		                <img src="/user/img/pic_03.jpg" />
+		                <img src="${geli:refer(item,'cuisineId').pic}" />
 		                <div class="foodinfobox">
 		                  <p class="foodname">${geli:refer(item,'cuisineId').name}</p>
 		                  <p class="p2">
 		                    <div class="startbox" data-value="${geli:refer(item,'cuisineId').score}">
-		                      <!-- <i class="icon-star act"></i>
-		                      <i class="icon-star act"></i>
-		                      <i class="icon-star act"></i>
-		                      <i class="icon-star act"></i>
-		                      <i class="icon-star act"></i> -->
 				                <c:forEach begin="1" end="${geli:refer(item,'cuisineId').score}">
 				                	<i class="icon-star act"></i>
 				                </c:forEach>

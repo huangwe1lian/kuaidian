@@ -131,7 +131,7 @@
 					</a>
 					<a href="#">
 						<img src="/user/img/icon-index4.png" alt="优惠券" />
-						<p>优惠券</p>
+						<p>钱包</p>
 					</a>
 				</div>
 
@@ -150,7 +150,7 @@
 									<div class="fooditem">
 										<div class="fooditem-pic">
 											<a href="/user/cuisine/cuisineDetail.do?cuisineId=${item.id}">
-												<img src="/user/img/fooditem.jpg" />
+												<img src="${item.pic}" />
 											</a>
 											<div class="price">￥${item.price}</div>
 										</div>
@@ -181,7 +181,7 @@
 										<div class="fooditem">
 											<div class="fooditem-pic">
 												<a href="/user/cuisine/cuisineDetail.do?cuisineId=${item.id}">
-													<img src="/user/img/fooditem.jpg" />
+													<img src="${item.pic}" />
 												</a>
 												<div class="price">￥${item.price}</div>
 											</div>
@@ -204,7 +204,7 @@
 					<div class="inner">
 						<c:forEach items="${favorite}" var="item">
 							<div class="week-item">
-								<img src="/user/img/fooditem.jpg" />
+								<img src="${item.pic}" />
 								<div class="rbox">
 									<div class="foodname">${item.name}</div>
 									<div class="foodinfo">${item.desc}</div>

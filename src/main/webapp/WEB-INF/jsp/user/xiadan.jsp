@@ -108,7 +108,7 @@
 					<c:forEach var="item" items="${cuisine}">
 						<div class="infoitem ">
 							<div class="inner">
-								<img src="/user/img/fooditem.jpg" alt="" />
+								<img src="${item.pic}" alt="" />
 								<span>${item.foodname}</span>
 								<input name="foodid" type="hidden" value="${item.foodid}">
 								<i class="fenshu">x${item.num}</i>

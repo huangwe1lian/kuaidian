@@ -143,7 +143,7 @@
 						<div class="a2foodHistoryItem">
 							<div class="inner">
 								<div class="picbox">
-									<img src="/user/img/fooditem.jpg"/>
+									<img src="${item.pic}"/>
 								</div>
 								<div class="foodHisInfo">
 									<p class="foodHisInfoi1">${item.name}<span> x2 </span>...</p>

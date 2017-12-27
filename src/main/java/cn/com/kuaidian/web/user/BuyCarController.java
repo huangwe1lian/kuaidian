@@ -19,6 +19,7 @@ import cn.com.kuaidian.entity.Cuisine;
 import cn.com.kuaidian.entity.Order;
 import cn.com.kuaidian.service.CuisineService;
 import cn.com.kuaidian.service.OrderService;
+import cn.com.kuaidian.util.StringUtils;
 import cn.com.kuaidian.util.UserBuyCarUtils;
 
 @Controller
@@ -38,6 +39,8 @@ public class BuyCarController {
 			for(int i=0 ;i < cuisine.size() ;i++){
 				JSONObject json = cuisine.getJSONObject(i);
 				String id = json.getString("foodid");
+				Cuisine c = cuisineService.getCuisine(StringUtils.longValue(id, 0));
+				json.put("pic", c.getPic());
 				double price = json.getDouble("price");
 				double count = json.getDouble("num");
 				totalMoney += (price * count);

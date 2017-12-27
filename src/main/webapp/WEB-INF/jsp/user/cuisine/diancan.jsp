@@ -117,7 +117,7 @@
 					<c:forEach var="item" items="${cuisines}" varStatus="vs">
 						<div data-id="${vs.count}" class="fooditem">
 							<div class="foodinner">
-								<img src="/user/img/fooditem.jpg" />
+								<img src="${item.pic}" />
 								<div class="foodinfobox">
 									<input class="foodid" type="hidden" value="${item.id}">
 									<p class="foodname">${item.name}</p>
