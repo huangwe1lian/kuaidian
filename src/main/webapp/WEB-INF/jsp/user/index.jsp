@@ -163,7 +163,7 @@
 				</div>
 			</c:if>
 			<div class="area ad">
-				<a href="#" target="_blank">
+				<a href="#">
 					<img src="/user/img/adbanner.jpg" />
 				</a>
 			</div>
@@ -204,7 +204,9 @@
 					<div class="inner">
 						<c:forEach items="${favorite}" var="item">
 							<div class="week-item">
-								<img src="${item.pic}" />
+								<a href="/user/cuisine/cuisineDetail.do?cuisineId=${item.id}">
+									<img src="${item.pic}" />
+								</a>
 								<div class="rbox">
 									<div class="foodname">${item.name}</div>
 									<div class="foodinfo">${item.desc}</div>
