@@ -17,8 +17,9 @@ public class CuisineCommentService {
 	public List<CuisineComment> getCuisineCommentByPage(long cuisineId,int pageNo ,int pageSize){
 		SqlBuilder sql = new SqlBuilder();
 		sql.appendSql("select cc.*,u.name from kd_cuisine c, kd_cuisine_comment cc,kd_user u where 1=1 ");
-		sql.appendSql("and cc.cuisine_id = c.id and u.id = cc.user_id ");
-		sql.appendSql("and cc.cuisine_id = ").appendValue(cuisineId);
+		sql.appendSql(" and cc.cuisine_id = c.id and u.id = cc.user_id ");
+		sql.appendSql(" and cc.cuisine_id = ").appendValue(cuisineId);
+		sql.appendSql(" order by cc.create_time desc ");
 		return geliDao.page(CuisineComment.class, sql.getSql(), pageNo, pageSize, sql.getValues());
 	}
 	

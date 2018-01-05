@@ -72,6 +72,7 @@ public class CommentController {
 		c1.setText(text);
 		c1.setCuisineId(cuisineId);
 		c1.setScore(score);
+		c1.setUserId(userId);
 		c1.setCreateTime(now);
 		c1.setUpdateTime(now);
 		geliDao.create(c1);	
@@ -82,6 +83,7 @@ public class CommentController {
 			c2.setText(text2);
 			c2.setCuisineId(cuisineId2);
 			c2.setScore(score2);
+			c2.setUserId(userId);
 			c2.setCreateTime(now);
 			c2.setUpdateTime(now);
 			geliDao.create(c2);	
