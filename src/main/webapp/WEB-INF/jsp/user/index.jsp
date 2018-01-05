@@ -117,15 +117,15 @@
 				</div>
 
 				<div class="a1SortBox">
-					<a href="#">
+					<a href="/user/cuisine/list.do">
 						<img src="/user/img/icon-index1.png" alt="主食" />
 						<p>主食</p>
 					</a>
-					<a href="#">
+					<a href="/user/cuisine/list.do">
 						<img src="/user/img/icon-index2.png" alt="主食" />
 						<p>主食</p>
 					</a>
-					<a href="#">
+					<a href="/user/cuisine/list.do">
 						<img src="/user/img/icon-index3.png" alt="面食" />
 						<p>面食</p>
 					</a>
@@ -258,7 +258,8 @@
 				if(!com.getCookie('_kd_user_buyCar_')){
 					location.href='/user/buycar/list.do';
 				}else{
-					com.tips('请选择菜品');
+					//com.tips('请选择菜品');
+					location.href="/user/cuisine/list.do";
 				}
 			}
 			
