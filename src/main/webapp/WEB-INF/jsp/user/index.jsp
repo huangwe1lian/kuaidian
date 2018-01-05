@@ -197,7 +197,7 @@
 
 				<div class="titleBox">
 					<div class="inner">
-						<div class="areaTitle">心水菜品<span>每周菜品由你来决定</span></div>
+						<div class="areaTitle">心水菜品<span></span></div>
 					</div>
 				</div>
 				<div class="week-selectbox">
