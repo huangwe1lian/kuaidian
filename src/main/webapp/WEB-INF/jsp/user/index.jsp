@@ -212,7 +212,12 @@
 									<div class="foodinfo">${item.desc}</div>
 									<div class="foodfavnum"><span>155</span>人喜欢</div>
 								</div>
-								<a href="javascript:addrfavrite(${item.id});" class="favbtn"></a>
+								<c:if test="${collectIds.contains(item.id)}">
+									<a href="javascript:addrfavrite(${item.id});" class="act favbtn"></a>
+								</c:if>
+								<c:if test="${!collectIds.contains(item.id)}">
+									<a href="javascript:addrfavrite(${item.id});" class="favbtn"></a>
+								</c:if>
 							</div>
 						</c:forEach>
 					</div>

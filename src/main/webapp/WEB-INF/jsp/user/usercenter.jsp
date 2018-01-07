@@ -130,7 +130,7 @@
 							<span>我的订单</span>
 						</div>
 						<div class="listRight">
-							<span>2</span>
+							<span>${orderCount}</span>
 						</div>
 					</div>
 				</a>
@@ -141,7 +141,7 @@
 							<span>我的评论</span>
 						</div>
 						<div class="listRight">
-							<span>8</span>
+							<span>${commentCount}</span>
 						</div>
 					</div>
 				</a>
@@ -152,7 +152,7 @@
 							<span>我的收藏</span>
 						</div>
 						<div class="listRight">
-							<span>18</span>
+							<span>${collectCount}</span>
 						</div>
 					</div>
 				</a>
