@@ -62,4 +62,12 @@ public class OrderService {
 		return geliDao.getJdbcTemplate().queryForList(sql.getSql(), sql.getValues());
 	}
 	
+	public int getOrderCountByUserId(long userId){
+		SqlBuilder sql = new SqlBuilder();
+		sql.appendSql(" select count(*) from kd_order o,kd_user u where u.id= o.user_id ");
+		sql.appendSql(" and u.id = ").appendValue(userId);
+		int count = geliDao.count(sql.getSql(), sql.getValues());
+		return count;
+	}
+	
 }

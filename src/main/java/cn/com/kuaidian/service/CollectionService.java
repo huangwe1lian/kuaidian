@@ -1,5 +1,6 @@
 package cn.com.kuaidian.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.gelivable.dao.GeliDao;
@@ -43,5 +44,32 @@ public class CollectionService {
 		sql.appendSql(" order by c.update_time desc");
 		List<Collection>list = geliDao.list(Collection.class, sql.getSql() ,sql.getValues());
 		return list;
+	}
+	
+	
+	public int getCollectionCount(long userId){
+		SqlBuilder sql = new SqlBuilder();
+		sql.appendSql("select count(1) from kd_collection c where c.user_id = ").appendValue(userId);
+		sql.appendSql(" and c.status = 1 ");
+		int result = geliDao.count(sql.getSql(), sql.getValues());
+		return result;
+	}
+	
+	
+	public List<Long> getCollectionIds(long userId){
+		SqlBuilder sql = new SqlBuilder();
+		sql.appendSql("select * from kd_collection c where c.user_id = ").appendValue(userId);
+		sql.appendSql(" and c.status = 1 ");
+		sql.appendSql(" order by c.update_time desc");
+		List<Collection>list = geliDao.list(Collection.class, sql.getSql() ,sql.getValues());
+		if(list != null){
+			List<Long> ids = new ArrayList<Long>();
+			for (Collection c : list) {
+				ids.add(c.getCuisineId());
+			}
+			return ids;
+		}else{
+			return null;
+		}
 	}
 }

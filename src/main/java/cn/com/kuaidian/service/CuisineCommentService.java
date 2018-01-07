@@ -30,4 +30,13 @@ public class CuisineCommentService {
 		sql.appendSql(" order by cc.create_time desc");
 		return geliDao.list(CuisineComment.class, sql.getSql(), sql.getValues());
 	}
+	
+	
+	public int geCommentCountByUserId(long userId){
+		SqlBuilder sql = new SqlBuilder();
+		sql.appendSql("select count(*) from kd_cuisine_comment o,kd_user u where u.id= o.user_id ");
+		sql.appendSql("and u.id = ").appendValue(userId);
+		int count = geliDao.count(sql.getSql(), sql.getValues());
+		return count;
+	}
 }

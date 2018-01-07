@@ -62,6 +62,11 @@ public class UserController {
 		List<Cuisine> today = cuisineService.getCuisineAllByPage(1, 5); //今日推荐,先出假数据
 		List<Cuisine> tromorrow = cuisineService.getCuisineAllByPage(2, 5); //明天日推荐,先出假数据
 		List<Cuisine> favorite = cuisineService.getCuisineAllByPage(3, 5); //明天日推荐,先出假数据
+		User user = UserSecurity.getCurrentUser(req);
+		if(user!=null){
+			List<Long> collectIds = collectionService.getCollectionIds(user.getId());
+			req.setAttribute("collectIds", collectIds);
+		}
 		req.setAttribute("today", today);
 		req.setAttribute("tromorrow", tromorrow);
 		req.setAttribute("favorite", favorite);
@@ -71,7 +76,15 @@ public class UserController {
 	@RequestMapping(value="/usercenter.do",method=RequestMethod.GET)
 	public String UserCenter(HttpServletRequest req, HttpServletResponse resp) throws IOException{
 		User user = UserSecurity.getCurrentUser(req);
+		long userId = user.getId();
 		
+		int collectCount = collectionService.getCollectionCount(userId);
+		int orderCount = orderService.getOrderCountByUserId(userId);
+		int commentCount = cuisineCommentService.geCommentCountByUserId(userId);
+		
+		req.setAttribute("collectCount", collectCount);
+		req.setAttribute("orderCount", orderCount);
+		req.setAttribute("commentCount", commentCount);
 		req.setAttribute("user", user);
 		return "/user/usercenter";
 	}
