@@ -191,10 +191,10 @@
 		<script src="/user/js/com.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
 			$(function() {
-				if(!com.getCookie('arr')) {
+				if(!com.getCookie('_kd_user_buyCar_')) {
 					var arr = []
 				} else {
-					var arr = JSON.parse(com.getCookie('arr')).Carlist
+					var arr = JSON.parse(com.getCookie('_kd_user_buyCar_')).Carlist
 				}
 				init()
 
@@ -361,7 +361,7 @@
 					}
 					$('.buyCarItembox').html(str)
 
-					com.setCookie('arr', JSON.stringify({
+					com.setCookie('_kd_user_buyCar_', JSON.stringify({
 						Carlist: arr
 					}))
 				}
