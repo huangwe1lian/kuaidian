@@ -118,13 +118,30 @@
 										<div class="qrinner qr1">
 										</div>
 										<p class="qrnum">订单号：${order.outTradeNo}</p>
-										
-										<p class="qrnum fontred">取餐成功，祝您用餐愉快</p>
 									</div>
 									<div class="qrpaidui">前方还有 <span>2</span>人，请到窗口扫码取餐</div>
 								</div>
 							</div>
 						</c:forEach>
+						<div class="swiper-slide">
+							<div class="qrbox">
+								<div class="qrtitle">当前订单</div>
+								<div class="qrinfo">
+									<div class="qrinfoLeft">
+										<div class="qrinfoLi1">土豆蘑菇饭<span> x2</span> ...</div>
+										<div class="qrinfoLi2">2017-10-20 12:30</div>
+									</div>
+									<div class="qrinfoRight colorGreen">
+										已完成订单
+									</div>
+								</div>
+								<div class="qrCenter">
+									<div class="qrinner tick">
+									</div>
+									<p class="qrnum fontred">取餐成功，祝您用餐愉快</p>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 				<div class="tipsinfo">取餐时段：<fmt:formatDate value="${order.appointTimeStart}" pattern="MM-dd HH:mm" />至<fmt:formatDate value="${order.appointTimeEnd}" pattern="HH:mm" /> <span class="icon-question"></span></div>
@@ -206,8 +223,9 @@
 				})
 				//生成二维码
 				for(var i=0;i<$('.qr1').length;i++){
-					new QRCode($('.qr1').get(i), 'http://www.baidu.com');
+					new QRCode($('.qr1').get(i), 'http://192.168.1.101:8090/user/order/update.do?orderId=${order.id}');
 				}
+				
 				
 
 			})
