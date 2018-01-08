@@ -1,6 +1,7 @@
 package cn.com.kuaidian.web.user;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -214,5 +215,19 @@ public class OrderController {
 		order.setUpdateTime(new Date());
 		geliDao.update(order);
 		return DwzUtils.success("ok");
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/order/state.do")
+    public String orderState(HttpServletRequest req, HttpServletResponse resp) throws Exception {
+		Env env = EnvUtils.getEnv();
+		long orderId = env.paramLong("orderId");
+		Order order = orderService.getOrder(orderId);
+		Map<String, Object> map = new HashMap<String, Object>();
+		if(order!=null){
+			int state = order.getStatus();
+			map.put("state",state);
+		}
+		return DwzUtils.success("ok", map);
 	}
 }
