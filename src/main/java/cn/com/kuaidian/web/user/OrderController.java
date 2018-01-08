@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -13,6 +14,7 @@ import org.gelivable.web.EnvUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
@@ -27,10 +29,12 @@ import cn.com.kuaidian.service.CuisineService;
 import cn.com.kuaidian.service.OrderService;
 import cn.com.kuaidian.service.shangjia.ContractorService;
 import cn.com.kuaidian.service.user.UserService;
+import cn.com.kuaidian.util.CookieUtils;
 import cn.com.kuaidian.util.StringUtils;
 import cn.com.kuaidian.util.UserBuyCarUtils;
 import cn.com.kuaidian.util.dwz.Constants.AppointTimeEnd;
 import cn.com.kuaidian.util.dwz.Constants.AppointTimeStart;
+import cn.com.kuaidian.util.dwz.DwzUtils;
 
 @Controller
 @RequestMapping("/user")
@@ -166,16 +170,19 @@ public class OrderController {
     public String qr(HttpServletRequest req, HttpServletResponse resp) throws Exception {
 		Env env = EnvUtils.getEnv();
 		String outTradeNo =  env.param("out_trade_no", "");
+		int isPay =  env.paramInt("isPay", 0);
 		Order order = orderService.getOrderByoutTradeNo(outTradeNo);
-		order.setStatus(1); //模拟成功支付,将状态设置为已支付
-		geliDao.update(order);//模拟成功支付
+		if(isPay==1){
+			order.setStatus(1); //模拟成功支付,将状态设置为已支付
+			geliDao.update(order);//模拟成功支付
+		}
 		User user = UserSecurity.getCurrentUser(req);
 		long userId = user.getId();
 		List<Map<String, Object>> orders = orderService.getOrdersByUserPage(userId, 1, 5);
 		List<Map<String,Object>>  cuisine = orderService.getCuisineByOrderId(order.getId());
 		req.setAttribute("cuisine", cuisine);
-		req.setAttribute("order", order);
 		req.setAttribute("orders", orders);
+		req.setAttribute("order", order);
         return "/user/qr";
     }
 	
@@ -195,5 +202,17 @@ public class OrderController {
 		Env env = EnvUtils.getEnv();
 		long orderId = env.paramLong("orderId");
 		return "/user/order/close";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/order/update.do")
+    public String orderUpdate(HttpServletRequest req, HttpServletResponse resp) throws Exception {
+		Env env = EnvUtils.getEnv();
+		long orderId = env.paramLong("orderId");
+		Order order = orderService.getOrder(orderId);
+		order.setStatus(2);
+		order.setUpdateTime(new Date());
+		geliDao.update(order);
+		return DwzUtils.success("ok");
 	}
 }
