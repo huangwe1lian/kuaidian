@@ -31,7 +31,7 @@ public class UserSecurity {
 	
 	public final static String passwordKey = "2f44aaabd753444a";
 	
-	private static long expiryTime = 1000 * 60 * 60 * 2;	//2小时session过期
+	private static long expiryTime = 1000 * 60 * 60 * 4;	//4小时session过期
 	
     public static void saveSession(long userId, HttpServletRequest request, HttpServletResponse response) {
         try { 	 

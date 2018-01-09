@@ -173,7 +173,7 @@ public class OrderController {
 		String outTradeNo =  env.param("out_trade_no", "");
 		int isPay =  env.paramInt("isPay", 0);
 		Order order = orderService.getOrderByoutTradeNo(outTradeNo);
-		if(isPay==1){
+		if(isPay==1 && order.getStatus() == 0){
 			order.setStatus(1); //模拟成功支付,将状态设置为已支付
 			geliDao.update(order);//模拟成功支付
 		}

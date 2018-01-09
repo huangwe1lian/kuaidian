@@ -165,7 +165,7 @@
 									<img src="${item.pic}"/>
 								</div>
 								<div class="foodHisInfo">
-									<p class="foodHisInfoi1">${item.name}<span> x2 </span>...</p>
+									<p class="foodHisInfoi1">${item.name}<span> x1 </span>...</p>
 									<p class="foodHisInfoi2"><fmt:formatDate value="${item.create_time}" pattern="yyyy-MM-dd HH:mm:ss" /></p>
 								</div>
 								<div class="foodHisState">
@@ -225,7 +225,7 @@
 				})
 				//生成二维码
 				for(var i=0;i<$('.qr1').length;i++){
-					new QRCode($('.qr1').get(i), 'http://192.168.1.101:8090/user/order/update.do?orderId=${order.id}');
+					new QRCode($('.qr1').get(i), 'http://192.168.33.95:8090/user/order/update.do?orderId=${order.id}');
 				}
 			});
 			
