@@ -39,6 +39,7 @@
             <mvc:mapping path="/user/**"/>
             <mvc:exclude-mapping path="/user/login.do"/>
             <mvc:exclude-mapping path="/user/doLogin.do"/>
+            <mvc:exclude-mapping path="/user/order/update.do"/>
             <mvc:exclude-mapping path="/user/css/**"/>
             <mvc:exclude-mapping path="/user/img/**"/>
             <mvc:exclude-mapping path="/user/js/**"/>
